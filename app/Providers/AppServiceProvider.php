@@ -2,7 +2,10 @@
 
 namespace App\Providers;
 
+use Illuminate\Routing\Pipeline;
 use Illuminate\Support\ServiceProvider;
+use Laravel\Fortify\Actions\AttemptToAuthenticate;
+use Laravel\Fortify\Http\Controllers\AuthenticatedSessionController;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -13,7 +16,9 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        //
+        if ($this->app->environment() == 'local') {
+            $this->app->register(\Barryvdh\LaravelIdeHelper\IdeHelperServiceProvider::class);
+        }
     }
 
     /**

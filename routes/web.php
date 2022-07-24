@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\LogoutController;
 
 /*
 |--------------------------------------------------------------------------
@@ -13,6 +14,14 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
+Route::as('front.')->group(function () {
+    Route::get('/', function () {
+        return inertia('index');
+    })->name('index');
 });
+Route::middleware('auth')->group(function () {
+    Route::prefix('user')->as('user.')->group(fn () => require_once('user.php'));
+    Route::prefix('admin')->as('admin.')->group(fn () => require_once('admin.php'));
+});
+
+Route::get('logout', LogoutController::class)->middleware('guest');
