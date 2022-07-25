@@ -43,6 +43,7 @@ class HandleInertiaRequests extends Middleware
                 $user = User::findOrFail($request->user()->id);
                 return $user->only('id', 'is_admin', 'email', 'first_name', 'last_name', 'phone');
             },
+            'flash.status' => fn () => $request->session()->get('status'),
         ]);
     }
 }

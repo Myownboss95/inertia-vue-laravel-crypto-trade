@@ -20,8 +20,10 @@ use Laravel\Fortify\Actions\PrepareAuthenticatedSession;
 use App\Actions\Fortify\RedirectIfTwoFactorAuthenticatable;
 use App\Http\Responses\LoginResponse as ResponsesLoginResponse;
 use App\Http\Responses\LogoutResponse as ResponsesLogoutResponse;
+use App\Http\Responses\VerifyEmailResponse as ResponsesVerifyEmailResponse;
 use Laravel\Fortify\Contracts\LoginResponse;
 use Laravel\Fortify\Contracts\LogoutResponse;
+use Laravel\Fortify\Contracts\VerifyEmailResponse;
 
 class FortifyServiceProvider extends ServiceProvider
 {
@@ -98,5 +100,6 @@ class FortifyServiceProvider extends ServiceProvider
     {
         $this->app->bind(LoginResponse::class, ResponsesLoginResponse::class);
         $this->app->bind(LogoutResponse::class, ResponsesLogoutResponse::class);
+        $this->app->bind(VerifyEmailResponse::class, ResponsesVerifyEmailResponse::class);
     }
 }

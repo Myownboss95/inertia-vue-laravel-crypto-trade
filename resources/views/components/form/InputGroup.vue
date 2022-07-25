@@ -1,5 +1,6 @@
 <template>
   <div>
+    <FormLabel :label="label" :for="id" v-show="label" />
     <div class="input-group auth-pass-inputgroup">
       <input-vue
         :type="type"
@@ -27,7 +28,9 @@
 <script setup>
   import ErrorVue from '@/views/components/alerts/error.vue';
   import InputVue from '@/views/components/form/FormInput.vue';
-  import ButtonVue from '@/views/components/form/FormButton.vue';
+import ButtonVue from '@/views/components/form/FormButton.vue';
+import FormLabel from '@/views/components/form/FormLabel.vue';
+
 
 defineProps({
     type: {
@@ -39,12 +42,18 @@ defineProps({
     text: {
         type:String
     },
+    label: {
+        type:String,
+    },
     icon: {
         type: String
     },
     placeholder: {
         type:String,
         default:'Enter Password'
+    },
+    id: {
+        type:String,
     },
     modelValue:null
 });

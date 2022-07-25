@@ -19,7 +19,7 @@ Route::as('front.')->group(function () {
         return inertia('index');
     })->name('index');
 });
-Route::middleware('auth')->group(function () {
+Route::middleware(['auth', 'verified'])->group(function () {
     Route::prefix('user')->as('user.')->group(fn () => require_once('user.php'));
     Route::prefix('admin')->as('admin.')->group(fn () => require_once('admin.php'));
 });

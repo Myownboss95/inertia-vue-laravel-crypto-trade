@@ -1,5 +1,5 @@
 import { createApp, h } from 'vue'
-import { createInertiaApp, Link } from '@inertiajs/inertia-vue3'
+import { createInertiaApp, Link, Head } from '@inertiajs/inertia-vue3'
 import { importPageComponent } from '@/scripts/vite/import-page-component'
 import { InertiaProgress } from '@inertiajs/progress'
 import { createPinia } from 'pinia';
@@ -40,6 +40,7 @@ createInertiaApp({
             .use(plugin)
             .use(pinia)
             .mixin({ methods: { route } })
+            .component('Head',Head)
             .component('InertiaLink', Link);
 
         vue.config.globalProperties.$appName = import.meta.env.VITE_APP_NAME;

@@ -14,17 +14,10 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('users', function (Blueprint $table) {
+        Schema::create('plan_features', function (Blueprint $table) {
             $table->id();
             $table->foreignIdFor(Plan::class)->nullable()->constrained()->cascadeOnDelete()->cascadeOnUpdate();
-            $table->string('first_name')->nullable();
-            $table->string('last_name')->nullable();
-            $table->string('email')->unique()->index();
-            $table->timestamp('email_verified_at')->nullable();
-            $table->string('password', 60)->index();
-            $table->rememberToken();
-            $table->boolean('is_admin')->default(0);
-
+            $table->string('name');
             $table->timestamps();
         });
     }
@@ -36,6 +29,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('users');
+        Schema::dropIfExists('plan_features');
     }
 };

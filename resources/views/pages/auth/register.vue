@@ -2,116 +2,72 @@
   <div class="auth-content my-auto">
     <div class="text-center">
       <h5 class="mb-0">Register Account</h5>
-      <p class="text-muted mt-2">Get your free Minia account now.</p>
+      <p class="text-muted mt-2">Get a trading account with us.</p>
     </div>
     <form
-      class="needs-validation mt-4 pt-2"
-      novalidate
-      action="https://themesbrand.com/minia/layouts/index.html"
+      class="mt-4 pt-2"
+      @submit.prevent="submit"
     >
-      <div class="mb-3">
-        <label for="useremail" class="form-label">Email</label>
-        <input
-          type="email"
-          class="form-control"
-          id="useremail"
-          placeholder="Enter email"
-          required
-        />
-        <div class="invalid-feedback">Please Enter Email</div>
-      </div>
 
-      <div class="mb-3">
-        <label for="username" class="form-label">Username</label>
-        <input
-          type="text"
-          class="form-control"
-          id="username"
-          placeholder="Enter username"
-          required
-        />
-        <div class="invalid-feedback">Please Enter Username</div>
-      </div>
+    <FormGroup label="Email" placeholder="you@example.com" v-model="form.email" name="email" />
 
-      <div class="mb-3">
-        <label for="userpassword" class="form-label">Password</label>
-        <input
-          type="password"
-          class="form-control"
-          id="userpassword"
-          placeholder="Enter password"
-          required
-        />
-        <div class="invalid-feedback">Please Enter Password</div>
-      </div>
+    <InputGroup :type="type" class="mb-3" label="Password" placeholder="Enter password" v-model="form.password" :icon="icon" @button-clicked="handleButtonClicked" name="password" />
+
+    <InputGroup :type="type" class="mb-3" label="Confirm password" placeholder="Confirm password" v-model="form.password_confirmation" :icon="icon" @button-clicked="handleButtonClicked" name="password_confirmation" />
+
+
       <div class="mb-4">
-        <p class="mb-0">
-          By registering you agree to the Minia
+        <p class="text-muted">
+          By registering you agree to our
           <a href="#" class="text-primary">Terms of Use</a>
         </p>
       </div>
-      <div class="mb-3">
-        <button
-          class="btn btn-primary w-100 waves-effect waves-light"
-          type="submit"
-        >
-          Register
-        </button>
-      </div>
+
+        <FormButton type="submit" class="btn btn-primary w-100 waves-effect waves-light" >
+            <span class="spinner-border spinner-border-sm" v-if="form.processing"></span>
+            <span v-else>Register</span>
+        </FormButton>
+
     </form>
 
-    <div class="mt-4 pt-2 text-center">
-      <div class="signin-other-title">
-        <h5 class="font-size-14 mb-3 text-muted fw-medium">
-          - Sign up using -
-        </h5>
-      </div>
 
-      <ul class="list-inline mb-0">
-        <li class="list-inline-item">
-          <a
-            href="javascript:void()"
-            class="social-list-item bg-primary text-white border-primary"
-          >
-            <i class="mdi mdi-facebook"></i>
-          </a>
-        </li>
-        <li class="list-inline-item">
-          <a
-            href="javascript:void()"
-            class="social-list-item bg-info text-white border-info"
-          >
-            <i class="mdi mdi-twitter"></i>
-          </a>
-        </li>
-        <li class="list-inline-item">
-          <a
-            href="javascript:void()"
-            class="social-list-item bg-danger text-white border-danger"
-          >
-            <i class="mdi mdi-google"></i>
-          </a>
-        </li>
-      </ul>
-    </div>
 
     <div class="mt-5 text-center">
       <p class="text-muted mb-0">
         Already have an account ?
-        <a href="auth-login.html" class="text-primary fw-semibold"> Login </a>
+        <inertia-link :href="route('login')" class="text-primary fw-semibold"> Login </inertia-link>
       </p>
     </div>
   </div>
 </template>
 
 <script setup>
-  import authVue from '@/views/layouts/auth.vue';
+import FormGroup from '@/views/components/form/FormGroup.vue';
+import { useForm } from '@inertiajs/inertia-vue3';
+import InputGroup from '@/views/components/form/InputGroup.vue';
+import FormButton from '@/views/components/form/FormButton.vue';
+import { ref } from '@vue/reactivity';
+
+const type = ref('password');
+const icon = ref('mdi mdi-eye-outline');
+
+const handleButtonClicked = () => {
+    console.log('here')
+    type.value = type.value == 'password' ? 'text' : 'password';
+    icon.value = icon.value == 'mdi mdi-eye-outline'? 'mdi mdi-mdi-eye-off-outline':'mdi mdi-mdi-eye-outline';
+}
+
+const form = useForm({
+    email: '',
+    password: '',
+    password_confirmation:''
+})
+
+const submit = () => {
+    form.post((route('register')));
+}
+
 </script>
 
-<script>
-  export default {
-    layout: authVue,
-  };
-</script>
 <style>
 </style>

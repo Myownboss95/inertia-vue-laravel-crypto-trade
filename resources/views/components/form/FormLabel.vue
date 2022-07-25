@@ -1,9 +1,9 @@
 <template>
-  <label class="form-label" for="{{for}}">{{label}}</label>
+  <label class="form-label" :for="props.for">{{label}}</label>
 </template>
 
 <script setup>
-defineProps({
+const props = defineProps({
     for: String,
     label: String,
 })

@@ -1,4 +1,6 @@
 <template>
+    <Head title="Login" />
+
     <div class="text-center">
       <h5 class="mb-0">Welcome Back !</h5>
       <p class="text-muted mt-2">Sign in to continue to {{ $appName }}.</p>
@@ -58,15 +60,12 @@
 
 <script setup>
 import {ref } from 'vue';
-
-import InputVue from '@/views/components/form/FormInput.vue'
 import ButtonVue from '@/views/components/form/FormButton.vue'
 import FormGroup from '@/views/components/form/FormGroup.vue'
 import FormLabel from '@/views/components/form/FormLabel.vue';
 import {useForm} from '@inertiajs/inertia-vue3'
 import InputGroup from '@/views/components/form/InputGroup.vue';
-import { Inertia } from '@inertiajs/inertia';
-import { watch } from 'vue';
+
 
 let type = ref('password');
 let icon = ref('mdi-eye-outline')

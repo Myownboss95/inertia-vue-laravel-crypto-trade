@@ -10,7 +10,7 @@
             </span>
             <span class="logo-lg">
               <img src="@/assets/images/logo-sm.svg" alt="" height="24" />
-              <span class="logo-txt">{{appName}}</span>
+              <span class="logo-txt">{{ appName }}</span>
             </span>
           </a>
 
@@ -20,7 +20,7 @@
             </span>
             <span class="logo-lg">
               <img src="@/assets/images/logo-sm.svg" alt="" height="24" />
-              <span class="logo-txt">{{appName}}</span>
+              <span class="logo-txt">{{ appName }}</span>
             </span>
           </a>
         </div>
@@ -368,10 +368,10 @@
               Screen</a
             >
             <div class="dropdown-divider"></div>
-            <a class="dropdown-item" href="auth-logout.html"
-              ><i class="mdi mdi-logout font-size-16 align-middle me-1"></i>
-              Logout</a
-            >
+            <inertia-link method="post" class="dropdown-item" :href="route('logout')">
+                <i class="mdi mdi-logout font-size-16 align-middle me-1"></i>
+              Logout
+              </inertia-link>
           </div>
         </div>
       </div>
@@ -380,37 +380,35 @@
 </template>
 
 <script setup>
-import { ref, onMounted, watch } from 'vue';
-import feather from 'feather-icons';
+  import { ref, onMounted, watch } from 'vue';
+  import feather from 'feather-icons';
 
-import { useTheme } from '@/stores/theme';
+  import { useTheme } from '@/stores/theme';
 
-const theme = useTheme();
+  const theme = useTheme();
 
-const appName = import.meta.env.VITE_APP_NAME
+  const appName = import.meta.env.VITE_APP_NAME;
 
-const toggleMode = theme.toggleTheme
+  const toggleMode = theme.toggleTheme;
 
-onMounted(_ => {
-    theme.initTheme()
-        feather.replace()
-    })
+  onMounted((_) => {
+    theme.initTheme();
+    feather.replace();
+  });
 
-
-    const toggleSidebar = _ => {
-        var body = document.body
-        var e = body.getAttribute("data-sidebar-size");
-        body.classList.toggle('sidebar-enable');
-        if (992 <= window.innerWidth) {
-            if (null == e || e == "lg") {
-                body.setAttribute('data-sidebar-size', e = 'sm');
-            } else {
-                body.setAttribute('data-sidebar-size', e = 'lg');
-            }
-            localStorage.setItem('sidebar-size', e);
-        }
-    };
-
+  const toggleSidebar = (_) => {
+    var body = document.body;
+    var e = body.getAttribute('data-sidebar-size');
+    body.classList.toggle('sidebar-enable');
+    if (992 <= window.innerWidth) {
+      if (null == e || e == 'lg') {
+        body.setAttribute('data-sidebar-size', (e = 'sm'));
+      } else {
+        body.setAttribute('data-sidebar-size', (e = 'lg'));
+      }
+      localStorage.setItem('sidebar-size', e);
+    }
+  };
 </script>
 
 <style>

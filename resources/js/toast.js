@@ -15,3 +15,7 @@ export const error = message => {
         message
     })
 }
+
+export const status = message => {
+    iziToast.info({ message });
+}

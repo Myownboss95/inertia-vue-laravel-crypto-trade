@@ -25,8 +25,7 @@
 </template>
 
 <script setup>
-  import defaultVue from './default.vue';
-  import HeaderVue from '../components/layout/Header.vue';
+    import HeaderVue from '../components/layout/Header.vue';
     import SidebarVue from '../components/layout/sidebar.vue';
     import { watch } from 'vue';
 

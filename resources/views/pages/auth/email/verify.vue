@@ -10,30 +10,39 @@
         <h4>Verify your email</h4>
         <p>
           We have sent you verification email
-          <span class="fw-bold">example@abc.com</span>, Please check it
+          <span class="fw-bold">{{$page.props.auth.user.email || ''}}</span>, Please check it
         </p>
         <div class="mt-4">
-          <a href="index.html" class="btn btn-primary w-10">Verify email</a>
+          <inertia-link :href="route('user.index')" class="btn btn-primary w-10">Verify email</inertia-link>
         </div>
       </div>
     </div>
     <div class="mt-5 text-center">
       <p class="text-muted mb-0">
         Didn't receive an email ?
-        <a href="#" class="text-primary fw-semibold"> Resend </a>
+        <inertia-link method="post" :href="route('verification.send')" class="text-primary fw-semibold"> Resend </inertia-link>
       </p>
     </div>
   </div>
 </template>
 
 <script setup>
-import authVue from '@/views/layouts/auth.vue';
-</script>
+import { status } from '@/js/toast';
+import { usePage } from '@inertiajs/inertia-vue3';
+import { computed, watch } from 'vue';
 
-<script>
-export default {
-    layout: authVue
-  };
+const props = defineProps(['flash']);
+
+watch(() => props.flash, (value) => {
+    if ('status' in value) {
+        if (value.status === 'verification-link-sent')
+        {
+            status('We have sent you a new verification email');
+        } else {
+            status('We were unable to resend the verification email. Try again.');
+        }
+    }
+})
 </script>
 
 <style>
