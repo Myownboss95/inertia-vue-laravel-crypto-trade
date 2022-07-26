@@ -2197,7 +2197,8 @@ body[data-layout=horizontal] .footer {
     margin-top: -2px
 }
 
-#sidebar-menu ul li a {
+#sidebar-menu ul li a,
+#sidebar-menu ul li button {
     display: block;
     padding: .62rem 1.5rem;
     color: var(--bs-sidebar-menu-item-color);
@@ -2208,7 +2209,8 @@ body[data-layout=horizontal] .footer {
     font-weight: 500
 }
 
-#sidebar-menu ul li a i {
+#sidebar-menu ul li a i,
+#sidebar-menu ul li button i {
     display: inline-block;
     min-width: 1.75rem;
     padding-bottom: .125em;
@@ -2220,7 +2222,8 @@ body[data-layout=horizontal] .footer {
     transition: all .4s
 }
 
-#sidebar-menu ul li a svg {
+#sidebar-menu ul li a svg,
+#sidebar-menu ul li button svg {
     height: 16px;
     width: 16px;
     color: var(--bs-sidebar-menu-item-icon-color);
@@ -2229,15 +2232,18 @@ body[data-layout=horizontal] .footer {
     margin-top: -3px
 }
 
-#sidebar-menu ul li a:hover {
+#sidebar-menu ul li a:hover,
+#sidebar-menu ul li button:hover {
     color: var(--bs-sidebar-menu-item-hover-color)
 }
 
-#sidebar-menu ul li a:hover i {
+#sidebar-menu ul li a:hover i,
+#sidebar-menu ul li button:hover i {
     color: var(--bs-sidebar-menu-item-hover-color)
 }
 
-#sidebar-menu ul li a:hover svg {
+#sidebar-menu ul li a:hover svg,
+#sidebar-menu ul li button:hover svg {
     color: var(--bs-sidebar-menu-item-hover-color);
     fill: var(--bs-sidebar-menu-item-hover-effact-color)
 }
@@ -7005,4 +7011,10 @@ body[data-layout=horizontal] .chat-conversation {
 
 .cursor-pointer {
     cursor: pointer;
+}
+
+.a-button {
+    background: none;
+    border: none;
+    padding: none;
 }

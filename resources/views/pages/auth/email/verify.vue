@@ -1,4 +1,6 @@
 <template>
+<Head title="Email verification" />
+
   <div class="auth-content my-auto">
     <div class="text-center">
       <div class="avatar-lg mx-auto">
@@ -20,14 +22,14 @@
     <div class="mt-5 text-center">
       <p class="text-muted mb-0">
         Didn't receive an email ?
-        <inertia-link method="post" :href="route('verification.send')" class="text-primary fw-semibold"> Resend </inertia-link>
+        <inertia-link as="button" method="post" :href="route('verification.send')" class="text-primary fw-semibold a-button"> Resend </inertia-link>
       </p>
     </div>
   </div>
 </template>
 
 <script setup>
-import { status } from '@/js/toast';
+import { info } from '@/js/toast';
 import { usePage } from '@inertiajs/inertia-vue3';
 import { computed, watch } from 'vue';
 
@@ -37,9 +39,9 @@ watch(() => props.flash, (value) => {
     if ('status' in value) {
         if (value.status === 'verification-link-sent')
         {
-            status('We have sent you a new verification email');
+            info('We have sent you a new verification email');
         } else {
-            status('We were unable to resend the verification email. Try again.');
+            info('We were unable to resend the verification email. Try again.');
         }
     }
 })
