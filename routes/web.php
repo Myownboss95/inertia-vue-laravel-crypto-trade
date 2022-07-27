@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ChangePasswordController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LogoutController;
 use App\Http\Controllers\EmailVerifiedController;
@@ -25,8 +26,16 @@ Route::as('front.')->group(function () {
 Route::middleware(['auth', 'verified'])->group(function () {
     Route::prefix('user')->as('user.')->group(fn () => require_once('user.php'));
     Route::prefix('admin')->as('admin.')->group(fn () => require_once('admin.php'));
+
+    Route::get('change-password', [ChangePasswordController::class, 'getChangePasswordView'])->name('password.change');
+    Route::post('change-password', [ChangePasswordController::class, 'ChangePassword']);
+
+
+    Route::get('email/verified', EmailVerifiedController::class)->name('email.verified');
 });
 
-Route::get('logout', LogoutController::class)->middleware('guest');
-Route::get('reset-password', SuccessfulPasswordResetController::class)->name('password.reset.successful')->middleware('guest');
-Route::get('email/verified', EmailVerifiedController::class)->name('email.verified')->middleware(['auth', 'verified']);
+Route::middleware('guest')->group(function () {
+    Route::get('logout', LogoutController::class);
+    Route::get('reset-password', SuccessfulPasswordResetController::class)->name('password.reset.successful');
+});
+

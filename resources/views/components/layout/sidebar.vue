@@ -10,7 +10,7 @@
                 <ul class="metismenu list-unstyled" id="side-menu">
                     <li class="menu-title"> Menu </li>
                     <SidebarItem name="Dashboard" :url="route('user.index')" icon="layers" />
-                    <SidebarItem name="Users" url="/" icon="users" />
+                    <SidebarItem name="Users" url="/" icon="users" v-if="$page.props.auth.user.is_admin" />
                     <li class="menu-title"> Transactions </li>
                     <SidebarItem name="Trades" url="/" icon="table" />
                     <SidebarItem name="Deposits" url="/" icon="credit-card" />
@@ -18,8 +18,9 @@
                     <li class="menu-title"> Settings </li>
                     <SidebarItem name="Password reset" url="/" icon="lock" />
                     <SidebarItem name="Two Factor Auth" url="/" icon="key" />
-                    <SidebarItem name="Contact Details" url="/" icon="phone" />
-                    <SidebarItem name="Plans" url="/" icon="package" />
+                    <SidebarItem name="Contact Details" url="/" icon="phone" v-if="$page.props.auth.user.is_admin" />
+
+                    <SidebarItem name="Plans" url="/" icon="package" v-if="$page.props.auth.user.is_admin" />
                     <hr>
                     <SidebarItem name="Logout" method="post" :url="route('logout')" icon="power" />
                     <SidebarItem name="Home" :url="route('front.index')" icon="home" />
@@ -36,8 +37,6 @@ import { onMounted } from 'vue';
 import feather from 'feather-icons';
 import MetisMenu from 'metismenujs';
 import SidebarItem from './sidebarItem.vue';
-import { usePage } from '@inertiajs/inertia-vue3'
-import route from 'ziggy-js'
 onMounted(_ => {
     new MetisMenu('#side-menu');
     feather.replace();
