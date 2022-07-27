@@ -8,7 +8,7 @@
       <div class="page-content">
         <div class="container-fluid">
           <!-- Page Content -->
-          <!-- <slot /> -->
+          <slot />
           <!-- End page content -->
         </div>
         <!-- container-fluid -->
@@ -31,7 +31,7 @@
 
   import { error, success } from '@/js/toast';
 
-  const props = defineProps(['errors']);
+  const props = defineProps(['errors','flash']);
   watch(
     () => props.errors,
     (errors) => {
@@ -40,6 +40,16 @@
       }
     }
   );
+
+watch(
+    () => props.flash,
+    (flashes) => {
+        if ('success' in flashes)
+        {
+            success(flashes.success);
+        }
+    }
+  )
 </script>
 
 

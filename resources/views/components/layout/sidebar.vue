@@ -16,7 +16,7 @@
                     <SidebarItem name="Deposits" url="/" icon="credit-card" />
                     <SidebarItem name="Withdrawals" url="/" icon="dollar-sign" />
                     <li class="menu-title"> Settings </li>
-                    <SidebarItem name="Password reset" url="/" icon="lock" />
+                    <SidebarItem name="Password reset" :url="route('password.change')" icon="lock" />
                     <SidebarItem name="Two Factor Auth" url="/" icon="key" />
                     <SidebarItem name="Contact Details" url="/" icon="phone" v-if="$page.props.auth.user.is_admin" />
 

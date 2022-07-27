@@ -44,6 +44,7 @@ class HandleInertiaRequests extends Middleware
                 return $user->only('id', 'is_admin', 'email', 'first_name', 'last_name', 'phone');
             },
             'flash.status' => fn () => $request->session()->get('status'),
+            'flash.success' => fn () => $request->session()->get('success'),
         ]);
     }
 }
