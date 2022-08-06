@@ -20,6 +20,13 @@ return new class extends Migration
             $table->string('first_name')->nullable();
             $table->string('last_name')->nullable();
             $table->string('email')->unique()->index();
+            $table->enum('status', ['active', 'pending', 'suspended'])->default('pending');
+            $table->string('phone')->unique()->nullable();
+            $table->string('country')->nullable();
+            $table->string('state')->nullable();
+            $table->string('city')->nullable();
+            $table->string('address')->nullable();
+            $table->string('zip_code')->nullable();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password', 60)->index();
             $table->rememberToken();

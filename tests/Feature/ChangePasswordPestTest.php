@@ -37,7 +37,7 @@ test('old passward must match the user password', function () {
         'password_confirmation' => 'new password',
     ]);
 
-    $response->assertSessionHasErrors(['error' => 'Invalid old password supplied']);
+    $response->assertSessionHasErrors(['error' => 'The provided old password does not match your current password']);
 });
 
 test('new password must not be equal to old password', function () {

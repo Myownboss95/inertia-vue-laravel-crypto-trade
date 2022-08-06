@@ -1,8 +1,8 @@
 <template>
-<div>
+<span>
     <span class="spinner-border spinner-border-sm" v-if="props.loading"></span>
     <span v-else>{{props.text}}</span>
-</div>
+</span>
 </template>
 
 <script setup>

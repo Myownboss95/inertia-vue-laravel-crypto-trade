@@ -10,14 +10,14 @@
                 <ul class="metismenu list-unstyled" id="side-menu">
                     <li class="menu-title"> Menu </li>
                     <SidebarItem name="Dashboard" :url="route('user.index')" icon="layers" />
-                    <SidebarItem name="Users" url="/" icon="users" v-if="$page.props.auth.user.is_admin" />
+                    <SidebarItem name="Users" :url="route('admin.users.index')" icon="users" v-if="$page.props.auth.user.is_admin" />
                     <li class="menu-title"> Transactions </li>
                     <SidebarItem name="Trades" url="/" icon="table" />
                     <SidebarItem name="Deposits" url="/" icon="credit-card" />
                     <SidebarItem name="Withdrawals" url="/" icon="dollar-sign" />
                     <li class="menu-title"> Settings </li>
                     <SidebarItem name="Password reset" :url="route('password.change')" icon="lock" />
-                    <SidebarItem name="Two Factor Auth" url="/" icon="key" />
+                    <SidebarItem name="Two Factor Auth" :url="route('two-factor-auth')" icon="key" />
                     <SidebarItem name="Contact Details" url="/" icon="phone" v-if="$page.props.auth.user.is_admin" />
 
                     <SidebarItem name="Plans" url="/" icon="package" v-if="$page.props.auth.user.is_admin" />

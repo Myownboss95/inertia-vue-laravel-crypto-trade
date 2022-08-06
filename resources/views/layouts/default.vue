@@ -35,7 +35,7 @@
   watch(
     () => props.errors,
     (errors) => {
-      if ('error' in errors) {
+      if ('error' in errors && errors.error != null && errors.error != '') {
         error(errors.error);
       }
     }
@@ -44,7 +44,7 @@
 watch(
     () => props.flash,
     (flashes) => {
-        if ('success' in flashes)
+        if ('success' in flashes && flashes.success != null && flashes.succes != '')
         {
             success(flashes.success);
         }

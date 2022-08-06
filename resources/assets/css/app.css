@@ -2390,7 +2390,8 @@ body[data-sidebar-size=sm] .vertical-menu #sidebar-menu>ul>li {
     white-space: nowrap
 }
 
-body[data-sidebar-size=sm] .vertical-menu #sidebar-menu>ul>li>a {
+body[data-sidebar-size=sm] .vertical-menu #sidebar-menu>ul>li>a,
+body[data-sidebar-size=sm] .vertical-menu #sidebar-menu>ul>li>button {
     padding: 15px 20px;
     -webkit-transition: none;
     transition: none
@@ -2398,22 +2399,29 @@ body[data-sidebar-size=sm] .vertical-menu #sidebar-menu>ul>li>a {
 
 body[data-sidebar-size=sm] .vertical-menu #sidebar-menu>ul>li>a:active,
 body[data-sidebar-size=sm] .vertical-menu #sidebar-menu>ul>li>a:focus,
-body[data-sidebar-size=sm] .vertical-menu #sidebar-menu>ul>li>a:hover {
+body[data-sidebar-size=sm] .vertical-menu #sidebar-menu>ul>li>a:hover,
+body[data-sidebar-size=sm] .vertical-menu #sidebar-menu>ul>li>button:active,
+body[data-sidebar-size=sm] .vertical-menu #sidebar-menu>ul>li>button:focus,
+body[data-sidebar-size=sm] .vertical-menu #sidebar-menu>ul>li>button:hover,
+{
     color: var(--bs-sidebar-menu-item-hover-color)
 }
 
-body[data-sidebar-size=sm] .vertical-menu #sidebar-menu>ul>li>a i {
+body[data-sidebar-size=sm] .vertical-menu #sidebar-menu>ul>li>a i,
+body[data-sidebar-size=sm] .vertical-menu #sidebar-menu>ul>li>button i {
     font-size: 1.45rem;
     margin-left: 4px
 }
 
-body[data-sidebar-size=sm] .vertical-menu #sidebar-menu>ul>li>a svg {
+body[data-sidebar-size=sm] .vertical-menu #sidebar-menu>ul>li>a svg,
+body[data-sidebar-size=sm] .vertical-menu #sidebar-menu>ul>li>button svg {
     height: 18px;
     width: 18px;
     margin-left: 6px
 }
 
-body[data-sidebar-size=sm] .vertical-menu #sidebar-menu>ul>li>a span {
+body[data-sidebar-size=sm] .vertical-menu #sidebar-menu>ul>li>a span,
+body[data-sidebar-size=sm] .vertical-menu #sidebar-menu>ul>li>button span {
     display: none;
     padding-left: 25px
 }
@@ -2422,7 +2430,8 @@ body[data-sidebar-size=sm] .vertical-menu #sidebar-menu>ul>li>a.has-arrow:after 
     display: none
 }
 
-body[data-sidebar-size=sm] .vertical-menu #sidebar-menu>ul>li:hover>a {
+body[data-sidebar-size=sm] .vertical-menu #sidebar-menu>ul>li:hover>a,
+body[data-sidebar-size=sm] .vertical-menu #sidebar-menu>ul>li:hover>button {
     position: relative;
     width: calc(190px + 70px);
     color: #5156be;
@@ -2431,16 +2440,24 @@ body[data-sidebar-size=sm] .vertical-menu #sidebar-menu>ul>li:hover>a {
     transition: none
 }
 
-body[data-sidebar-size=sm] .vertical-menu #sidebar-menu>ul>li:hover>a i {
+body[data-sidebar-size=sm] .vertical-menu #sidebar-menu>ul>li:hover>button {
+    /* width: 70px; */
+    margin-left: -58px;
+}
+
+body[data-sidebar-size=sm] .vertical-menu #sidebar-menu>ul>li:hover>a i,
+body[data-sidebar-size=sm] .vertical-menu #sidebar-menu>ul>li:hover>button i {
     color: #5156be
 }
 
-body[data-sidebar-size=sm] .vertical-menu #sidebar-menu>ul>li:hover>a svg {
+body[data-sidebar-size=sm] .vertical-menu #sidebar-menu>ul>li:hover>a svg,
+body[data-sidebar-size=sm] .vertical-menu #sidebar-menu>ul>li:hover>button svg {
     color: var(--bs-sidebar-menu-item-active-color);
     fill: rgba(var(--bs-sidebar-menu-item-active-color), .2)
 }
 
-body[data-sidebar-size=sm] .vertical-menu #sidebar-menu>ul>li:hover>a span {
+body[data-sidebar-size=sm] .vertical-menu #sidebar-menu>ul>li:hover>a span,
+body[data-sidebar-size=sm] .vertical-menu #sidebar-menu>ul>li:hover>button span {
     display: inline
 }
 
@@ -2459,7 +2476,8 @@ body[data-sidebar-size=sm] .vertical-menu #sidebar-menu>ul>li:hover>ul ul {
     box-shadow: 0 .5rem 1rem rgba(0, 0, 0, .1)
 }
 
-body[data-sidebar-size=sm] .vertical-menu #sidebar-menu>ul>li:hover>ul a {
+body[data-sidebar-size=sm] .vertical-menu #sidebar-menu>ul>li:hover>ul a,
+body[data-sidebar-size=sm] .vertical-menu #sidebar-menu>ul>li:hover>ul button {
     -webkit-box-shadow: none;
     box-shadow: none;
     padding: 8px 20px;
@@ -2469,7 +2487,8 @@ body[data-sidebar-size=sm] .vertical-menu #sidebar-menu>ul>li:hover>ul a {
     color: var(--bs-sidebar-menu-sub-item-color)
 }
 
-body[data-sidebar-size=sm] .vertical-menu #sidebar-menu>ul>li:hover>ul a:hover {
+body[data-sidebar-size=sm] .vertical-menu #sidebar-menu>ul>li:hover>ul a:hover,
+body[data-sidebar-size=sm] .vertical-menu #sidebar-menu>ul>li:hover>ul button:hover {
     color: var(--bs-sidebar-menu-item-hover-color)
 }
 
@@ -2498,7 +2517,8 @@ body[data-sidebar-size=sm] .vertical-menu #sidebar-menu>ul ul li>a span.pull-rig
     transform: rotate(270deg)
 }
 
-body[data-sidebar-size=sm] .vertical-menu #sidebar-menu>ul ul li.active a {
+body[data-sidebar-size=sm] .vertical-menu #sidebar-menu>ul ul li.active a,
+body[data-sidebar-size=sm] .vertical-menu #sidebar-menu>ul ul li.active button {
     color: #f8f9fa
 }
 
@@ -7012,9 +7032,20 @@ body[data-layout=horizontal] .chat-conversation {
 .cursor-pointer {
     cursor: pointer;
 }
-
+.cusor-not-allowed {
+    cursor: not-allowed;
+}
 .a-button {
     background: none;
     border: none;
-    padding: none;
+    padding: 0;
+        margin: 0;
+    }
+
+    .text-justify {
+        text-align: justify !important;
+    }
+
+    button[disabled] {
+        cursor: not-allowed;
 }

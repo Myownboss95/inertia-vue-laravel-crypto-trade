@@ -13,6 +13,7 @@
           <inertia-link
             :href="route('login')"
             class="btn btn-primary w-100 waves-effect waves-light"
+            replace
             >
                 Login Again
             </inertia-link>
@@ -25,6 +26,7 @@
         <inertia-link
           class="text-primary fw-semibold"
           :href="route('front.index')"
+          replace
         >
           Or go home <i class="bx bx-home"></i>
         </inertia-link>

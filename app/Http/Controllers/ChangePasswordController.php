@@ -12,7 +12,7 @@ class ChangePasswordController extends Controller
 {
     public function getChangePasswordView()
     {
-        return inertia('password.change');
+        return inertia('security.change-password');
     }
 
     public function changePassword(ChangePasswordRequest $request)
@@ -20,7 +20,7 @@ class ChangePasswordController extends Controller
         $user = User::findOrFail(auth()->user()->id);
 
         if (!Hash::check($request->input('old_password'), $user->password)) {
-            return back()->withErrors(['error' => 'Invalid old password supplied']);
+            return back()->withErrors(['error' => 'The provided old password does not match your current password']);
         }
 
         if (Hash::check($request->input('password'), $user->password)) {

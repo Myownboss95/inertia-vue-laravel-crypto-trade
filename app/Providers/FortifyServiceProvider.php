@@ -71,6 +71,11 @@ class FortifyServiceProvider extends ServiceProvider
         Fortify::requestPasswordResetLinkView(fn () => inertia('auth.password.forgot'));
 
         Fortify::verifyEmailView(fn () => inertia('auth.email.verify'));
+
+        Fortify::confirmPasswordView(fn () => inertia('auth.confirm-password'));
+
+        Fortify::twoFactorChallengeView(fn () => inertia('auth.two-factor-challenge'));
+
     }
 
     private function mapPipeline()

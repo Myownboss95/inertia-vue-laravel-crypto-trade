@@ -7,13 +7,14 @@
         :placeholder="placeholder"
         :value="modelValue"
         @input="handleInput"
+        @change="handleChange"
     />
 </template>
 
 <script setup>
 import { watch } from 'vue';
 
-defineProps({
+const props = defineProps({
     type: {
         type: String,
         default: 'text'
@@ -22,11 +23,17 @@ defineProps({
     id: String,
     placeholder: String,
     modelValue: null,
+    modelModifiers: { default: () => ({}) },
 })
 
-const emit = defineEmits(['update:modelValue'])
+const emit = defineEmits([ 'update:modelValue' ]);
+
 const handleInput = (event) => {
-    emit('update:modelValue', event.target.value);
+    if(!props.modelModifiers.lazy) emit('update:modelValue', event.target.value);
+}
+
+const handleChange = event => {
+    if(props.modelModifiers.lazy) emit('update:modelValue', event.target.value);
 }
 
 </script>
