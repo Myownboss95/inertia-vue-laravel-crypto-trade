@@ -42,3 +42,8 @@ Route::middleware('guest')->group(function () {
     Route::get('reset-password', SuccessfulPasswordResetController::class)->name('password.reset.successful');
 });
 
+Route::view('/', 'front.home');
+Route::view('/about-us', 'front.about-us');
+Route::view('/contact-us','front.contact');
+Route::view('/terms-and-conditions', 'front.terms-and-conditions');
+Route::view('/faqs', 'front.faqs');
