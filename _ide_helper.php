@@ -4,7 +4,7 @@
 
 /**
  * A helper file for Laravel, to provide autocomplete information to your IDE
- * Generated for Laravel 9.21.6.
+ * Generated for Laravel 9.23.0.
  *
  * This file should not be included in your code, only analyzed by your IDE!
  *
@@ -6295,16 +6295,17 @@
                         return $instance->lines($path);
         }
                     /**
-         * Get the MD5 hash of the file at the given path.
+         * Get the hash of the file at the given path.
          *
          * @param string $path
+         * @param string $algorithm
          * @return string 
          * @static 
          */ 
-        public static function hash($path)
+        public static function hash($path, $algorithm = 'md5')
         {
                         /** @var \Illuminate\Filesystem\Filesystem $instance */
-                        return $instance->hash($path);
+                        return $instance->hash($path, $algorithm);
         }
                     /**
          * Write the contents of a file.
@@ -6780,6 +6781,38 @@
         {
                         /** @var \Illuminate\Filesystem\Filesystem $instance */
                         return $instance->cleanDirectory($directory);
+        }
+                    /**
+         * Apply the callback if the given "value" is (or resolves to) truthy.
+         *
+         * @template TWhenParameter
+         * @template TWhenReturnType
+         * @param \Illuminate\Filesystem\(\Closure($this):  TWhenParameter)|TWhenParameter|null $value
+         * @param \Illuminate\Filesystem\(callable($this,  TWhenParameter): TWhenReturnType)|null  $callback
+         * @param \Illuminate\Filesystem\(callable($this,  TWhenParameter): TWhenReturnType)|null  $default
+         * @return $this|\Illuminate\Filesystem\TWhenReturnType 
+         * @static 
+         */ 
+        public static function when($value = null, $callback = null, $default = null)
+        {
+                        /** @var \Illuminate\Filesystem\Filesystem $instance */
+                        return $instance->when($value, $callback, $default);
+        }
+                    /**
+         * Apply the callback if the given "value" is (or resolves to) falsy.
+         *
+         * @template TUnlessParameter
+         * @template TUnlessReturnType
+         * @param \Illuminate\Filesystem\(\Closure($this):  TUnlessParameter)|TUnlessParameter|null  $value
+         * @param \Illuminate\Filesystem\(callable($this,  TUnlessParameter): TUnlessReturnType)|null  $callback
+         * @param \Illuminate\Filesystem\(callable($this,  TUnlessParameter): TUnlessReturnType)|null  $default
+         * @return $this|\Illuminate\Filesystem\TUnlessReturnType 
+         * @static 
+         */ 
+        public static function unless($value = null, $callback = null, $default = null)
+        {
+                        /** @var \Illuminate\Filesystem\Filesystem $instance */
+                        return $instance->unless($value, $callback, $default);
         }
                     /**
          * Register a custom macro.
@@ -10399,6 +10432,30 @@
         {
                         /** @var \Illuminate\Http\Request $instance */
                         $instance->setLaravelSession($session);
+        }
+                    /**
+         * Set the locale for the request instance.
+         *
+         * @param string $locale
+         * @return void 
+         * @static 
+         */ 
+        public static function setRequestLocale($locale)
+        {
+                        /** @var \Illuminate\Http\Request $instance */
+                        $instance->setRequestLocale($locale);
+        }
+                    /**
+         * Set the default locale for the request instance.
+         *
+         * @param string $locale
+         * @return void 
+         * @static 
+         */ 
+        public static function setDefaultRequestLocale($locale)
+        {
+                        /** @var \Illuminate\Http\Request $instance */
+                        $instance->setDefaultRequestLocale($locale);
         }
                     /**
          * Get the user making the request.
@@ -14970,6 +15027,38 @@
                         $instance->buildTemporaryUrlsUsing($callback);
         }
                     /**
+         * Apply the callback if the given "value" is (or resolves to) truthy.
+         *
+         * @template TWhenParameter
+         * @template TWhenReturnType
+         * @param \Illuminate\Filesystem\(\Closure($this):  TWhenParameter)|TWhenParameter|null $value
+         * @param \Illuminate\Filesystem\(callable($this,  TWhenParameter): TWhenReturnType)|null  $callback
+         * @param \Illuminate\Filesystem\(callable($this,  TWhenParameter): TWhenReturnType)|null  $default
+         * @return $this|\Illuminate\Filesystem\TWhenReturnType 
+         * @static 
+         */ 
+        public static function when($value = null, $callback = null, $default = null)
+        {
+                        /** @var \Illuminate\Filesystem\FilesystemAdapter $instance */
+                        return $instance->when($value, $callback, $default);
+        }
+                    /**
+         * Apply the callback if the given "value" is (or resolves to) falsy.
+         *
+         * @template TUnlessParameter
+         * @template TUnlessReturnType
+         * @param \Illuminate\Filesystem\(\Closure($this):  TUnlessParameter)|TUnlessParameter|null  $value
+         * @param \Illuminate\Filesystem\(callable($this,  TUnlessParameter): TUnlessReturnType)|null  $callback
+         * @param \Illuminate\Filesystem\(callable($this,  TUnlessParameter): TUnlessReturnType)|null  $default
+         * @return $this|\Illuminate\Filesystem\TUnlessReturnType 
+         * @static 
+         */ 
+        public static function unless($value = null, $callback = null, $default = null)
+        {
+                        /** @var \Illuminate\Filesystem\FilesystemAdapter $instance */
+                        return $instance->unless($value, $callback, $default);
+        }
+                    /**
          * Register a custom macro.
          *
          * @param string $name
@@ -18189,13 +18278,13 @@ namespace  {
              *
              * @template TWhenParameter
              * @template TWhenReturnType
-             * @param \Illuminate\Database\Eloquent\(\Closure($this):  TWhenParameter)|TWhenParameter  $value
+             * @param \Illuminate\Database\Eloquent\(\Closure($this):  TWhenParameter)|TWhenParameter|null $value
              * @param \Illuminate\Database\Eloquent\(callable($this,  TWhenParameter): TWhenReturnType)|null  $callback
              * @param \Illuminate\Database\Eloquent\(callable($this,  TWhenParameter): TWhenReturnType)|null  $default
              * @return $this|\Illuminate\Database\Eloquent\TWhenReturnType 
              * @static 
              */ 
-            public static function when($value, $callback = null, $default = null)
+            public static function when($value = null, $callback = null, $default = null)
             {
                                 /** @var \Illuminate\Database\Eloquent\Builder $instance */
                                 return $instance->when($value, $callback, $default);
@@ -18206,13 +18295,13 @@ namespace  {
              *
              * @template TUnlessParameter
              * @template TUnlessReturnType
-             * @param \Illuminate\Database\Eloquent\(\Closure($this):  TUnlessParameter)|TUnlessParameter  $value
+             * @param \Illuminate\Database\Eloquent\(\Closure($this):  TUnlessParameter)|TUnlessParameter|null  $value
              * @param \Illuminate\Database\Eloquent\(callable($this,  TUnlessParameter): TUnlessReturnType)|null  $callback
              * @param \Illuminate\Database\Eloquent\(callable($this,  TUnlessParameter): TUnlessReturnType)|null  $default
              * @return $this|\Illuminate\Database\Eloquent\TUnlessReturnType 
              * @static 
              */ 
-            public static function unless($value, $callback = null, $default = null)
+            public static function unless($value = null, $callback = null, $default = null)
             {
                                 /** @var \Illuminate\Database\Eloquent\Builder $instance */
                                 return $instance->unless($value, $callback, $default);
