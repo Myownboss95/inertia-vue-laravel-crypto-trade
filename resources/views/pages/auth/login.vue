@@ -68,11 +68,11 @@ import InputGroup from '@/views/components/form/InputGroup.vue';
 
 
 let type = ref('password');
-let icon = ref('mdi-eye-outline')
+let icon = ref('mdi mdi-eye-outline')
 
 const toggleType = _ => {
     type.value = type.value == 'password' ? 'text': 'password'
-    icon.value = icon.value == 'mdi-eye-outline' ? 'mdi-eye-off-outline': 'mdi-eye-outline'
+    icon.value = icon.value == 'mdi mdi-eye-outline' ? 'mdi mdi-eye-off-outline': 'mdi mdi-eye-outline'
 }
 
 const form = useForm({

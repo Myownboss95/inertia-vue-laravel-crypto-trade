@@ -18,7 +18,7 @@
         <span v-show="text != 'undefined' || text.length">
           {{ text }}
         </span>
-        <i class="mdi" :class="icon" v-show="icon"></i>
+        <i :class="icon" v-show="icon"></i>
       </ButtonVue>
     </div>
     <ErrorVue :name="name" />

@@ -1,0 +1,81 @@
+<template>
+  <Head title="Plans" />
+  <breadcrumb title="Plans" :crumbs="['Dashboard', 'Settings', 'Plans']" />
+  <div class="card shadow col-lg-10 mx-auto">
+    <div class="card-body">
+        <div class="text-end">
+            <InertiaLink :href="route('admin.plans.create')" class="btn btn-outline-primary">
+                <i class="fa fa-plus"></i>
+                Add Plan
+            </InertiaLink>
+        </div>
+        <div class="table-responsive">
+          <table class="table">
+              <thead>
+                  <tr>
+                      <th>User</th>
+                      <th>Closes at</th>
+                      <th>Stop loss</th>
+                      <th>Amount</th>
+                      <th>Type</th>
+                      <th>Status</th>
+                      <th>Asset</th>
+                      <th>Asset Type</th>
+                      <th>Date</th>
+                      <th>Actions</th>
+                  </tr>
+              </thead>
+
+              <tbody v-if="trades.length">
+                  <tr v-for="(trade, key) in trades" :key="key">
+                      <td>{{trade.user.first_name}}</td>
+                      <td>{{trade.close_at}}</td>
+                      <td>{{trade.stop_loss}}</td>
+                      <td>{{format_money(trade.amount)}}</td>
+                      <td>{{trade.type}}</td>
+                      <td>{{trade.status}}</td>
+                      <td>{{trade.tradeable.name}}</td>
+                      <td>{{trade.tradeable.type}}</td>
+                      <td>{{new Date(trade.created_at).toDateString()}}</td>
+                      <td>
+                          <InertiaLink :href="route('admin.trades.edit',trade.id)" class="btn btn-outline-primary btn-sm">
+                              <i class="fa fa-edit"></i>
+                          </InertiaLink>
+
+                          <!-- <InertiaLink method="delete" :href="route('admin.plans.destroy',plan.id)" class="btn btn-outline-danger btn-sm" as="button">
+                              <i class="fa fa-trash"></i>
+                          </InertiaLink> -->
+                      </td>
+                  </tr>
+              </tbody>
+              <tbody v-else>
+                <tr>
+                    <td colspan="10" class="text-muted text-center">No trades found</td>
+                </tr>
+              </tbody>
+          </table>
+        </div>
+        <div class="d-flex justify-content-center" v-if="trades.length">
+            <Paginator :links="links" />
+        </div>
+    </div>
+  </div>
+</template>
+
+<script setup>
+import breadcrumb from '@/views/components/layout/breadcrumb.vue';
+import { computed } from 'vue';
+import Paginator from '@/views/components/paginator.vue';
+
+const props = defineProps({
+    trades: Object,
+})
+const trades = computed(() => props.trades.data);
+const links = computed(() => props.trades.links);
+
+
+</script>
+
+<style>
+
+</style>

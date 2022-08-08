@@ -1,5 +1,8 @@
 <?php
 
+use App\Http\Controllers\Admin\PlanController;
+use App\Http\Controllers\Admin\TradeableController;
+use App\Http\Controllers\Admin\TradeController;
 use App\Http\Controllers\Admin\UserController;
 use Illuminate\Support\Facades\Route;
 
@@ -18,10 +21,12 @@ Route::get('/', function () {
     return inertia('index');
 })->name('index');
 
-Route::as('users.')
-    ->prefix('users')
-    ->controller(UserController::class)
-    ->group(function () {
-
+Route::as('users.')->prefix('users')
+->controller(UserController::class)->group(function () {
         Route::get('', 'index')->name('index');
     });
+
+Route::resource('tradeables', TradeableController::class);
+
+Route::resource('plans', PlanController::class)->except('show');
+Route::resource('trades', TradeController::class);

@@ -22,6 +22,7 @@ import 'simplebar/dist/simplebar.css'
 import 'izitoast/dist/css/iziToast.css'
 
 import { translations } from './mixins/translations';
+import { format_money } from './mixins/money';
 
 import AuthVue from '@/views/layouts/auth.vue';
 import DefaultVue from '@/views/layouts/default.vue';
@@ -42,6 +43,7 @@ createInertiaApp({
             .use(plugin)
             .use(pinia)
             .mixin(translations)
+            .mixin(format_money)
             .mixin({ methods: { route } })
             .component('Head',Head)
             .component('InertiaLink', Link);

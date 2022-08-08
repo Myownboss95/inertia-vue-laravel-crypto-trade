@@ -8,4 +8,12 @@ use Illuminate\Database\Eloquent\Model;
 class Trade extends Model
 {
     use HasFactory;
+
+    protected $guarded = ['id'];
+
+    public function tradeable()
+    {
+        return $this->belongsTo(Tradeable::class);
+    }
+
 }
