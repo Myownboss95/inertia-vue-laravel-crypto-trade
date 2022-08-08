@@ -23,7 +23,7 @@
                     <SidebarItem name="Tradeable assets" :url="route('admin.tradeables.index')" icon="gift" v-if="$page.props.auth.user.is_admin" />
                     <hr>
                     <SidebarItem name="Logout" method="post" :url="route('logout')" icon="power" />
-                    <SidebarItem name="Home" :url="route('front.index')" icon="home" />
+                    <SidebarItem name="Home" :url="route('front.index')" icon="home" :raw="true" />
                 </ul>
             </div>
             <!-- Sidebar -->

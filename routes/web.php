@@ -18,11 +18,11 @@ use App\Http\Controllers\TwoFactorAuthenticationController;
 |
 */
 
-Route::as('front.')->group(function () {
-    Route::get('/', function () {
-        return inertia('index');
-    })->name('index');
-});
+// Route::as('front.')->group(function () {
+//     Route::get('/', function () {
+//         return inertia('index');
+//     })->name('index');
+// });
 
 Route::middleware(['auth', 'verified'])->group(function () {
     Route::prefix('user')->as('user.')->group(fn () => require_once('user.php'));
@@ -42,7 +42,7 @@ Route::middleware('guest')->group(function () {
     Route::get('reset-password', SuccessfulPasswordResetController::class)->name('password.reset.successful');
 });
 
-Route::view('/', 'front.home');
+Route::view('/', 'front.home')->name('front.index');
 Route::view('/about-us', 'front.about-us');
 Route::view('/contact-us','front.contact');
 Route::view('/terms-and-conditions', 'front.terms-and-conditions');

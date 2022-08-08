@@ -1,6 +1,7 @@
 <template>
   <li>
-    <inertia-link
+    <component
+    :is="raw ? 'a' : 'inertia-link'"
       class="a-button"
       :as="method ? 'button' : 'a'"
       :method="method"
@@ -10,10 +11,11 @@
     >
       <i :data-feather="icon"></i>
       <span>{{ name }}</span>
-    </inertia-link>
+    </component>
     <ul class="sub-menu" aria-expanded="false" v-if="children.length">
       <li v-for="(child, index) in children" :key="index">
-        <inertia-link
+        <component
+        :is="raw ? 'a' : 'inertia-link'"
           class="a-button"
           :method="method"
           :as="method ? 'button' : 'a'"
@@ -21,7 +23,7 @@
           :replace="url === route('logout')"
         >
           <span v-text="child.name"></span>
-        </inertia-link>
+        </component>
       </li>
     </ul>
   </li>
@@ -37,7 +39,8 @@
       children: {
         type: Array,
         default: [],
-      },
+        },
+      raw: Boolean,
       method: null,
     },
   };
