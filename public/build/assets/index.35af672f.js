@@ -1,0 +1,1 @@
+import{b as e}from"./breadcrumb.cd2040c8.js";import{o as r,c as t,a,u as s,H as o,F as c}from"./main.bb41ae9d.js";const b={name:"index",setup(n){return(m,u)=>(r(),t(c,null,[a(s(o),{title:"Dashboard"}),a(e,{title:"Dashboard",crumbs:["Dashboard"]})],64))}};export{b as default};
