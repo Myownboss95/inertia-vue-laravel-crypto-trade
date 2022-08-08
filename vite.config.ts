@@ -1,5 +1,5 @@
 import { defineConfig, loadEnv } from 'vite'
-import laravel from 'vite-plugin-laravel'
+import laravel, { callArtisan } from 'vite-plugin-laravel'
 import vue from '@vitejs/plugin-vue'
 import inertia from './resources/scripts/vite/inertia-layout'
 import * as fs from 'fs'
@@ -14,16 +14,14 @@ export default defineConfig({
 	plugins: [
 		inertia(),
 		vue(),
-        laravel(),
-        {
-        name: 'ziggy',
-        enforce: 'post',
-        handleHotUpdate({ server, file }) {
-            if (file.includes('/routes/') && file.endsWith('.php')) {
-                exec('php artisan ziggy:generate', (error, stdout) => error === null && console.log(`  > Ziggy routes generated!`))
-            }
-        }
-    }
+        laravel({
+            watch: [
+                {
+                    condition: file => file.includes('routes/') && file.endsWith('.php'),
+                    handle: () => callArtisan('ziggy:generate')
+                }
+            ]
+        }),
     ],
     server: {
         host: domain,
@@ -33,3 +31,5 @@ export default defineConfig({
         }
     }
 })
+
+
