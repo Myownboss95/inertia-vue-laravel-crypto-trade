@@ -1,79 +1,34 @@
 <template>
-  <Head title="Create Plan" />
+  <Head title="Edit Tradeable Asset" />
   <breadcrumb
-    title="Create Plan"
-    :crumbs="['Dashboard', 'Settings', 'Plans', 'Create']"
+    title="Edit Tradeable Asset"
+    :crumbs="['Dashboard', 'Settings', 'Tradeable assets', 'Edit']"
   />
-  <div class="col-lg-5 m-auto">
+  <div class="col-lg-4 m-auto">
     <div class="card">
       <div class="card-body">
-        <form @submit.prevent="updatePlan">
+        <form @submit.prevent="createAsset">
           <FormGroup
             name="name"
-            placeholder="Plan name"
-            label="Plan name"
+            placeholder="Asset name"
+            label="Asset name"
             v-model="form.name"
           />
-          <FormGroup
-            name="tenure"
-            placeholder="Trade Tenure in days"
-            label="Trade Tenure"
-            v-model="form.tenure"
-          />
-          <FormGroup
-            name="bonus"
-            placeholder="Bonus eg. 25"
-            label="Bonus"
-            v-model="form.bonus"
-          />
+
+
           <FormSelect
             id="demo"
-            name="demo"
+            name="type"
             label="Demo Plan"
-            :options="{ '1': 'Yes', '0': 'No' }"
-            v-model="form.demo"
+            :options="{ 'crypto': 'Crypto Currency', 'commodity': 'Commodity', 'currency':'Currency' }"
+            v-model="form.type"
           />
-          <FormGroup
-            name="min_investment"
-            placeholder="Minimum investment"
-            label="Minimum investment"
-            v-model="form.min_investment"
-          />
-          <FormGroup
-            name="max_investment"
-            placeholder="Maximum investment"
-            label="Maximum investment"
-            v-model="form.max_investment"
-          />
-          <hr />
-          <div class="d-flex justify-content-between">
-            <h5>Plan Features</h5>
-            <FormButton
-              class="btn btn-outline-primary btn-sm"
-              @button-clicked="addFeature"
-            >
-              <i class="fa fa-plus"></i>
-              Add
-            </FormButton>
-          </div>
-          <div>
-            <InputGroup
-              :placeholder="`Plan feature ${key + 1}`"
-              class="my-2"
-              :name="`features.${key}`"
-              v-for="(feature, key) in form.features"
-              icon="fa fa-times"
-              @button-clicked="removeFeature(key)"
-              v-model="form.features[key]"
-            />
-          </div>
-          <hr />
           <FormButton
             type="submit"
-            class="w-100 btn btn-outline-primary"
+            class="w-100 btn btn-outline-primary mt-3"
             :disabled="form.processing"
           >
-            <ButtonLoader text="Update Plan" :loading="form.processing" />
+            <ButtonLoader text="Create Tradeable Asset" :loading="form.processing" />
           </FormButton>
         </form>
       </div>
@@ -91,26 +46,15 @@
   import InputGroup from '@/views/components/form/InputGroup.vue';
 import { error } from '@/js/toast';
 
-const props =  defineProps(['plan','features'])
-
+const props = defineProps(['tradeable']);
   const form = useForm({
-    name: props.plan.name,
-    tenure: props.plan.tenure,
-    min_investment: props.plan.min_investment,
-    max_investment: props.plan.max_investment,
-    bonus: props.plan.bonus,
-    demo: props.plan.demo,
-    features: props.features,
+    name: props.tradeable?.name || '',
+    type: props.tradeable?.type || 'crypto',
   });
 
-  const addFeature = () => form.features.push('');
 
-  const removeFeature = (key) =>
-    (form.features = form.features.filter((item, k) => form.features[key] != k));
-
-    const updatePlan = () => {
-        if (!form.features.length) return error('At least a plan feature is required');
-        form.put(route('admin.plans.update',props.plan.id));
+    const createAsset = () => {
+        form.put(route('admin.tradeables.update', props.tradeable.id));
   };
 </script>
 

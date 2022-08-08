@@ -7,7 +7,7 @@
   <div class="col-lg-4 m-auto">
     <div class="card">
       <div class="card-body">
-        <form @submit.prevent="createPlan">
+        <form @submit.prevent="createAsset">
           <FormGroup
             name="name"
             placeholder="Asset name"
@@ -18,17 +18,17 @@
 
           <FormSelect
             id="demo"
-            name="demo"
+            name="type"
             label="Demo Plan"
             :options="{ 'crypto': 'Crypto Currency', 'commodity': 'Commodity', 'currency':'Currency' }"
-            v-model="form.demo"
+            v-model="form.type"
           />
           <FormButton
             type="submit"
             class="w-100 btn btn-outline-primary mt-3"
             :disabled="form.processing"
           >
-            <ButtonLoader text="Create Plan" :loading="form.processing" />
+            <ButtonLoader text="Create Tradeable Asset" :loading="form.processing" />
           </FormButton>
         </form>
       </div>
@@ -48,22 +48,13 @@ import { error } from '@/js/toast';
 
   const form = useForm({
     name: '',
-    tenure: '',
-    min_investment: '',
-      max_investment: '',
-    bonus:'',
-    demo: 0,
-    features: [],
+    type: 'crypto',
   });
 
-  const addFeature = () => form.features.push('');
 
-  const removeFeature = (key) =>
-    (form.features = form.features.filter((item, k) => form.features[key] != k));
-
-    const createPlan = (_) => {
-        if (!form.features.length) return error('At least a plan feature is required');
-        form.post(route('admin.plans.store'));
+    const createAsset = () => {
+      console.log(form.data())
+        form.post(route('admin.tradeables.store'));
   };
 </script>
 

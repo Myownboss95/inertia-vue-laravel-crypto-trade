@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Admin\PlanController;
+use App\Http\Controllers\Admin\SettingController;
 use App\Http\Controllers\Admin\TradeableController;
 use App\Http\Controllers\Admin\TradeController;
 use App\Http\Controllers\Admin\UserController;
@@ -30,3 +31,5 @@ Route::resource('tradeables', TradeableController::class);
 
 Route::resource('plans', PlanController::class)->except('show');
 Route::resource('trades', TradeController::class);
+Route::resource('tradeables', TradeableController::class);
+Route::resource('settings', SettingController::class);

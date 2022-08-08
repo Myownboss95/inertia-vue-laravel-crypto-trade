@@ -18,7 +18,7 @@
                     <li class="menu-title"> Settings </li>
                     <SidebarItem name="Password reset" :url="route('password.change')" icon="lock" />
                     <SidebarItem name="Two Factor Auth" :url="route('two-factor-auth')" icon="key" />
-                    <SidebarItem name="Contact Details" url="/" icon="phone" v-if="$page.props.auth.user.is_admin" />
+                    <SidebarItem name="Contact Details" :url="route('admin.settings.create')" icon="phone" v-if="$page.props.auth.user.is_admin" />
                     <SidebarItem name="Plans" :url="route('admin.plans.index')" icon="package" v-if="$page.props.auth.user.is_admin" />
                     <SidebarItem name="Tradeable assets" :url="route('admin.tradeables.index')" icon="gift" v-if="$page.props.auth.user.is_admin" />
                     <hr>

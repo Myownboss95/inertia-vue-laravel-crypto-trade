@@ -22,16 +22,16 @@
               </thead>
 
               <tbody v-if="tradeables.length">
-                  <tr v-for="(tradeable, key) in tradeables">
+                  <tr v-for="(tradeable, key) in tradeables" :key="key">
                       <td>{{tradeable.name}}</td>
                       <td>{{tradeable.type}}</td>
-                      <td>{{new Date(plan.created_at).toDateString()}}</td>
+                      <td>{{new Date(tradeable.created_at).toDateString()}}</td>
                       <td>
-                          <InertiaLink :href="route('admin.plans.edit',tradeable.id)" class="btn btn-outline-primary btn-sm">
+                          <InertiaLink :href="route('admin.tradeables.edit',tradeable.id)" class="btn btn-outline-primary btn-sm">
                               <i class="fa fa-edit"></i>
                           </InertiaLink>
 
-                          <InertiaLink method="delete" :href="route('admin.plans.destroy',tradeable.id)" class="btn btn-outline-danger btn-sm" as="button">
+                          <InertiaLink method="delete" :href="route('admin.tradeables.destroy',tradeable.id)" class="btn btn-outline-danger btn-sm" as="button">
                               <i class="fa fa-trash"></i>
                           </InertiaLink>
                       </td>

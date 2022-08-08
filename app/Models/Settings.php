@@ -5,11 +5,16 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Tradeable extends Model
+class Settings extends Model
 {
     use HasFactory;
     protected $fillable = [
-        'name',
-        'type',
+        'phone',
+        'email',
+        'notification_email',
+        'twitter',
+        'facebook',
+        'instagram'
     ];
+
 }
