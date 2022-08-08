@@ -21,6 +21,8 @@ import 'simplebar/dist/simplebar.css'
 
 import 'izitoast/dist/css/iziToast.css'
 
+import { translations } from './mixins/translations';
+
 import AuthVue from '@/views/layouts/auth.vue';
 import DefaultVue from '@/views/layouts/default.vue';
 
@@ -39,6 +41,7 @@ createInertiaApp({
         const vue = createApp({ render: () => h(app, props) })
             .use(plugin)
             .use(pinia)
+            .mixin(translations)
             .mixin({ methods: { route } })
             .component('Head',Head)
             .component('InertiaLink', Link);

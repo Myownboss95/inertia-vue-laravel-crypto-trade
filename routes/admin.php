@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Admin\UserController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -16,3 +17,11 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return inertia('index');
 })->name('index');
+
+Route::as('users.')
+    ->prefix('users')
+    ->controller(UserController::class)
+    ->group(function () {
+
+        Route::get('', 'index')->name('index');
+    });

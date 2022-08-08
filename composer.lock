@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "c8734f08eefe328dd42d31ec820edffb",
+    "content-hash": "7aef205b3623dc0d7b713936c6a37479",
     "packages": [
         {
             "name": "bacon/bacon-qr-code",
@@ -465,6 +465,73 @@
                 }
             ],
             "time": "2022-01-18T15:43:28+00:00"
+        },
+        {
+            "name": "druc/laravel-langscanner",
+            "version": "v2.0.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/druc/laravel-langscanner.git",
+                "reference": "3d4329f641b448188f058e34b75d18dd32aa5d2b"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/druc/laravel-langscanner/zipball/3d4329f641b448188f058e34b75d18dd32aa5d2b",
+                "reference": "3d4329f641b448188f058e34b75d18dd32aa5d2b",
+                "shasum": ""
+            },
+            "require": {
+                "ext-json": "*",
+                "illuminate/contracts": "^9.0",
+                "php": "^8.0",
+                "spatie/laravel-package-tools": "^1.11.3"
+            },
+            "require-dev": {
+                "friendsofphp/php-cs-fixer": "^3.3",
+                "orchestra/testbench": "^7.02",
+                "phpunit/phpunit": "^9.5"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "Druc\\Langscanner\\LangscannerServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Druc\\Langscanner\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Constantin Druc",
+                    "email": "druc@pinsmile.com",
+                    "role": "Developer"
+                }
+            ],
+            "description": "Scan missing language translations.",
+            "homepage": "https://github.com/druc/laravel-langscanner",
+            "keywords": [
+                "druc",
+                "laravel-langscanner"
+            ],
+            "support": {
+                "issues": "https://github.com/druc/laravel-langscanner/issues",
+                "source": "https://github.com/druc/laravel-langscanner/tree/v2.0.1"
+            },
+            "funding": [
+                {
+                    "url": "https://github.com/druc",
+                    "type": "github"
+                }
+            ],
+            "time": "2022-06-14T21:53:27+00:00"
         },
         {
             "name": "egulias/email-validator",
@@ -2013,7 +2080,7 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/briannesbitt/Carbon.git",
-                "reference": "bdf4f4fe3a3eac4de84dbec0738082a862c68ba6"
+                "reference": "00a259ae02b003c563158b54fb6743252b638ea6"
             },
             "dist": {
                 "type": "zip",

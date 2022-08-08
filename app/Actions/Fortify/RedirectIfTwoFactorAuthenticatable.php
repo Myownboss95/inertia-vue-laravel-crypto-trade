@@ -13,6 +13,13 @@ use Laravel\Fortify\TwoFactorAuthenticatable;
 
 class RedirectIfTwoFactorAuthenticatable extends ActionsRedirectIfTwoFactorAuthenticatable
 {
+
+    public function __construct(StatefulGuard $guard, LoginRateLimiter $limiter)
+    {
+        $this->guard = $guard;
+        $this->limiter = $limiter;
+    }
+
     /**
      * Throw a failed authentication validation exception.
      *

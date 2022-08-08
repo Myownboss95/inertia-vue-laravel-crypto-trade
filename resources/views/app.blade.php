@@ -10,5 +10,6 @@
 	</head>
 	<body class="antialiased bg-gray-900">
 		@inertia
+        <x-translations />
 	</body>
 </html>

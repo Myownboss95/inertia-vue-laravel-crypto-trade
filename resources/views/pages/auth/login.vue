@@ -88,7 +88,9 @@ const login = () => {
             ...data,
         remember: data.remember?'on':''
         }))
-        .post(route('login'))
+        .post(route('login'), {
+            replace:true,
+        })
 }
 
 </script>

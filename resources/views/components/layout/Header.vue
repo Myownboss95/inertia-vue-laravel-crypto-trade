@@ -368,7 +368,7 @@
               Screen</a
             >
             <div class="dropdown-divider"></div>
-            <inertia-link method="post" as="button" class="dropdown-item" :href="route('logout')">
+            <inertia-link method="post" as="button" class="dropdown-item" :href="route('logout')" replace>
                 <i class="mdi mdi-logout font-size-16 align-middle me-1"></i>
               Logout
               </inertia-link>
