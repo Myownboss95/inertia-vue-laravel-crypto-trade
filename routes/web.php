@@ -25,17 +25,22 @@ use App\Models\Plan;
 //     })->name('index');
 // });
 
-Route::middleware(['auth', 'verified'])->group(function () {
-    Route::prefix('user')->as('user.')->group(fn () => require_once('user.php'));
-    Route::prefix('admin')->as('admin.')->middleware('can:is_admin')->group(fn () => require_once('admin.php'));
+Route::middleware(['auth'])->group(function () {
 
-    Route::get('change-password', [ChangePasswordController::class, 'getChangePasswordView'])->name('password.change');
-    Route::post('change-password', [ChangePasswordController::class, 'ChangePassword']);
+    Route::middleware(['verified'])->group(function () {
+        Route::prefix('user')->as('user.')->group(fn () => require_once('user.php'));
+        Route::prefix('admin')->as('admin.')->middleware('can:is_admin')->group(fn () => require_once('admin.php'));
 
-    Route::get('two-factor-auth', TwoFactorAuthenticationController::class)->name('two-factor-auth');
+        Route::get('change-password', [ChangePasswordController::class, 'getChangePasswordView'])->name('password.change');
+        Route::post('change-password', [ChangePasswordController::class, 'ChangePassword']);
+
+        Route::get('two-factor-auth', TwoFactorAuthenticationController::class)->name('two-factor-auth');
 
 
-    Route::get('email/verified', EmailVerifiedController::class)->name('email.verified');
+        Route::get('email/verified', [EmailVerifiedController::class, 'verified'])->name('email.verified');
+    });
+
+    Route::post('email/correct', [EmailVerifiedController::class, 'correctInfo'])->name('email.correct');
 });
 
 Route::middleware('guest')->group(function () {
