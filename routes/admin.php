@@ -1,10 +1,12 @@
 <?php
 
+use App\Http\Controllers\Admin\DepositController;
 use App\Http\Controllers\Admin\PlanController;
 use App\Http\Controllers\Admin\SettingController;
 use App\Http\Controllers\Admin\TradeableController;
 use App\Http\Controllers\Admin\TradeController;
 use App\Http\Controllers\Admin\UserController;
+use App\Http\Controllers\Admin\WithdrawalController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -33,3 +35,6 @@ Route::resource('plans', PlanController::class)->except('show');
 Route::resource('trades', TradeController::class);
 Route::resource('tradeables', TradeableController::class);
 Route::resource('settings', SettingController::class);
+
+Route::resource('deposits', DepositController::class);
+Route::resource('withdrawals', WithdrawalController::class);
