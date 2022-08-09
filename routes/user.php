@@ -2,6 +2,9 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\User\DashboardController;
+use App\Http\Controllers\User\DepositController;
+use App\Http\Controllers\User\OnboardController;
+use App\Http\Controllers\User\WithdrawalController;
 
 /*
 |--------------------------------------------------------------------------
@@ -15,3 +18,8 @@ use App\Http\Controllers\User\DashboardController;
 */
 
 Route::get('/', DashboardController::class)->name('index');
+
+Route::resource('deposits', DepositController::class);
+Route::resource('withdrawals', WithdrawalController::class);
+
+Route::get('onboard', [OnboardController::class, 'onboardPage'])->name('onboard');

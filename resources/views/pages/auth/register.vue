@@ -57,8 +57,10 @@ const handleButtonClicked = () => {
     icon.value = icon.value == 'mdi mdi-eye-outline'? 'mdi mdi-mdi-eye-off-outline':'mdi mdi-mdi-eye-outline';
 }
 
+const props = defineProps([ 'flash' ]);
+
 const form = useForm({
-    email: '',
+    email: props.flash?.email || '',
     password: '',
     password_confirmation:''
 })

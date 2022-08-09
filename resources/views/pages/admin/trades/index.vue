@@ -1,14 +1,8 @@
 <template>
-  <Head title="Plans" />
-  <breadcrumb title="Plans" :crumbs="['Dashboard', 'Settings', 'Plans']" />
+  <Head title="Trades" />
+  <breadcrumb title="Trades" :crumbs="['Dashboard', 'Trades']" />
   <div class="card shadow col-lg-10 mx-auto">
     <div class="card-body">
-        <div class="text-end">
-            <InertiaLink :href="route('admin.plans.create')" class="btn btn-outline-primary">
-                <i class="fa fa-plus"></i>
-                Add Plan
-            </InertiaLink>
-        </div>
         <div class="table-responsive">
           <table class="table">
               <thead>

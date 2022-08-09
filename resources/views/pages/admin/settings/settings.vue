@@ -44,7 +44,7 @@
             label="Instagram URL"
             v-model="form.instagram"
           />
-          
+
           <!-- <FormSelect
             id="demo"
             name="demo"
@@ -52,15 +52,15 @@
             :options="{ '1': 'Yes', '0': 'No' }"
             v-model="form.demo"
           /> -->
-          
-          
-          
+
+
+
           <FormButton
             type="submit"
             class="w-100 btn btn-outline-primary"
             :disabled="form.processing"
           >
-            <ButtonLoader :text="props.settings?.id ? 'Update Settings': 'Save Settings'" :loading="form.processing" />
+          <ButtonLoader :text="buttonText" :loading="form.processing" />
           </FormButton>
         </form>
       </div>
@@ -77,9 +77,13 @@
   import { useForm } from '@inertiajs/inertia-vue3';
   import InputGroup from '@/views/components/form/InputGroup.vue';
 import { error } from '@/js/toast';
- 
-const props = defineProps(['settings']);
-const buttonText = props.settings.id? 'Update Settings': 'Add Settings';
+
+const props = defineProps([ 'settings' ]);
+
+const buttonText = () => {
+    let action = props.settings?.id ? 'Update' : 'Save';
+    return `${action} Settings`;
+}
 
   const form = useForm({
     phone: props.settings?.phone || '',

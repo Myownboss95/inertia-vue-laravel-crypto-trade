@@ -13,8 +13,8 @@
                     <SidebarItem name="Users" :url="route('admin.users.index')" icon="users" v-if="$page.props.auth.user.is_admin" />
                     <li class="menu-title"> Transactions </li>
                     <SidebarItem name="Trades" :url="route('admin.trades.index')" icon="table" />
-                    <SidebarItem name="Deposits" url="/" icon="credit-card" />
-                    <SidebarItem name="Withdrawals" url="/" icon="dollar-sign" />
+                    <SidebarItem name="Deposits" :url="route(`${is_admin ? 'admin' : 'user'}.deposits.index`)" icon="credit-card" />
+                    <SidebarItem name="Withdrawals" :url="route(`${is_admin ? 'admin' : 'user'}.withdrawals.index`)" icon="dollar-sign" />
                     <li class="menu-title"> Settings </li>
                     <SidebarItem name="Password reset" :url="route('password.change')" icon="lock" />
                     <SidebarItem name="Two Factor Auth" :url="route('two-factor-auth')" icon="key" />
@@ -34,10 +34,14 @@
 </template>
 
 <script setup>
-import { onMounted } from 'vue';
+import { computed, onMounted } from 'vue';
 import feather from 'feather-icons';
 import MetisMenu from 'metismenujs';
 import SidebarItem from './sidebarItem.vue';
+import { usePage } from '@inertiajs/inertia-vue3';
+
+const is_admin = computed(() => usePage().props.value.auth.user.is_admin);
+
 onMounted(_ => {
     new MetisMenu('#side-menu');
     feather.replace();

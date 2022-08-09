@@ -21,9 +21,9 @@ return [
                 'ignore' => '/\\.(d\\.ts|json)$/',
             ],
             'dev_server' => [
-                'enabled' => true,
+                'enabled' => (bool) env('APP_DEBUG', false),
                 'url' => env('DEV_SERVER_URL', 'http://localhost:5173'),
-                'ping_before_using_manifest' => true,
+                'ping_before_using_manifest' => true, //(bool) env('APP_DEBUG', false),
                 'ping_url' => null,
                 'ping_timeout' => 1,
                 'key' => env('DEV_SERVER_KEY'),

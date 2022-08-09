@@ -16,4 +16,5 @@ class TradeController extends Controller
             'trades' => $trades->paginate(),
         ]);
     }
+
 }
