@@ -7,7 +7,6 @@
           <table class="table">
               <thead>
                   <tr>
-                      <th>User</th>
                       <th>Reference</th>
                       <th>Amount</th>
                       <th>Status</th>
@@ -18,7 +17,6 @@
 
               <tbody v-if="deposits.length">
                   <tr v-for="(deposit, key) in deposits" :key="key">
-                      <td>{{deposit.user.first_name}}</td>
                       <td>{{deposit.reference}}</td>
                       <td>{{format_money(deposit.amount)}}</td>
                       <td>{{deposit.status}}</td>
