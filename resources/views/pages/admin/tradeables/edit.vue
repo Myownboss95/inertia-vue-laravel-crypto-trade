@@ -28,7 +28,7 @@
             class="w-100 btn btn-outline-primary mt-3"
             :disabled="form.processing"
           >
-            <ButtonLoader text="Create Tradeable Asset" :loading="form.processing" />
+            <ButtonLoader text="Update Tradeable Asset" :loading="form.processing" />
           </FormButton>
         </form>
       </div>

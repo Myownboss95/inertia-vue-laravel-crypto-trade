@@ -1,12 +1,12 @@
 <template>
-  <Head title="Plans" />
+  <Head title="Payment Methods" />
   <breadcrumb title="Plans" :crumbs="['Dashboard', 'Settings', 'Plans']" />
   <div class="card shadow col-lg-8 mx-auto">
     <div class="card-body">
         <div class="text-end">
-            <InertiaLink :href="route('admin.tradeables.create')" class="btn btn-outline-primary">
+            <InertiaLink :href="route('admin.payment-method.create')" class="btn btn-outline-primary">
                 <i class="fa fa-plus"></i>
-                Add Asset
+                Add Payment Method
             </InertiaLink>
         </div>
         <div class="table-responsive">
@@ -14,24 +14,24 @@
               <thead>
                   <tr>
                       <th>Name</th>
-                      <th>Type</th>
+                      <th>Enabled</th>
                       <th>Date</th>
 
                       <th>Actions</th>
                   </tr>
               </thead>
 
-              <tbody v-if="tradeables.length">
-                  <tr v-for="(tradeable, key) in tradeables" :key="key">
-                      <td>{{tradeable.name}}</td>
-                      <td>{{tradeable.type}}</td>
-                      <td>{{new Date(tradeable.created_at).toDateString()}}</td>
+              <tbody v-if="payment.length">
+                  <tr v-for="(payments, key) in payment" :key="key">
+                      <td>{{payments.name}}</td>
+                      <td>{{(payments.status == 1)? 'Yes': 'No'}}</td>
+                      <td>{{new Date(payments.created_at).toDateString()}}</td>
                       <td>
-                          <InertiaLink :href="route('admin.tradeables.edit',tradeable.id)" class="btn btn-outline-primary btn-sm">
+                          <InertiaLink :href="route('admin.payment-method.edit',payments.id)" class="btn btn-outline-primary btn-sm">
                               <i class="fa fa-edit"></i>
                           </InertiaLink>
 
-                          <InertiaLink method="delete" :href="route('admin.tradeables.destroy',tradeable.id)" class="btn btn-outline-danger btn-sm" as="button">
+                          <InertiaLink method="delete" :href="route('admin.payment-method.destroy',payments.id)" class="btn btn-outline-danger btn-sm" as="button">
                               <i class="fa fa-trash"></i>
                           </InertiaLink>
                       </td>
@@ -44,7 +44,7 @@
               </tbody>
           </table>
         </div>
-        <div class="d-flex justify-content-center" v-if="tradeables.length">
+        <div class="d-flex justify-content-center" v-if="payment.length">
             <Paginator :links="links" />
         </div>
     </div>
@@ -57,10 +57,11 @@ import { computed } from 'vue';
 import Paginator from '@/views/components/paginator.vue';
 
 const props = defineProps({
-    tradeables: Object,
+    payment: Object,
 })
-const tradeables = computed(() => props.tradeables.data);
-const links = computed(() => props.tradeables.links);
+// console.log(payment)
+const payment = computed(() => props.payment.data);
+const links = computed(() => props.payment.links);
 
 
 </script>

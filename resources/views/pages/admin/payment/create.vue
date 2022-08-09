@@ -59,8 +59,8 @@ import { error } from '@/js/toast';
 
 
     const createPaymentPlan = () => {
-      console.log(form.data())
-        form.post(route('admin.tradeables.store'));
+      // console.log(form.data())
+        form.post(route('admin.payment-method.store'));
   };
 </script>
 

@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\PaymentMethod;
 use Illuminate\Validation\Rule;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Storage;
 
 class PaymentMethodController extends Controller
 {
@@ -45,13 +46,14 @@ class PaymentMethodController extends Controller
     {
         //
         $data = $request->validate([
-            'name' => ['required'],
-            'type' => ['required'],
+            'name' => ['required', Rule::unique('payment_methods')],
+            'status' => ['required'],
+            'image' => ['required','mimes:png,jpg,jpeg']
         ]);
 
-        PaymentMethod::create($data);
+        PaymentMethod::create(array_merge($data, ['image' => $this->uploadFile($request)]));
 
-        return redirect()->route('admin.payment.index')->withSuccess('Asset created');
+        return redirect()->route('admin.payment-method.index')->withSuccess('Asset created');
     }
 
     /**
@@ -71,11 +73,26 @@ class PaymentMethodController extends Controller
      * @param  \App\Models\PaymentMethod  $paymentMethod
      * @return \Illuminate\Http\Response
      */
-    public function edit(PaymentMethod $paymentMethod, $id)
+    public function edit(PaymentMethod $paymentMethod )
     {
         //
-        $paymentMethod = PaymentMethod::findOrFail($id);
-        return inertia('admin.payment.edit', compact('paymentMethod'));
+        // $paymentMethod = PaymentMethod::findOrFail($id);
+        // dd($paymentMethod);
+        return inertia('admin.payment.edit', ['payment' => $paymentMethod]);
+    }
+
+    private function uploadFile(Request $request)
+    {
+        if(!$request->hasFile('image')) return null;
+        $uploadedFile = $request->file('image');
+        $filename = time().$uploadedFile->getClientOriginalName();
+        
+        Storage::disk('local')->putFileAs(
+          'paymentDetail',
+          $uploadedFile,
+          $filename
+        );
+        return $filename;
     }
 
     /**
@@ -85,16 +102,25 @@ class PaymentMethodController extends Controller
      * @param  \App\Models\PaymentMethod  $paymentMethod
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, PaymentMethod $paymentMethod, $id)
+    public function update(Request $request, PaymentMethod $paymentMethod)
     {
         //
+        // dd($id);
         $data = $request->validate([
-            'name' => ['required', Rule::unique('paymentMethod')->ignore($id)],
-            'type' => ['required']
+            'name' => ['required', Rule::unique('payment_methods')->ignore($paymentMethod)],
+            'status' => ['required'],
+            'image' => ['nullable', 'mimes:png,jpg,jpeg']
         ]);
-        $paymentMethod = PaymentMethod::findOrFail($id);
+
+        $file = $this->uploadFile($request);
+        is_null($file) ?: $data['image'] = $file;
+
+        // if($this->uploadFile($request) == null){
+        //     $paymentMethod->update($data);
+        //     return redirect()->route('admin.payment-method.index')->withSuccess('Asset updated');
+        // }
         $paymentMethod->update($data);
-        return redirect()->route('admin.payment.index')->withSuccess('Asset updated');
+        return redirect()->route('admin.payment-method.index')->withSuccess('Asset updated');
     }
 
     /**
