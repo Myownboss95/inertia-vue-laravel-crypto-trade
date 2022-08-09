@@ -6,6 +6,7 @@ use App\Http\Controllers\LogoutController;
 use App\Http\Controllers\EmailVerifiedController;
 use App\Http\Controllers\SuccessfulPasswordResetController;
 use App\Http\Controllers\TwoFactorAuthenticationController;
+use App\Models\Plan;
 
 /*
 |--------------------------------------------------------------------------
@@ -42,7 +43,9 @@ Route::middleware('guest')->group(function () {
     Route::get('reset-password', SuccessfulPasswordResetController::class)->name('password.reset.successful');
 });
 
-Route::view('/', 'front.home')->name('front.index');
+Route::view('/', 'front.home', [
+    'plans' => Plan::latest()->take(2)->get(),
+])->name('front.index');
 Route::view('/about-us', 'front.about-us');
 Route::view('/contact-us','front.contact');
 Route::view('/terms-and-conditions', 'front.terms-and-conditions');

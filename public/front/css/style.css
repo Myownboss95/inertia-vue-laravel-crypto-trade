@@ -15,7 +15,7 @@
     4. slideshow
     5. footer
     6. components
-    7. custom    
+    7. custom
     8. utility
     9. vendors
 ------------------------------------------------------------------ */
@@ -42,7 +42,7 @@ body {
 
 .in-button-app:hover {
     transition: all ease 200ms;
-    background-color: #c99c3b;
+    background-color: #1A8CD8;
 }
 
 @media (max-width: 960px) {
@@ -75,7 +75,7 @@ body {
     font-family: 'Font Awesome 5 Free';
     font-weight: 900;
     content: "\f00c";
-    color: #c99c3b;
+    color: #1A8CD8;
     top: 2px;
     left: 4px;
 }
@@ -330,7 +330,7 @@ header .uk-card-secondary a:hover {
 
 .in-slideshow .uk-button-primary:hover {
     transition: all ease 200ms;
-    background-color: #c99c3b;
+    background-color: #1A8CD8;
     color: #fff;
 }
 
@@ -455,7 +455,7 @@ footer .uk-subnav-divider> ::before {
 }
 
 .in-blog-1 .uk-card-default a.uk-button-text {
-    color: #c99c3b;
+    color: #1A8CD8;
 }
 
 .in-blog-1 .uk-card-default a.uk-button-text:hover {
@@ -569,7 +569,7 @@ footer .uk-subnav-divider> ::before {
 
 .in-widget-tag a:hover .uk-label {
     transition: all ease .5s;
-    background-color: #c99c3b;
+    background-color: #1A8CD8;
     color: #fff;
 }
 
@@ -615,7 +615,7 @@ footer .uk-subnav-divider> ::before {
 }
 
 .in-card-16 .uk-card-default {
-    border: 1px solid #c99c3b;
+    border: 1px solid #1A8CD8;
     background-color: #fff;
 }
 
@@ -720,17 +720,17 @@ footer .uk-subnav-divider> ::before {
 }
 
 .in-content-11 .uk-card-default:hover {
-    border-color: #c99c3b;
+    border-color: #1A8CD8;
     text-decoration: none;
 }
 
 .in-content-11 .uk-card-default:hover h4 {
-    color: #c99c3b;
+    color: #1A8CD8;
     transition: all ease .5s;
 }
 
 .in-content-11 .uk-card-default:hover .in-icon-wrap {
-    background-color: #c99c3b;
+    background-color: #1A8CD8;
     transition: all ease .5s;
 }
 
@@ -751,7 +751,7 @@ footer .uk-subnav-divider> ::before {
 }
 
 .in-faq-5 .uk-open .uk-accordion-title {
-    color: #c99c3b;
+    color: #1A8CD8;
     border-bottom: 0;
 }
 
@@ -883,7 +883,7 @@ footer .uk-subnav-divider> ::before {
 
 .in-wave-3 .in-video-wrapper .plyr {
     width: 93.5%;
-    box-shadow: 35px 35px 0 0 #c99c3b;
+    box-shadow: 35px 35px 0 0 #1A8CD8;
     border-radius: 7px;
 }
 
@@ -896,7 +896,7 @@ footer .uk-subnav-divider> ::before {
 }
 
 .in-wave-3 .in-wave-video img {
-    box-shadow: 15px 15px 0 0 #c99c3b;
+    box-shadow: 15px 15px 0 0 #1A8CD8;
 }
 
 .in-wave-3 .in-wave-video .in-play-button {
@@ -968,7 +968,7 @@ footer .uk-subnav-divider> ::before {
 }
 
 .in-wave-4 .in-wave-pricing div:last-child .uk-card-default {
-    border-color: #c99c3b;
+    border-color: #1A8CD8;
 }
 
 .in-wave-4 .in-wave-pricing .uk-list-bullet>li {
@@ -1040,7 +1040,7 @@ footer .uk-subnav-divider> ::before {
 
 .in-wave-6 .uk-card-default {
     background-color: rgba(255, 255, 255, 0.65);
-    border: 1px solid #c99c3b;
+    border: 1px solid #1A8CD8;
 }
 
 @media (max-width: 960px) {
@@ -1060,17 +1060,17 @@ footer .uk-subnav-divider> ::before {
 }
 
 .in-wave-7 .uk-grid-divider> :not(.uk-first-column)::before {
-    border-color: #c99c3b;
+    border-color: #1A8CD8;
 }
 
 .in-wave-7 .in-create-account {
     padding: 0 34px 20px 34px;
-    border: 1px solid #c99c3b;
+    border: 1px solid #1A8CD8;
     border-radius: 7px;
 }
 
 .in-wave-7 .in-create-account .uk-label {
-    background-color: #c99c3b;
+    background-color: #1A8CD8;
     margin-top: -18px;
 }
 
@@ -1079,7 +1079,7 @@ footer .uk-subnav-divider> ::before {
 }
 
 .in-wave-8 .in-front-news a:hover .uk-text-lead {
-    color: #c99c3b;
+    color: #1A8CD8;
 }
 
 .in-wave-8 .in-front-news.uk-list-divider>li:nth-child(n+2) {
@@ -1104,13 +1104,13 @@ footer .uk-subnav-divider> ::before {
 }
 
 .in-wave-12 .in-wave-12-counter {
-    border-bottom: 1px solid #c99c3b;
+    border-bottom: 1px solid #1A8CD8;
 }
 
 .in-wave-12 .in-wave-12-counter .in-wave-12-small {
     font-size: 28px;
     font-weight: 300;
-    color: #c99c3b;
+    color: #1A8CD8;
     margin-left: -10px;
 }
 
@@ -1128,7 +1128,7 @@ footer .uk-subnav-divider> ::before {
 
 .in-wave-12 blockquote .uk-label {
     margin-top: 3px;
-    background-color: #c99c3b;
+    background-color: #1A8CD8;
 }
 
 @media (max-width: 960px) {
@@ -1213,7 +1213,7 @@ footer .uk-subnav-divider> ::before {
 
 .in-wave-15 {
     border-top: 2px solid #e8e8e8;
-    border-bottom: 1px solid #c99c3b;
+    border-bottom: 1px solid #1A8CD8;
 }
 
 .in-wave-15 .in-wave-15-button {
@@ -1234,7 +1234,7 @@ footer .uk-subnav-divider> ::before {
 }
 
 .in-wave-16 .uk-card-default {
-    border: 1px solid #c99c3b;
+    border: 1px solid #1A8CD8;
     border-radius: 12px;
 }
 
@@ -1328,12 +1328,12 @@ footer .uk-subnav-divider> ::before {
 
 .in-wave-19 .in-create-account {
     padding: 0 34px 20px 34px;
-    border: 1px solid #c99c3b;
+    border: 1px solid #1A8CD8;
     border-radius: 7px;
 }
 
 .in-wave-19 .in-create-account .uk-label {
-    background-color: #c99c3b;
+    background-color: #1A8CD8;
     margin-top: -18px;
 }
 
@@ -1381,11 +1381,11 @@ footer .uk-subnav-divider> ::before {
 }
 
 .in-content-10 .uk-card-primary {
-    background-color: #c99c3b;
+    background-color: #1A8CD8;
 }
 
 .in-blog-1 .uk-card-footer .uk-label-success {
-    background-color: #c99c3b;
+    background-color: #1A8CD8;
 }
 
 .in-contact-socials a {
@@ -1456,7 +1456,7 @@ body>div.in-loader div {
     width: 1rem;
     height: 1rem;
     margin: 2rem 0.3rem;
-    background: #c99c3b;
+    background: #1A8CD8;
     border-radius: 50%;
     -webkit-animation: 0.9s bounce infinite alternate;
     animation: 0.9s bounce infinite alternate;
@@ -1628,7 +1628,7 @@ a.in-generic-email:hover {
     width: 64px;
     height: 64px;
     background-color: #f0f0f0;
-    color: #c99c3b;
+    color: #1A8CD8;
     border-radius: 24px;
 }
 
@@ -1653,7 +1653,7 @@ a.in-generic-email:hover {
 }
 
 .in-icon-wrap.primary-color {
-    background-color: #c99c3b;
+    background-color: #1A8CD8;
     color: #fff;
 }
 
@@ -1840,7 +1840,7 @@ a.in-generic-email:hover {
     position: fixed;
     right: 40px;
     bottom: 40px;
-    background-color: #c99c3b;
+    background-color: #1A8CD8;
     border-radius: 7px;
     opacity: 0;
 }
