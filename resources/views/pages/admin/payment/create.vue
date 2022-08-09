@@ -1,17 +1,17 @@
 <template>
-  <Head title="Edit Tradeable Asset" />
+  <Head title="Create Payment Method"/>
   <breadcrumb
-    title="Edit Tradeable Asset"
-    :crumbs="['Dashboard', 'Settings', 'Tradeable assets', 'Edit']"
+    title="Create Payment Method"
+    :crumbs="['Dashboard', 'Settings', 'Create Payment Method', 'Create']"
   />
   <div class="col-lg-4 m-auto">
     <div class="card">
       <div class="card-body">
-        <form @submit.prevent="createAsset">
+        <form @submit.prevent="createPaymentPlan">
           <FormGroup
             name="name"
-            placeholder="Asset name"
-            label="Asset name"
+            placeholder="Payment Method Name"
+            label="Payment Method Name"
             v-model="form.name"
           />
 
@@ -20,15 +20,20 @@
             id="demo"
             name="type"
             label="Demo Plan"
-            :options="{ 'crypto': 'Crypto Currency', 'commodity': 'Commodity', 'currency':'Currency' }"
-            v-model="form.type"
+            :options="{ 1: 'Enable', 0: 'Disable' }"
+            v-model="form.status"
           />
+
+          <div class="mt-3 mb-3">
+          <label >File Upload</label>
+          <input class="form-control" type="file" @input="form.image = $event.target.files[0]" />
+          </div>
           <FormButton
             type="submit"
             class="w-100 btn btn-outline-primary mt-3"
             :disabled="form.processing"
           >
-            <ButtonLoader text="Update Tradeable Asset" :loading="form.processing" />
+            <ButtonLoader text="Create Payment Method" :loading="form.processing" />
           </FormButton>
         </form>
       </div>
@@ -46,15 +51,16 @@
   import InputGroup from '@/views/components/form/InputGroup.vue';
 import { error } from '@/js/toast';
 
-const props = defineProps(['tradeable']);
   const form = useForm({
-    name: props.tradeable?.name || '',
-    type: props.tradeable?.type || 'crypto',
+    name: '',
+    status: 1,
+    image:'',
   });
 
 
-    const createAsset = () => {
-        form.put(route('admin.tradeables.update', props.tradeable.id));
+    const createPaymentPlan = () => {
+      // console.log(form.data())
+        form.post(route('admin.payment-method.store'));
   };
 </script>
 
