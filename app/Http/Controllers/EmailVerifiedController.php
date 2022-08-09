@@ -16,10 +16,10 @@ class EmailVerifiedController extends Controller
     {
         $user = User::findOrFail($request->user()->id);
         $email = $user->email;
-        $user->delete();
         auth()->logout();
         session()->invalidate();
         session()->regenerate();
-        return redirect()->route('register')->withEmail($email);
+        $user->delete();
+        return redirect()->route('register')->with('email', $email);
     }
 }
