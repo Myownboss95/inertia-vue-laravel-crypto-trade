@@ -12,4 +12,9 @@ class Tradeable extends Model
         'name',
         'type',
     ];
+
+    public function trades()
+    {
+        return $this->hasMany(Trade::class);
+    }
 }

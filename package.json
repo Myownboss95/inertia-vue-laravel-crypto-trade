@@ -30,6 +30,7 @@
         "pinia": "^2.0.16",
         "simplebar": "^5.3.8",
         "vue": "^3.2.36",
+        "vue-tradingview-widgets": "^1.1.2",
         "ziggy": "^2.4.0",
         "ziggy-js": "^1.4.6"
     }
