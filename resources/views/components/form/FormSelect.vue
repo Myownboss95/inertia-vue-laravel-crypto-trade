@@ -1,7 +1,7 @@
 <template>
 <div>
     <FormLabel :for="id" :label="label" v-if="label" />
-    <select :name="name" :id="id" class="form-select" @change="handleChange">
+    <select :name="name" :id="id" class="form-select" @change="handleChange" :disabled="disabled">
         <option :value="key" v-for="(option, key) in options" :key="key" :selected="modelValue === key" > {{option}} </option>
     </select>
 </div>
@@ -21,6 +21,10 @@ const props = defineProps({
     options: {
         type: Object,
         default: {},
+    },
+    disabled: {
+        type: Boolean,
+        default: false,
     },
     label: String,
     modelValue: null,

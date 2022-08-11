@@ -33,7 +33,7 @@ class PaymentMethodController extends Controller
     {
         //
         return inertia('admin.payment.create');
-    
+
     }
 
     /**
@@ -86,9 +86,9 @@ class PaymentMethodController extends Controller
         if(!$request->hasFile('image')) return null;
         $uploadedFile = $request->file('image');
         $filename = time().$uploadedFile->getClientOriginalName();
-        
-        Storage::disk('local')->putFileAs(
-          'paymentDetail',
+
+        Storage::disk('public')->putFileAs(
+            'payment_methods',
           $uploadedFile,
           $filename
         );

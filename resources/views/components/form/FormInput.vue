@@ -6,6 +6,7 @@
         :id="id"
         :placeholder="placeholder"
         :value="modelValue"
+        :disabled="disabled"
         @input="handleInput"
         @change="handleChange"
     />
@@ -22,6 +23,10 @@ const props = defineProps({
     name: String,
     id: String,
     placeholder: String,
+    disabled: {
+        type: Boolean,
+        default: false,
+    },
     modelValue: null,
     modelModifiers: { default: () => ({}) },
 })

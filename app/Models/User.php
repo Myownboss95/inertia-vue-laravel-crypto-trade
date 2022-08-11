@@ -58,4 +58,15 @@ class User extends Authenticatable implements MustVerifyEmail
         return $this->hasMany(Document::class);
 >>>>>>> e279c46 (verification process)
     }
+
+    public function accounts()
+    {
+        return $this->hasMany(Account::class);
+    }
+
+    public function accountBalance($type = 'main')
+    {
+        $account = $this->accounts()->where('type', $type)->first();
+        return (float) $account?->account ?? 0;
+    }
 }

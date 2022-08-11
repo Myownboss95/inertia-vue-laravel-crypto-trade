@@ -1,7 +1,7 @@
 <template>
   <div class="mb-3">
     <LabelVue :for="id" :label="label"/>
-    <InputVue :name="name" :type="type" :placeholder="placeholder" v-model="modelValue" @update:model-value="handleInput"  />
+    <InputVue :name="name" :type="type" :placeholder="placeholder" v-model="modelValue" @update:model-value="handleInput" :disabled="disabled"  />
     <ErrorVue :name="name" />
     </div>
 </template>
@@ -24,6 +24,10 @@ defineProps({
     name: String,
     id: String,
     placeholder: String,
+    disabled: {
+        type: Boolean,
+        default: false,
+    },
     modelValue: null,
 })
 

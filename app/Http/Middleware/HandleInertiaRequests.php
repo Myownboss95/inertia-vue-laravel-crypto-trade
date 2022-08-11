@@ -45,7 +45,10 @@ class HandleInertiaRequests extends Middleware
             },
             'flash.status' => fn () => $request->session()->get('status'),
             'flash.success' => fn () => $request->session()->get('success'),
+            'flash.error' => fn () => $request->session()->get('error'),
             'flash.email' => fn () => $request->session()->get('email'),
+            'validated' => fn () => $request->session()->get('validated'),
+            'data' => fn () => $request->session()->get('data'),
             'url.previous' => function () {
                 return (url()->current() != route('login')
                     && url()->previous() !== ''

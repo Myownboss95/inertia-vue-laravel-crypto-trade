@@ -125,7 +125,7 @@ class OnboardController extends Controller
 
     private function uploadFile(UploadedFile $file, string $dir)
     {
-        $filename = time() . "{$file->getClientOriginalName()}.{$file->extension()}";
+        $filename = time() . "{$file->getClientOriginalName()}";
         Storage::disk('local')->putFileAs($dir, $file, $filename);
         return $filename;
     }
