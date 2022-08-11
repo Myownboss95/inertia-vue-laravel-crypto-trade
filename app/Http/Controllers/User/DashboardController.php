@@ -12,30 +12,31 @@ class DashboardController extends Controller
 {
     public function __invoke()
     {
-        //return users
-        $getUsers = new User();
-        $users = $getUsers->newQuery()->where('is_admin', '=', 0)->limit(6)->get();
-        $num_users = User::where('is_admin', '=', 0)->count();
+        //return main account balance
+        $user = User::findOrFail(auth()->user()->id);
+        $userMainBalance = ($user->accountBalance());
+        //return referral account balance
+        $userRefBalance = ($user->accountBalance('referral'));
+        //return referral account balance
+        $userInvestedBalance = ($user->accountBalance('invested'));
+       
         //return withdrawals
-        $getWithdrawals = new Transaction();
-        $withdrawals = $getWithdrawals->newQuery()->where('type', 'withdrawal')->limit(6)->get();
-        $num_withdrawals = Transaction::where('type', 'withdrawal')->count();
-        //return deposits
-        $getDeposits = new Transaction();
-        $deposits = $getDeposits->newQuery()->where('type', 'deposit')->limit(6)->get();
-        $num_deposits = Transaction::where('type', 'deposit')->count();
+        $withdrawals = $user->transactions()->where('type', 'withdrawal')->limit(6)->get();
+        $num_withdrawals = $user->transactions()->where('type', 'withdrawal')->count();
+       //return deposits
+        $deposits = $user->transactions()->where('type', 'deposit')->limit(6)->get();
+        $num_deposits = $user->transactions()->where('type', 'deposit')->count();
         //return buy trades
-        $getBuyTrades = new Trade();
-        $buyTrades = $getBuyTrades->newQuery()->where('type', 'buy')->limit(6)->get();
-        $num_buyTrades = Transaction::where('type', 'buy')->count();
+        $buyTrades = $user->transactions()->where('type', 'buy')->limit(6)->get();
+        $num_buyTrades = $user->transactions()->where('type', 'buy')->count();
         //return sell trades
-        $getSellTrades = new Trade();
-        $sellTrades = $getSellTrades->newQuery()->where('type', 'sell')->limit(6)->get();
-        $num_sellTrades = Transaction::where('type', 'buy')->count();
+        $sellTrades = $user->transactions()->where('type', 'sell')->limit(6)->get();
+        $num_sellTrades = $user->transactions()->where('type', 'buy')->count();
 
         return inertia('user.index', [
-            'users' => $users,
-            'user_count' => $num_users,
+            'userMainBalance' => $userMainBalance,
+            'userRefBalance' => $userRefBalance,
+            'userInvestedBalance' => $userInvestedBalance,
             'withdrawals' => $withdrawals,
             'withdrawals_count' => $num_withdrawals,
             'deposits' => $deposits,
