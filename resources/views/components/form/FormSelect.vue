@@ -1,8 +1,10 @@
 <template>
-<FormLabel :for="id" :label="label" v-if="label" />
-<select :name="name" :id="id" class="form-select" @change="handleChange">
-    <option :value="key" v-for="(option, key) in options" :key="key" :selected="modelValue === key" > {{option}} </option>
-</select>
+<div>
+    <FormLabel :for="id" :label="label" v-if="label" />
+    <select :name="name" :id="id" class="form-select" @change="handleChange">
+        <option :value="key" v-for="(option, key) in options" :key="key" :selected="modelValue === key" > {{option}} </option>
+    </select>
+</div>
 </template>
 
 <script setup>

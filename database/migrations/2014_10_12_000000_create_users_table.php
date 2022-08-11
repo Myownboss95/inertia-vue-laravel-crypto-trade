@@ -31,7 +31,6 @@ return new class extends Migration
             $table->string('password', 60)->index();
             $table->rememberToken();
             $table->boolean('is_admin')->default(0);
-
             $table->timestamps();
         });
     }

@@ -7030,7 +7030,7 @@ body[data-layout=horizontal] .chat-conversation {
 }
 
 .cursor-pointer {
-    cursor: pointer;
+    cursor: pointer !important;
 }
 .cusor-not-allowed {
     cursor: not-allowed;
@@ -7040,12 +7040,16 @@ body[data-layout=horizontal] .chat-conversation {
     border: none;
     padding: 0;
         margin: 0;
+}
+
+.text-justify {
+    text-align: justify !important;
+}
+
+button[disabled] {
+    cursor: not-allowed !important;
     }
 
-    .text-justify {
-        text-align: justify !important;
-    }
-
-    button[disabled] {
-        cursor: not-allowed;
+    .radius-20 {
+        border-radius: 20px;
 }

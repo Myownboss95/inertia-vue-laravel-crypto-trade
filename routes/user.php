@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\User\DashboardController;
 use App\Http\Controllers\User\DepositController;
 use App\Http\Controllers\User\OnboardController;
+use App\Http\Controllers\User\TradeController;
 use App\Http\Controllers\User\WithdrawalController;
 
 /*
@@ -17,9 +18,19 @@ use App\Http\Controllers\User\WithdrawalController;
 |
 */
 
-Route::get('/', DashboardController::class)->name('index');
+Route::middleware('onboarded')->group(function () {
+    Route::get('/', DashboardController::class)->name('index');
+    Route::resource('deposits', DepositController::class);
+    Route::resource('withdrawals', WithdrawalController::class);
 
-Route::resource('deposits', DepositController::class);
-Route::resource('withdrawals', WithdrawalController::class);
+    Route::resource('trades', TradeController::class);
+});
 
-Route::get('onboard', [OnboardController::class, 'onboardPage'])->name('onboard');
+Route::prefix('onboard')->name('onboard.')->group(function () {
+    Route::get('', [OnboardController::class, 'onboardPage']);
+    Route::post('', [OnboardController::class, 'submitAddress'])->name('address');
+
+    Route::get('upload', [OnboardController::class, 'uploadPage']);
+    Route::post('upload', [OnboardController::class, 'upload'])->name('upload');
+});
+

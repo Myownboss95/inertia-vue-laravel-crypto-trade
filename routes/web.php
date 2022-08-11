@@ -4,6 +4,7 @@ use App\Http\Controllers\ChangePasswordController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LogoutController;
 use App\Http\Controllers\EmailVerifiedController;
+use App\Http\Controllers\LocationController;
 use App\Http\Controllers\SuccessfulPasswordResetController;
 use App\Http\Controllers\TwoFactorAuthenticationController;
 use App\Models\Plan;
@@ -41,7 +42,14 @@ Route::middleware(['auth'])->group(function () {
     });
 
     Route::post('email/correct', [EmailVerifiedController::class, 'correctInfo'])->name('email.correct');
+
+    Route::prefix('location')->as('location.')->controller(LocationController::class)->group(function () {
+        Route::get('countries', 'countries')->name('countries');
+        Route::get('states/{country}', 'states')->name('states');
+    });
 });
+
+
 
 Route::middleware('guest')->group(function () {
     Route::get('logout', LogoutController::class);
