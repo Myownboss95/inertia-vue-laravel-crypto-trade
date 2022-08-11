@@ -1,1 +1,0 @@
-import{o as s,c as e,t as o}from"./main.bb41ae9d.js";const r={key:0,class:"spinner-border spinner-border-sm"},a={key:1},i={name:"ButtonLoader",props:{loading:!1,text:null},setup(t){const n=t;return(p,c)=>(s(),e("span",null,[n.loading?(s(),e("span",r)):(s(),e("span",a,o(n.text),1))]))}};export{i as _};
