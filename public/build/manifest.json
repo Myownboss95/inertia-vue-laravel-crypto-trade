@@ -42,7 +42,7 @@
       "resources/views/pages/user/withdrawals/index.vue"
     ],
     "css": [
-      "assets/main.027694ad.css"
+      "assets/main.90f59bde.css"
     ],
     "assets": [
       "assets/logo-sm.f047c034.svg",
@@ -57,12 +57,12 @@
       "assets/boxicons.65837913.woff",
       "assets/boxicons.c8ae15ef.ttf",
       "assets/boxiconsd41d.c2df7adc.svg",
-      "assets/fa-brands-400.811e1577.eot",
+      "assets/fa-brands-400d41d.811e1577.eot",
       "assets/fa-brands-400.5d919029.html",
       "assets/fa-brands-400.e836c5d5.woff",
       "assets/fa-brands-400.a0c14538.ttf",
       "assets/fa-brands-400.02340ba1.svg",
-      "assets/fa-regular-400.01f4416f.eot",
+      "assets/fa-regular-400d41d.01f4416f.eot",
       "assets/fa-regular-400.8e2d9619.woff",
       "assets/fa-regular-400.f32b94a2.ttf",
       "assets/fa-regular-400.865fd23d.svg",
@@ -70,7 +70,7 @@
       "assets/fa-solid-900.352f8ead.woff",
       "assets/fa-solid-900.231d68ce.ttf",
       "assets/fa-solid-900.e7685398.svg",
-      "assets/dripicons-v2d41d.4551d45f.eot",
+      "assets/dripicons-v2.4551d45f.eot",
       "assets/dripicons-v2.e87a09ce.woff",
       "assets/dripicons-v2.d8c798b5.ttf",
       "assets/dripicons-v2.2c1ce9e2.svg",

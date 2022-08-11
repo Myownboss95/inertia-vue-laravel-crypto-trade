@@ -9,9 +9,24 @@ import {exec} from 'child_process'
 const domain = 'binotomo.test';
 let certPath = `${os.homedir()}/.config/valet/Certificates/${domain}`;
 
+export default defineConfig(({ mode }) => {
+    let env = loadEnv(mode, process.cwd());
 
-export default defineConfig({
-	plugins: [
+    function serverData() {
+    if (env.VITE_APP_ENV == 'production') {
+        return {}
+    }
+    return {
+        host: domain,
+        https: {
+            key: fs.readFileSync(`${certPath}.key`),
+            cert: fs.readFileSync(`${certPath}.crt`),
+        }
+    }
+}
+
+    return {
+        plugins: [
 		inertia(),
 		vue(),
         laravel({
@@ -22,13 +37,8 @@ export default defineConfig({
                 }
             ]
         }),
-    ],
-    server: {
-        host: domain,
-        https: {
-            key: fs.readFileSync(`${certPath}.key`),
-            cert: fs.readFileSync(`${certPath}.crt`),
-        }
+        ],
+        server: serverData()
     }
 })
 
