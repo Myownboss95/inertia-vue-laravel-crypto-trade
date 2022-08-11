@@ -105,7 +105,7 @@ class PaymentMethodController extends Controller
     public function update(Request $request, PaymentMethod $paymentMethod)
     {
         //
-        // dd($id);
+        var_dump($request->all());
         $data = $request->validate([
             'name' => ['required', Rule::unique('payment_methods')->ignore($paymentMethod)],
             'status' => ['required'],

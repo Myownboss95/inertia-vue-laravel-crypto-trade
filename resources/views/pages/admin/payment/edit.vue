@@ -24,6 +24,12 @@
             :options="{ '1': 'Enable', '0': 'Disable' }"
             v-model="form.status"
           />
+          <div class="form-group" v-if="form.image">
+              <img :src='photo' class="img-fluid p-5"/>
+          </div>
+          <div class="form-group" v-else>
+              <h2>No Image Uploaded Yet</h2>
+          </div>
 
           <div class="mt-3 mb-3">
           <label >File Upload</label>
@@ -51,18 +57,29 @@
   import ButtonLoader from '@/views/components/form/ButtonLoader.vue';
   import { useForm } from '@inertiajs/inertia-vue3';
   import InputGroup from '@/views/components/form/InputGroup.vue';
+  import {ref, watch} from 'vue'
 import { error } from '@/js/toast';
 
 const props = defineProps(['payment']);
-console.log(props.payment.status)
+// console.log(props.payment.status)
   const form = useForm({
-    name: props.payment?.name || '',
+    name: props.payment?.name,
     status: props.payment?.status ,
     image:'',
   });
 
+  let photo = ref(null);
+
+  watch(()=> form.image, (newPhoto) => {
+    if(newPhoto != undefined || newPhoto !='' ){
+      photo.value= URL.createObjectURL(newPhoto)
+    }
+  })
+
+
 
     const updatePayment = () => {
+      console.log(form.data());
         form.put(route('admin.payment-method.update', props.payment.id));
   };
 </script>

@@ -16,4 +16,9 @@ class Trade extends Model
         return $this->belongsTo(Tradeable::class);
     }
 
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
+
 }

@@ -113,6 +113,7 @@
   import Paginator from '@/views/components/paginator.vue';
 
   const props = defineProps(['users']);
+  console.log(props.users)
   const form = useForm({
     status: route().params.status || 'all',
     search: route().params.search || '',

@@ -20,7 +20,7 @@ return new class extends Migration
             $table->foreignIdFor(User::class);
             $table->double('amount')->default(0);
             $table->enum('type', ['deposit', 'withdrawal', 'subscription']);
-            $table->enum('type', ['pending', 'successful', 'failed'])->default('pending');
+            $table->enum('status', ['pending', 'successful', 'failed'])->default('pending');
             $table->string('image')->nullable();
             $table->timestamps();
         });

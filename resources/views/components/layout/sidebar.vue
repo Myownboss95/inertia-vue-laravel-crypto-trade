@@ -9,10 +9,11 @@
                 <!-- Left Menu Start -->
                 <ul class="metismenu list-unstyled" id="side-menu">
                     <li class="menu-title"> Menu </li>
-                    <SidebarItem name="Dashboard" :url="route('user.index')" icon="layers" />
+                    <SidebarItem name="Dashboard" :url="route(`${is_admin ? 'admin' : 'user'}.index`)" icon="layers" />
                     <SidebarItem name="Users" :url="route('admin.users.index')" icon="users" v-if="$page.props.auth.user.is_admin" />
                     <li class="menu-title"> Transactions </li>
                     <SidebarItem name="Trades" :url="route('admin.trades.index')" icon="table" />
+                    <SidebarItem name="Trades View" :url="route('admin.trades.view')" icon="table" />
                     <SidebarItem name="Deposits" :url="route(`${is_admin ? 'admin' : 'user'}.deposits.index`)" icon="credit-card" />
                     <SidebarItem name="Withdrawals" :url="route(`${is_admin ? 'admin' : 'user'}.withdrawals.index`)" icon="dollar-sign" />
                     <li class="menu-title"> Settings </li>
