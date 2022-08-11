@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers\User;
 
-use App\Http\Controllers\Controller;
+use App\Models\User;
 use App\Models\Trade;
+use App\Models\Tradeable;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 
 class TradeController extends Controller
 {
@@ -15,5 +17,34 @@ class TradeController extends Controller
         return inertia('user.trades.index', [
             'trades' => $query->paginate(),
         ]);
+    }
+
+
+    public function trades()
+    {
+        return inertia('admin.trades.trades');
+    }
+
+    public function getTradeables($type)
+    {
+        $tradeables = [];
+        Tradeable::where('type', $type)
+            ->get(['id', 'name'])
+            ->map(function ($item) use (&$tradeables) {
+                $tradeables[$item->id] = $item->name;
+            });
+        return response()->json(['data' => $tradeables]);
+    }
+
+
+    public function trade(Request $request)
+    {
+        $data = $request->validate([
+            'amount' => ['required', 'numeric'],
+        ]);
+        
+        $data = $request->all();
+        $user = User::findOrFail(auth()->user()->id);
+        $user->trades()->create(array_merge($data,['status' => 'active', ]));
     }
 }

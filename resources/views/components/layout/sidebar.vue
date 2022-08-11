@@ -16,18 +16,20 @@
             name="Users"
             :url="route('admin.users.index')"
             icon="users"
-            v-if="$page.props.auth.user.is_admin"
+            v-if="is_admin"
           />
           <li class="menu-title">Transactions</li>
           <SidebarItem
-            name="Trades"
-            :url="route('admin.trades.index')"
+            name="Trades History"
+            :url="route('user.trades.index')"
             icon="table"
+            v-if="!is_admin"
           />
           <SidebarItem
-            name="Trades View"
-            :url="route('admin.trades.view')"
+            name="Place Trade"
+            :url="route('user.trades.view')"
             icon="table"
+            v-if="!is_admin"
           />
           <SidebarItem
             name="Deposits"
