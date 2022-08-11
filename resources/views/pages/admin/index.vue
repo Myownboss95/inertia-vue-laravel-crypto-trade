@@ -129,13 +129,11 @@
             {{ 
             !isNaN(withdrawals_count) && withdrawals_count != 0 ?
              withdrawals_count - 6 : "0" }}
-            more</span
-          >
-          <!-- <span class="ms-1 text-muted font-size-13"><a href="#" >View More</a></span> -->
+            more</span>
         </div>
-        <a href="{{route('admin.users.index')}}" class="btn btn-primary"
+        <inertia-link :href="route('admin.withdrawals.index')" class="btn btn-primary"
           >View Withdrawals<i class="mdi mdi-arrow-right ms-1"></i
-        ></a>
+        ></inertia-link>
       </div>
       </div>
       
@@ -183,9 +181,9 @@
           >
           <!-- <span class="ms-1 text-muted font-size-13"><a href="#" >View More</a></span> -->
         </div>
-        <a href="{{route('admin.users.index')}}" class="btn btn-primary"
+       <inertia-link :href="route('admin.deposits.index')" class="btn btn-primary"
           >View Deposits<i class="mdi mdi-arrow-right ms-1"></i
-        ></a>
+        ></inertia-link>
       </div>
       </div>
       
@@ -234,9 +232,9 @@
           >
           <!-- <span class="ms-1 text-muted font-size-13"><a href="#" >View More</a></span> -->
         </div>
-        <a href="{{route('admin.users.index')}}" class="btn btn-primary"
+        <inertia-link :href="route('admin.trades.index')" class="btn btn-primary"
           >View Trades<i class="mdi mdi-arrow-right ms-1"></i
-        ></a>
+        ></inertia-link>
       </div>
       </div> 
       
@@ -283,11 +281,10 @@
             }}
             more</span
           >
-          <!-- <span class="ms-1 text-muted font-size-13"><a href="#" >View More</a></span> -->
         </div>
-        <a href="{{route('admin.users.index')}}" class="btn btn-primary"
+        <inertia-link :href="route('admin.trades.index')" class="btn btn-primary"
           >View Trades<i class="mdi mdi-arrow-right ms-1"></i
-        ></a>
+        ></inertia-link>
       </div>
       </div>
       
@@ -329,9 +326,9 @@
             more users</span
           >
         </div>
-        <a href="{{route('admin.users.index')}}" class="btn btn-primary"
-          >View All Users<i class="mdi mdi-arrow-right ms-1"></i
-        ></a>
+        <inertia-link :href="route('admin.users.index')" class="btn btn-primary"
+          >View All Users <i class="mdi mdi-arrow-right ms-1"></i
+        ></inertia-link>
       </div>
       </div>
       

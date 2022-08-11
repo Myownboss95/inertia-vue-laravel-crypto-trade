@@ -21,9 +21,8 @@
           <li class="menu-title">Transactions</li>
           <SidebarItem
             name="Trades History"
-            :url="route('user.trades.index')"
+            :url="route(`${is_admin ? 'admin' : 'user'}.trades.index`)"
             icon="table"
-            v-if="!is_admin"
           />
           <SidebarItem
             name="Place Trade"
