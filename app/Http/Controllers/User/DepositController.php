@@ -2,11 +2,14 @@
 
 namespace App\Http\Controllers\User;
 
-use App\Http\Controllers\Controller;
-use App\Models\PaymentMethod;
+use Validator;
+use App\Models\User;
 use App\Models\Transaction;
 use Illuminate\Http\Request;
-use Validator;
+use App\Models\PaymentMethod;
+use App\Http\Controllers\Controller;
+use Illuminate\Http\UploadedFile;
+use Illuminate\Support\Facades\Storage;
 
 class DepositController extends Controller
 {
@@ -34,23 +37,49 @@ class DepositController extends Controller
         $validator = Validator::make($request->all(), [
             'method_id' => ['required'],
             'amount' => ['required', 'numeric'],
-            'pay_with' => ['required', 'string'],
         ]);
+        $method = PaymentMethod::findOrFail($request->input('method_id'));
+        session()->flash('data', $method);
 
         if ($validator->fails()) {
             session()->flash('validated', false);
             return back()->withErrors($validator)->withInput();
         }
-
-        $method = PaymentMethod::findOrFail($request->input('method_id'));
-        $payment_methods = PaymentMethod::latest()->where('status', 1)->get();
-        // return inertia('user.deposits.deposit', [
-        //     'payment_methods' => $payment_methods,
-        //     'method' => $method,
-        //     'data' => $validator->valid(),
-        //     'validated' => true,
-        // ]);
         session()->flash('validated', true);
         return back()->withInput();
+    }
+
+    public function store(Request $request)
+    {
+        $validator = Validator::make($request->all(), [
+            'amount' => ['required', 'numeric'],
+            'method_id' => ['required', 'numeric', 'exists:payment_methods,id'],
+            'proof' => ['required', 'mimes:png,jpg,jpeg,webp'],
+        ]);
+
+        if ($validator->fails()) {
+            session()->flash('validated', true);
+            return back()->withErrors($validator)->withInput();
+        }
+
+        $user = User::findOrFail(auth()->user()->id);
+
+        $user->transactions()->create([
+            'amount' => $request->input('amount'),
+            'options' => ['payment_method_id' => $request->input('method_id')],
+            'image' => $this->uploadProof($request->file('proof')),
+            'type' => 'deposit',
+        ]);
+
+        session()->flash('success', 'Deposit initiated successfully, waiting for approval.');
+
+        return redirect()->route('user.deposits.index');
+    }
+
+    private function uploadProof(UploadedFile $file)
+    {
+        $filename = time() . $file->getClientOriginalName();
+        Storage::disk('public')->putFileAs('deposit_proof', $file, $filename);
+        return $filename;
     }
 }

@@ -1,12 +1,12 @@
 <template>
   <Head title="Deposits" />
   <breadcrumb title="Deposits" :crumbs="['Dashboard', 'Deposits']" />
-  <div class="card shadow col-lg-10 mx-auto">
+  <div class="card shadow-lg col-lg-9 mx-auto">
     <div class="card-body">
-        <div class="text-end">
-            <inertia-link :href="route('user.deposits.create')" class="btn btn-outline-success">
+        <div class="mb-3 text-end">
+            <inertia-link :href="route('user.deposits.create')" class="btn btn-outline-info btn-rounded">
             <i class="fa fa-dollar-sign"></i>
-            Deposit
+            Make deposit
             </inertia-link>
         </div>
         <div class="table-responsive">
@@ -17,7 +17,6 @@
                       <th>Amount</th>
                       <th>Status</th>
                       <th>Date</th>
-                      <th>Actions</th>
                   </tr>
               </thead>
 
@@ -27,15 +26,6 @@
                       <td>{{format_money(deposit.amount)}}</td>
                       <td>{{deposit.status}}</td>
                       <td>{{new Date(deposit.created_at).toDateString()}}</td>
-                      <td>
-                          <InertiaLink :href="route('admin.deposits.edit',deposit.id)" class="btn btn-outline-primary btn-sm">
-                              <i class="fa fa-edit"></i>
-                          </InertiaLink>
-
-                          <!-- <InertiaLink method="delete" :href="route('admin.plans.destroy',plan.id)" class="btn btn-outline-danger btn-sm" as="button">
-                              <i class="fa fa-trash"></i>
-                          </InertiaLink> -->
-                      </td>
                   </tr>
               </tbody>
               <tbody v-else>

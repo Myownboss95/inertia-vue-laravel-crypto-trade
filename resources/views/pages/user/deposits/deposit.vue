@@ -2,13 +2,13 @@
   <Head title="Deposit" />
   <breadcrumb title="Deposit" :crumbs="['Dashboard', 'Deposits', 'Deposit']" />
 
-  <div class="card radius-20 col-lg-7 mx-auto">
+  <div class="card shadow-lg radius-20 col-lg-7 mx-auto">
     <div class="card-body">
       <div class="row align-items-center py-3">
         <div class="col-md-6 border-end">
           <div class="row">
             <div
-              class="col-6 text-center mt-2"
+              class="col-6 text-center my-2"
               v-for="(method, key) in props.payment_methods"
               :class="{ selected: form.method_id == method.id }"
               @click="selectMethod(method.id)"
@@ -17,46 +17,67 @@
                 <h6>{{ method.name }}</h6>
               </div>
             </div>
+            <div class="col-12">
+              <FormGroup
+                :disabled="disableElements"
+                name="amount"
+                placeholder="Amount"
+                v-model="form.amount"
+                class="mt-2"
+              />
+              <!-- label="Amount" -->
+              <FormButton
+                :disabled="disableElements"
+                class="btn btn-outline-primary w-100"
+                @button-clicked="validate"
+                v-if="!props.validated"
+              >
+                <ButtonLoader text="Continue" :loading="form.processing" />
+              </FormButton>
+            </div>
           </div>
         </div>
         <div class="col-md-6">
           <div class="px-3">
-            <form v-if="!props.validated">
-              <FormSelect
-                :disabled="form.method_id == ''"
-                class="mb-3"
-                name="pay_with"
-                label="Pay with"
-                :options="{
-                  main: 'Main Balance',
-                  referral: 'Referral Balance',
-                }"
-                v-model="form.pay_with"
-              />
-              <FormGroup
-                :disabled="form.method_id == ''"
-                name="amount"
-                placeholder="Amount"
-                label="Amount"
-                v-model="form.amount"
-              />
-              <FormButton
-                :disabled="form.method_id == ''"
-                class="btn btn-outline-primary"
-                @button-clicked="validate"
-              >
-                <ButtonLoader text="Continue" :loading="form.processing" />
-              </FormButton>
-            </form>
+            <div class="" v-if="!props.validated">
+                <h4>Instructions:</h4>
+                <ul>
+                    <li>Select a Deposit method.</li>
+                    <li>Enter Amount to deposit.</li>
+                    <li>Click on continue.</li>
+                    <li>Scan or copy the wallet address.</li>
+                    <li>Transfer the amount to the wallet address you scanned or copied.</li>
+                    <li>Upload the proof of payment.</li>
+                    <li>And finally click on complete deposit.</li>
+                </ul>
+            </div>
             <div class="text-center" v-else>
               <div class="placeholder">
                 <img :src="`/storage/payment_methods/${method.image}`" alt="" />
               </div>
               <p class="mt-3">
-                Scan the Qrcode above and send the equivalent of
-                <strong>{{ format_money(parseFloat(form.amount)) }}</strong> in
+                Copy the wallet address or scan the Qrcode above and send the
+                equivalent of
+                <strong>{{ format_money(parseFloat(form.amount)) }}</strong> of
                 <strong>{{ method.name }}</strong> to the wallet address.
               </p>
+              <p>After payment, upload your proof of payment.</p>
+              <input
+                class="form-control"
+                type="file"
+                accept="image/*"
+                @change="form.proof = $event.target.files[0]"
+              />
+              <Error name="proof" />
+              <FormButton
+                class="btn btn-outline-primary w-100 mt-3"
+                @button-clicked="deposit"
+              >
+                <ButtonLoader
+                  text="Complete Deposit"
+                  :loading="form.processing"
+                />
+              </FormButton>
             </div>
           </div>
         </div>
@@ -72,8 +93,9 @@
   import FormSelect from '@/views/components/form/FormSelect.vue';
   import FormButton from '@/views/components/form/FormButton.vue';
   import ButtonLoader from '@/views/components/form/ButtonLoader.vue';
+  import Error from '@/views/components/alerts/error.vue';
   import { ref, watch, computed, reactive } from 'vue';
-  import { error, info } from '@/js/toast';
+  import { info } from '@/js/toast';
 
   const props = defineProps({
     payment_methods: Array,
@@ -81,13 +103,17 @@
       type: Boolean,
       default: false,
     },
-    // data: Array,
+    data: {
+      type: Object,
+      default: {},
+    },
   });
 
   const form = useForm({
     method_id: '',
     amount: '',
     pay_with: 'main',
+    proof: '',
   });
 
   const method = ref({});
@@ -108,8 +134,14 @@
     }
   );
 
+  const disableElements = computed(() => form.method_id == '' || props.validated);
+
   const validate = () => {
     form.post(route('user.deposits.validate'));
+  };
+
+  const deposit = () => {
+    form.post(route('user.deposits.store'));
   };
 </script>
 
@@ -126,4 +158,5 @@
     width: 100%;
     height: 100%;
   }
+
 </style>

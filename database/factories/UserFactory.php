@@ -48,6 +48,16 @@ class UserFactory extends Factory
         });
     }
 
+    public function user()
+    {
+        return $this->state(
+            fn () => [
+                'email' => 'user@binotomo.test',
+                'status' => 'active'
+            ]
+        );
+    }
+
     public function admin()
     {
         return $this->state(

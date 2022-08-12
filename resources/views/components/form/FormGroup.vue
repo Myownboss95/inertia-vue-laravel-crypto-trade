@@ -1,6 +1,6 @@
 <template>
   <div class="mb-3">
-    <LabelVue :for="id" :label="label"/>
+    <LabelVue :for="id" :label="label" v-if="label" />
     <InputVue :name="name" :type="type" :placeholder="placeholder" v-model="modelValue" @update:model-value="handleInput" :disabled="disabled"  />
     <ErrorVue :name="name" />
     </div>

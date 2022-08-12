@@ -112,9 +112,7 @@ class OnboardController extends Controller
 
         if ($request->hasFile('photograpgh')) {
             $file = $this->uploadFile($request->file('photograpgh'), 'profile_pictures');
-            $user->update([
-                'photo' => $file,
-                'type' => $request->input('type'),
+            $user->update(['image' => $file,
             ]);
         }
 
