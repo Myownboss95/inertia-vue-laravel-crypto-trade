@@ -1717,7 +1717,7 @@ body[data-layout-mode=dark] .breadcrumb-item.active {
     align-items: center;
     margin: 0 auto;
     height: 70px;
-    padding: 0 20px 0 0
+    /* padding: 0 20px 0 0 */
 }
 
 .navbar-header .dropdown .show.header-item {

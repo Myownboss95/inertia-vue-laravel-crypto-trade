@@ -341,14 +341,13 @@
             aria-expanded="false"
           >
             <img
-              class="rounded-circle header-profile-user"
-              src="@/assets/images/users/avatar-1.jpg"
-              alt="Header Avatar"
+              class="rounded-circle header-profile-user mr-1"
+              :src="profile_picture(user.image)"
             />
-            <span class="d-none d-xl-inline-block ms-1 fw-medium"
+            <!-- <span class="d-none d-xl-inline-block ms-1 fw-medium"
               >Shawn L.</span
-            >
-            <i class="mdi mdi-chevron-down d-none d-xl-inline-block"></i>
+            > -->
+            <i class="mdi mdi-chevron-down d-inline-block"></i>
           </button>
           <div class="dropdown-menu dropdown-menu-end">
             <!-- item-->
@@ -375,9 +374,9 @@
 <script setup>
   import { ref, onMounted, watch, computed } from 'vue';
   import feather from 'feather-icons';
-
   import { useTheme } from '@/stores/theme';
 import { usePage } from '@inertiajs/inertia-vue3';
+import { profile_picture } from '@/js/functions';
 
 
 const user = computed(() => usePage().props.value.auth.user);
