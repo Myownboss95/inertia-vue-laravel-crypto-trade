@@ -3,6 +3,12 @@
   <breadcrumb title="Deposits" :crumbs="['Dashboard', 'Deposits']" />
   <div class="card shadow col-lg-10 mx-auto">
     <div class="card-body">
+        <div class="text-end">
+            <inertia-link :href="route('user.deposits.create')" class="btn btn-outline-success">
+            <i class="fa fa-dollar-sign"></i>
+            Deposit
+            </inertia-link>
+        </div>
         <div class="table-responsive">
           <table class="table">
               <thead>

@@ -4,7 +4,7 @@
       <div class="d-flex">
         <!-- LOGO -->
         <div class="navbar-brand-box">
-          <a href="index.html" class="logo logo-dark">
+          <inertia-link :href="route(`${is_admin ? 'admin':'user'}.index`)" class="logo logo-dark">
             <span class="logo-sm">
               <img src="@/assets/images/logo-sm.svg" alt="" height="24" />
             </span>
@@ -12,9 +12,9 @@
               <img src="@/assets/images/logo-sm.svg" alt="" height="24" />
               <span class="logo-txt">{{ appName }}</span>
             </span>
-          </a>
+          </inertia-link>
 
-          <a href="index.html" class="logo logo-light">
+          <inertia-link :href="route(`${is_admin ? 'admin':'user'}.index`)" class="logo logo-light">
             <span class="logo-sm">
               <img src="@/assets/images/logo-sm.svg" alt="" height="24" />
             </span>
@@ -22,7 +22,7 @@
               <img src="@/assets/images/logo-sm.svg" alt="" height="24" />
               <span class="logo-txt">{{ appName }}</span>
             </span>
-          </a>
+          </inertia-link>
         </div>
 
         <button
@@ -80,7 +80,7 @@
           </div>
         </div>
 
-        <div class="dropdown d-none d-sm-inline-block">
+        <div class="dropdown">
           <button
             type="button"
             class="btn header-item"
@@ -172,7 +172,7 @@
           </div>
         </div>
 
-        <div class="dropdown d-none d-sm-inline-block">
+        <div class="dropdown">
           <button
             type="button"
             class="btn header-item"
@@ -330,11 +330,6 @@
           </div>
         </div>
 
-        <div class="dropdown d-inline-block">
-          <button type="button" class="btn header-item right-bar-toggle me-2">
-            <i data-feather="settings" class="icon-lg"></i>
-          </button>
-        </div>
 
         <div class="dropdown d-inline-block">
           <button
@@ -380,10 +375,15 @@
 </template>
 
 <script setup>
-  import { ref, onMounted, watch } from 'vue';
+  import { ref, onMounted, watch, computed } from 'vue';
   import feather from 'feather-icons';
 
   import { useTheme } from '@/stores/theme';
+import { usePage } from '@inertiajs/inertia-vue3';
+
+
+const user = computed(() => usePage().props.value.auth.user);
+const is_admin = user.is_admin;
 
   const theme = useTheme();
 

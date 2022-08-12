@@ -5,7 +5,7 @@
   <div class="card radius-20 col-lg-7 mx-auto">
     <div class="card-body">
       <div class="row align-items-center py-3">
-        <div class="col-md-5 border-end">
+        <div class="col-md-6 border-end">
           <div class="row">
             <div
               class="col-6 text-center mt-2"
@@ -19,37 +19,44 @@
             </div>
           </div>
         </div>
-        <div class="col-md-7">
+        <div class="col-md-6">
           <div class="px-3">
             <form v-if="!props.validated">
-                <FormSelect
-                  :disabled="form.method_id == ''"
-                  class="mb-3"
-                  name="pay_with"
-                  label="Pay with"
-                  :options="{ main: 'Main Balance', referral: 'Referral Balance' }"
-                  v-model="form.pay_with"
-                />
-                <FormGroup
-                  :disabled="form.method_id == ''"
-                  name="amount"
-                  placeholder="Amount"
-                  label="Amount"
-                  v-model="form.amount"
-                />
-                <FormButton
-                  :disabled="form.method_id == ''"
-                  class="btn btn-outline-primary"
-                  @button-clicked="validate"
-                >
-                  <ButtonLoader text="Continue" :loading="form.processing" />
-                </FormButton>
+              <FormSelect
+                :disabled="form.method_id == ''"
+                class="mb-3"
+                name="pay_with"
+                label="Pay with"
+                :options="{
+                  main: 'Main Balance',
+                  referral: 'Referral Balance',
+                }"
+                v-model="form.pay_with"
+              />
+              <FormGroup
+                :disabled="form.method_id == ''"
+                name="amount"
+                placeholder="Amount"
+                label="Amount"
+                v-model="form.amount"
+              />
+              <FormButton
+                :disabled="form.method_id == ''"
+                class="btn btn-outline-primary"
+                @button-clicked="validate"
+              >
+                <ButtonLoader text="Continue" :loading="form.processing" />
+              </FormButton>
             </form>
             <div class="text-center" v-else>
-                <div class="placeholder">
-                    <img :src="`/storage/payment_methods/${method.image}`" alt="">
-                </div>
-                <p class="mt-3">Send equivalent of <strong>{{format_money(form.amount)}}</strong></p>
+              <div class="placeholder">
+                <img :src="`/storage/payment_methods/${method.image}`" alt="" />
+              </div>
+              <p class="mt-3">
+                Scan the Qrcode above and send the equivalent of
+                <strong>{{ format_money(parseFloat(form.amount)) }}</strong> in
+                <strong>{{ method.name }}</strong> to the wallet address.
+              </p>
             </div>
           </div>
         </div>
@@ -65,17 +72,17 @@
   import FormSelect from '@/views/components/form/FormSelect.vue';
   import FormButton from '@/views/components/form/FormButton.vue';
   import ButtonLoader from '@/views/components/form/ButtonLoader.vue';
-import { ref, watch, computed,reactive } from 'vue';
-import { error, info } from '@/js/toast';
+  import { ref, watch, computed, reactive } from 'vue';
+  import { error, info } from '@/js/toast';
 
-const props = defineProps({
+  const props = defineProps({
     payment_methods: Array,
     validated: {
-        type: Boolean,
-        default: false,
+      type: Boolean,
+      default: false,
     },
     // data: Array,
-});
+  });
 
   const form = useForm({
     method_id: '',
@@ -83,25 +90,27 @@ const props = defineProps({
     pay_with: 'main',
   });
 
-const method = ref({});
+  const method = ref({});
 
-const selectMethod = id => {
+  const selectMethod = (id) => {
     if (!props.validated) {
-        form.method_id = id
+      form.method_id = id;
     } else {
-        info('You cannot change method now. Refresh page.');
+      info('You cannot change method now. Refresh page.');
     }
-}
+  };
 
+  watch(
+    () => form.method_id,
+    (newMethod) => {
+      let m = props.payment_methods.filter((item, index) => item.id == newMethod);
+      method.value = m[0];
+    }
+  );
 
-watch(() => form.method_id, (newMethod) => {
-    let m = props.payment_methods.filter((item, index) => item.id == newMethod);
-    method.value = m[ 0 ];
-})
-
-const validate = () => {
+  const validate = () => {
     form.post(route('user.deposits.validate'));
-  }
+  };
 </script>
 
 <style>
@@ -109,12 +118,12 @@ const validate = () => {
     border-color: #5156be !important;
   }
 
-  .placeholder{
-    height:100px;
-    width:100px;
+  .placeholder {
+    height: 100px;
+    width: 100px;
   }
-  .placeholder img{
-    width:100%;
-    height:100%;
+  .placeholder img {
+    width: 100%;
+    height: 100%;
   }
 </style>
