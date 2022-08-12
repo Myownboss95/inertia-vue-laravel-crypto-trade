@@ -32,8 +32,6 @@ Route::as('users.')->prefix('users')
 Route::resource('tradeables', TradeableController::class);
 
 Route::resource('plans', PlanController::class)->except('show');
-Route::get('/trades/assets/{type}',[TradeController::class, 'getTradeables'])->name('trades.getTradeables');
-Route::get('/trades/view',[TradeController::class, 'trades'])->name('trades.view');
 Route::resource('trades', TradeController::class);
 Route::resource('tradeables', TradeableController::class);
 Route::resource('settings', SettingController::class);

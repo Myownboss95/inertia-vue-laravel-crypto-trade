@@ -16,28 +16,28 @@
         <FormSelect
             id="tradeable_type"
             name="tradeable_type"
-            label="Demo Plan"
-            :options="{ 'crypto': 'Crypto Currency', 'commodity': 'Commodity', 'currency':'Currency' }"
+            label="Asset type"
+            :options="{ '':'Select Asset type', 'crypto': 'Crypto Currency', 'commodity': 'Commodity', 'currency':'Currency' }"
             v-model="form.tradeable_type"
           />
 
           <FormSelect
             id="asset"
             name="tradeable_id"
-            label="Demo Plan"
+            label="Asset"
             :options="assets"
             v-model="form.type"
           />
 
           <FormSelect
-            id="demo"
-            name="stoploss"
+            id="stop_loss"
+            name="stop_loss"
             label="Stop Loss"
             :options="{ 5: '5%', 15: '15%', 25: '25%', 35: '35%', 50: '50%' }"
-            v-model="form.stoploss"
+            v-model="form.stop_loss"
           />
 
-          
+
           <div class="d-flex justify-content-between">
           <FormButton
             type="button"
@@ -57,7 +57,7 @@
           </FormButton>
           </div>
         </form>
-     
+
     </div>
   </div>
   <div class="card shadow col-md-8 col-sm-12">
@@ -93,17 +93,16 @@ const form = useForm({
     name: '',
     type: '',
     tradeable_type: '',
+    stop_loss: ''
   });
 
   watch(()=>form.tradeable_type, (type) => {
     if(type != ''){
-        // console.log(type)
-        axios.get(route('admin.trades.getTradeables',{type}))
+        axios.get(route('user.trades.getTradeables',{type}))
         .then(res => {
             if(res.status != 200) throw Error()
             assets.value = res.data.data;
-            // console.log(res.data)
-            
+
         })
         .catch(err => {
             error('Failed to load assets, refresh page.');
@@ -113,7 +112,6 @@ const form = useForm({
 
     const placeTrade = (type) => {
         form.type = type;
-      console.log(form.data())
         form.post(route('admin.tradeables.store'));
   };
 
