@@ -356,11 +356,9 @@
               ><i
                 class="mdi mdi-face-profile font-size-16 align-middle me-1"
               ></i>
-              Profile</a
-            >
+              Profile</a>
             <a class="dropdown-item" href="auth-lock-screen.html"
-              ><i class="mdi mdi-lock font-size-16 align-middle me-1"></i> Lock
-              Screen</a
+              ><i class="mdi mdi-lock font-size-16 align-middle me-1"></i> Lock Screen</a
             >
             <div class="dropdown-divider"></div>
             <inertia-link method="post" as="button" class="dropdown-item" :href="route('logout')" replace>
