@@ -43,21 +43,18 @@
     <!-- preloader end -->
     <header>
         <!-- header content begin -->
-        <div class="uk-section uk-padding-remove-vertical in-header-inner uk-background-cover uk-background-top-center" style="background-image: url(img/in-wave-background-1.png);">
-            <!-- module navigation begin -->
-            <nav class="uk-navbar-container uk-navbar-transparent" data-uk-sticky="show-on-up: true; top: 80; animation: uk-animation-fade;">
+        <div class="uk-section uk-padding-remove-vertical">
+            <nav class="uk-navbar-container" data-uk-sticky="show-on-up: true; animation: uk-animation-slide-top;">
                 <div class="uk-container" data-uk-navbar>
-                    <div class="uk-navbar-left uk-width-auto">
+                    <div class="uk-navbar-left">
                         <div class="uk-navbar-item">
-                            <!-- module logo begin -->
-                            <a class="uk-logo" href="/">
-                                <img class="uk-margin-small-right in-offset-top-10" src="{{asset('front/img/in-lazy.gif')}}" data-src="{{asset('front/img/in-logo-1.svg')}}" alt="wave" width="134" height="23" data-uk-img>
+                            <!-- logo begin -->
+                            <a class="uk-logo" href="index-2.html">
+                                <img src="{{asset('front/img/in-lazy.gif')}}" data-src="{{asset('front/img/in-logo.svg')}}" alt="logo" width="146" height="39" data-uk-img>
                             </a>
-                            <!-- module logo begin -->
-                        </div>
-                    </div>
-                    <div class="uk-navbar-right uk-width-expand uk-flex uk-flex-right">
-                        <ul class="uk-navbar-nav uk-visible@m">
+                            <!-- logo end -->
+                            <!-- navigation begin -->
+                            <ul class="uk-navbar-nav uk-visible@m">
                             <li><a href="/">Home</a></li>
                             
                             
@@ -94,7 +91,7 @@
             <!-- module navigation end -->
             <div class="uk-container">
                 <div class="uk-grid">
-                    <div class="uk-width-1-1">
+                    <div class="uk-width-1-1" style="margin-top: 35px;">
                         <div class="uk-card uk-card-secondary uk-card-small uk-card-body uk-border-rounded">
                             <div class="uk-grid uk-text-small" data-uk-grid>
                                 <div class="uk-width-3-4@m uk-visible@m">
@@ -108,9 +105,9 @@
                         </div>
                     </div>
                     <!-- module breadcrumb begin -->
-                    <div class="uk-width-1-1 in-breadcrumb">
+                    <div class="uk-width-1-1 in-breadcrumb" style="margin-top: 20px;">
                         <ul class="uk-breadcrumb uk-text-uppercase">
-                            <li><a href="index-2.html">Home</a></li>
+                            <li style="color: black"><a href="index-2.html">Home</a></li>
                         </ul>
                     </div>
                     <!-- module breadcrumb end -->

@@ -132,7 +132,7 @@
                     <div class="uk-width-1-2@m">
                         <h4 class="uk-text-muted">Number speaks</h4>
                         <h1 class="uk-margin-medium-bottom">We always ready<br>for a <span class="in-highlight">challenge.</span></h1>
-                        <a href="#" class="uk-button uk-button-primary uk-border-rounded">Learn more<i class="fas fa-chevron-circle-right fa-xs uk-margin-small-left"></i></a>
+                        <a href="/register" class="uk-button uk-button-primary uk-border-rounded">Get Started<i class="fas fa-chevron-circle-right fa-xs uk-margin-small-left"></i></a>
                     </div>
                     <div class="uk-width-1-2@m">
                         <div class="uk-margin-large" data-uk-grid>
