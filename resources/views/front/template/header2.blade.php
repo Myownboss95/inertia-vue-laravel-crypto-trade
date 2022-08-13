@@ -49,7 +49,7 @@
                     <div class="uk-navbar-left">
                         <div class="uk-navbar-item">
                             <!-- logo begin -->
-                            <a class="uk-logo" href="index-2.html">
+                            <a class="uk-logo" href="/">
                                 <img src="{{asset('front/img/in-lazy.gif')}}" data-src="{{asset('front/img/in-logo.svg')}}" alt="logo" width="146" height="39" data-uk-img>
                             </a>
                             <!-- logo end -->
@@ -107,7 +107,7 @@
                     <!-- module breadcrumb begin -->
                     <div class="uk-width-1-1 in-breadcrumb" style="margin-top: 20px;">
                         <ul class="uk-breadcrumb uk-text-uppercase">
-                            <li style="color: black"><a href="index-2.html">Home</a></li>
+                            <li style="color: black"><a href="/">Home</a></li>
                         </ul>
                     </div>
                     <!-- module breadcrumb end -->

@@ -48,7 +48,7 @@
                     <div class="uk-navbar-left">
                         <div class="uk-navbar-item">
                             <!-- logo begin -->
-                            <a class="uk-logo" href="index-2.html">
+                            <a class="uk-logo" href="/">
                                 <img src="{{asset('front/img/in-lazy.gif')}}" data-src="{{asset('front/img/in-logo.svg')}}" alt="logo" width="146" height="39" data-uk-img>
                             </a>
                             <!-- logo end -->
@@ -85,8 +85,8 @@
                     </div>
                     <div class="uk-navbar-right">
                         <div class="uk-navbar-item uk-visible@m in-optional-nav">
-                            <a href="signin.html" class="uk-button uk-button-text">Log in<i class="fas fa-arrow-circle-right uk-margin-small-left"></i></a>
-                            <a href="#" class="uk-button uk-button-primary uk-border-rounded">Sign up<i class="fas fa-arrow-circle-right uk-margin-small-left"></i></a>
+                            <a href="/login" class="uk-button uk-button-text">Log in<i class="fas fa-arrow-circle-right uk-margin-small-left"></i></a>
+                            <a href="/register" class="uk-button uk-button-primary uk-border-rounded">Sign up<i class="fas fa-arrow-circle-right uk-margin-small-left"></i></a>
                         </div>
                     </div>
                 </div>
