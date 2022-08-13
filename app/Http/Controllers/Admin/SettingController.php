@@ -51,16 +51,16 @@ class SettingController extends Controller
     public function update(Request $request, Settings $setting) {
 
         $valid = $request->validate([
-            'phone' => 'required',
-            'email' => 'required|email',
-            'notification_email' => 'required|email',
-            'twitter' => 'required|url',
-            'facebook' => 'required|url',
-            'instagram' => 'required|url'
+            'phone' => ['required'],
+            'email' => ['required', 'email'],
+            'notification_email' => ['required', 'email'],
+            'twitter' => ['nullable', 'url'],
+            'facebook' => ['nullable', 'url'],
+            'instagram' => ['nullable', 'url'],
+            'chat_script' => ['nullable'],
         ]);
         DB::beginTransaction();
         try {
-
         $setting->update($valid);
         DB::commit();
         } catch (\Throwable $th) {
