@@ -58,7 +58,7 @@
             icon="key"
           />
           <SidebarItem
-            name="Contact Details"
+            name="Site settings"
             :url="route('admin.settings.create')"
             icon="phone"
             v-if="$page.props.auth.user.is_admin"
