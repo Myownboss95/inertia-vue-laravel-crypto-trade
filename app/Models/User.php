@@ -72,4 +72,5 @@ class User extends Authenticatable implements MustVerifyEmail
         $account = $this->accounts()->where('type', $type)->first();
         return (float) $account?->account ?? 0;
     }
+
 }

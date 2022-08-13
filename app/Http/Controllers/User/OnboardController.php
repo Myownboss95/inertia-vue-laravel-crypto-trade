@@ -110,10 +110,9 @@ class OnboardController extends Controller
             ]);
         }
 
-        if ($request->hasFile('photograpgh')) {
-            $file = $this->uploadFile($request->file('photograpgh'), 'profile_pictures');
-            $user->update(['image' => $file,
-            ]);
+        if ($request->hasFile('photograph')) {
+            $file = $this->uploadFile($request->file('photograph'), 'profile_pictures');
+            $user->update(['image' => $file,]);
         }
 
         return redirect()

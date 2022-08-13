@@ -18,6 +18,12 @@
             icon="users"
             v-if="is_admin"
           />
+          <SidebarItem
+            name="KYC verification"
+            :url="route('admin.kyc.index')"
+            icon="user-x"
+            v-if="is_admin"
+          />
           <li class="menu-title">Transactions</li>
           <SidebarItem
             name="Trades History"

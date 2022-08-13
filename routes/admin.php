@@ -3,6 +3,7 @@
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\PaymentMethodController;
 use App\Http\Controllers\Admin\DepositController;
+use App\Http\Controllers\Admin\KycController;
 use App\Http\Controllers\Admin\PlanController;
 use App\Http\Controllers\Admin\SettingController;
 use App\Http\Controllers\Admin\TradeableController;
@@ -30,12 +31,15 @@ Route::as('users.')->prefix('users')
     });
 
 Route::resource('tradeables', TradeableController::class);
-
 Route::resource('plans', PlanController::class)->except('show');
 Route::resource('trades', TradeController::class);
 Route::resource('tradeables', TradeableController::class);
 Route::resource('settings', SettingController::class);
 Route::resource('payment-method', PaymentMethodController::class);
-
 Route::resource('deposits', DepositController::class);
 Route::resource('withdrawals', WithdrawalController::class);
+Route::as('kyc.')->prefix('kyc')->controller(KycController::class)->group(function () {
+    Route::get('', 'index')->name('index');
+    Route::post('approve/{user}', 'approve')->name('approve');
+    Route::post('decline/{user}', 'decline')->name('decline');
+});
