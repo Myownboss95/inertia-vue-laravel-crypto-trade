@@ -45,6 +45,13 @@
             v-model="form.instagram"
           />
 
+          <FormGroup
+            name="chat_script"
+            placeholder="Chat Script"
+            label="Chat Script"
+            v-model="form.chat_script"
+          />
+
           <!-- <FormSelect
             id="demo"
             name="demo"
@@ -60,7 +67,7 @@
             class="w-100 btn btn-outline-primary"
             :disabled="form.processing"
           >
-          <ButtonLoader :text="buttonText" :loading="form.processing" />
+          <ButtonLoader :text="buttonText()" :loading="form.processing" />
           </FormButton>
         </form>
       </div>
@@ -92,6 +99,7 @@ const buttonText = () => {
     twitter: props.settings?.twitter || '',
     facebook:props.settings?.facebook || '',
     instagram:props.settings?.instagram || '',
+    chat_script:props.settings?.chat_script || '',
   });
 
 
