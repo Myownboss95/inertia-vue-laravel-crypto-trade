@@ -31,7 +31,7 @@
                         <div>
                             <h4><span>Quick Links</span></h4>
                             <ul class="uk-list uk-link-text">
-                                
+
                                 <li><a href="/about-us">About Us</a></li>
                                 <li><a href="/packages">Packages</a></li>
                                 <li><a href="/testimonials">Testimonials</a></li>
@@ -115,8 +115,9 @@
 <script src="{{asset('front/js/vendors/uikit.min.js')}}"></script>
 <script src="{{asset('front/js/vendors/indonez.min.js')}}"></script>
 <script src="{{asset('front/js/config-theme.js')}}"></script>
+<x-live-chat />
 </body>
 
 
 <!-- Mirrored from www.indonez.com/html-demo/Wave/ by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 06 Aug 2022 19:00:37 GMT -->
-</html> 
+</html>

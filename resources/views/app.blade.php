@@ -11,5 +11,6 @@
 	<body class="antialiased bg-gray-900">
 		@inertia
         <x-translations />
+        <x-live-chat />
 	</body>
 </html>
