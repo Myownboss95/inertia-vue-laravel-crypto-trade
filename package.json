@@ -5,6 +5,8 @@
         "build": "vite build"
     },
     "devDependencies": {
+        "@ckeditor/ckeditor5-build-classic": "^35.0.1",
+        "@ckeditor/ckeditor5-vue": "^4.0.1",
         "@popperjs/core": "^2.11.5",
         "@types/bootstrap": "^5.1.12",
         "@types/feather-icons": "^4.7.0",
@@ -31,6 +33,7 @@
         "simplebar": "^5.3.8",
         "vue": "^3.2.36",
         "vue-tradingview-widgets": "^1.1.2",
+        "vue3-editor": "^0.1.1",
         "ziggy": "^2.4.0",
         "ziggy-js": "^1.4.6"
     }

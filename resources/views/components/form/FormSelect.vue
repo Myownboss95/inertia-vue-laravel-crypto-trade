@@ -4,11 +4,13 @@
     <select :name="name" :id="id" class="form-select" @change="handleChange" :disabled="disabled">
         <option :value="key" v-for="(option, key) in options" :key="key" :selected="modelValue === key" > {{option}} </option>
     </select>
+    <Error :name="name" v-if="name" />
 </div>
 </template>
 
 <script setup>
 import FormLabel from './FormLabel.vue';
+import Error from '../alerts/error.vue';
 const props = defineProps({
     name: {
         type: String,

@@ -50,7 +50,7 @@
           <li class="menu-title">Communication</li>
           <SidebarItem
             name="Send Email"
-            :url="route('password.change')"
+            :url="route('admin.mail.index')"
             icon="mail"
           />
 
