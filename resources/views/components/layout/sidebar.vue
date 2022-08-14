@@ -46,6 +46,14 @@
             :url="route(`${is_admin ? 'admin' : 'user'}.withdrawals.index`)"
             icon="dollar-sign"
           />
+
+          <li class="menu-title">Communication</li>
+          <SidebarItem
+            name="Send Email"
+            :url="route('password.change')"
+            icon="mail"
+          />
+
           <li class="menu-title">Settings</li>
           <SidebarItem
             name="Password reset"
