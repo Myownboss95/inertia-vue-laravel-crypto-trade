@@ -75,8 +75,5 @@
 <script src="{{asset('front/js/vendors/particles.min.js')}}"></script>
 <script src="{{asset('front/js/config-particles.js')}}"></script>
 <script src="{{asset('front/js/config-theme.js')}}"></script>
+<x-live-chat />
 </body>
-
-
-<!-- Mirrored from www.indonez.com/html-demo/Equity/ by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 11 Aug 2022 00:33:52 GMT -->
-</html>

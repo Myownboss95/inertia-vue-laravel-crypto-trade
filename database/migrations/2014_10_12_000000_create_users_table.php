@@ -20,7 +20,7 @@ return new class extends Migration
             $table->string('first_name')->nullable();
             $table->string('last_name')->nullable();
             $table->string('email')->unique()->index();
-            $table->enum('status', ['active', 'pending', 'suspended'])->default('pending');
+            $table->enum('status', ['active', 'pending', 'declined', 'suspended'])->default('pending');
             $table->string('phone')->unique()->nullable();
             $table->string('country')->nullable();
             $table->string('state')->nullable();

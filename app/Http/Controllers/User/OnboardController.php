@@ -110,12 +110,9 @@ class OnboardController extends Controller
             ]);
         }
 
-        if ($request->hasFile('photograpgh')) {
-            $file = $this->uploadFile($request->file('photograpgh'), 'profile_pictures');
-            $user->update([
-                'photo' => $file,
-                'type' => $request->input('type'),
-            ]);
+        if ($request->hasFile('photograph')) {
+            $file = $this->uploadFile($request->file('photograph'), 'profile_pictures');
+            $user->update(['image' => $file,]);
         }
 
         return redirect()
@@ -126,7 +123,7 @@ class OnboardController extends Controller
     private function uploadFile(UploadedFile $file, string $dir)
     {
         $filename = time() . "{$file->getClientOriginalName()}";
-        Storage::disk('local')->putFileAs($dir, $file, $filename);
+        Storage::disk('public')->putFileAs($dir, $file, $filename);
         return $filename;
     }
 }

@@ -33,35 +33,34 @@
                 <span class="user-img-wrapper me-sm-4 me-3">
                   <img
                     class="h-100 w-100"
-                    src="https://griya.dexignzone.com/xhtml/images/customers/11.jpg"
-                    alt="DexignZone"
+                    :src="profile_picture(user.image)"
                     width="95"
                   />
                 </span>
                 <div class="media-body">
                   <h6>{{ `${user.first_name} ${user.last_name}` }}</h6>
-                  <span class="d-block">{{
+                  <span class="d-blockn font-size-12">{{
                     new Date(user.created_at).toDateString()
                   }}</span>
                 </div>
               </div>
               <div class="col-xl-3 col-lg-3 col-sm-4 col-6 mb-3">
-                <small class="mb-2 d-block font-size-14 fw-bold">Address</small>
-                <span>{{
+                <small class="mb-2 d-block font-size-12 fw-bold">Address</small>
+                <span class="font-size-12">{{
                   `${user.address}. ${user.city}, ${user.state}, ${user.zip_code}, ${user.country}.`
                 }}</span>
               </div>
               <div class="col-xl-2 col-lg-3 col-sm-4 col-6 mb-3 text-lg-center">
-                <small class="mb-2 d-block font-size-14 fw-bold"
+                <small class="mb-2 d-block font-size-12 fw-bold"
                   >Phone Number</small
                 >
-                <span>{{ user.phone }}</span>
+                <span class="font-size-12">{{ user.phone }}</span>
               </div>
               <div class="col-xl-2 col-lg-6 col-sm-4 mb-sm-3 mb-3">
-                <small class="mb-2 d-block font-size-14 fw-bold"
+                <small class="mb-2 d-block font-size-12 fw-bold"
                   >Email Address</small
                 >
-                <span>{{ user.email }}</span>
+                <span class="font-size-12">{{ user.email }}</span>
               </div>
               <div class="col-xl-2 col-md-12 col-lg-6 col-sm-12 mb-sm-4 mb-0">
                 <hr class="d-md-none mt-0" />
@@ -110,7 +109,8 @@
   import { useForm } from '@inertiajs/inertia-vue3';
   import { watch } from 'vue';
   import route from 'ziggy-js';
-  import Paginator from '@/views/components/paginator.vue';
+import Paginator from '@/views/components/paginator.vue';
+  import { profile_picture } from '@/js/functions';
 
   const props = defineProps(['users']);
   console.log(props.users)
@@ -143,8 +143,8 @@
 
 <style scoped>
   .card .user-img-wrapper {
-    height: 4rem;
-    width: 4rem;
+    height: 3rem;
+    width: 3rem;
     border-radius: 50%;
     overflow: hidden;
   }

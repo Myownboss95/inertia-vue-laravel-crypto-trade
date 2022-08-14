@@ -39,4 +39,14 @@ class LocationService
         $contents = file_get_contents(public_path($this->country_file));
         return json_decode($contents, true);
     }
+
+    public function getCountry($id)
+    {
+        return $this->countries()[$id] ?? $id;
+    }
+
+    public function getState($country_id, $state_id)
+    {
+        return $this->states($this->getCountry($country_id))[$state_id] ?? $state_id;
+    }
 }

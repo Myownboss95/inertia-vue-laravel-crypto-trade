@@ -52,7 +52,7 @@ const props = defineProps({
     }
 })
 
-const emit = defineEmits([ 'modealClosed' ]);
+const emit = defineEmits([ 'modalClosed' ]);
 
 let myModal = null;
 
@@ -69,7 +69,7 @@ watch(() => props.open, (open) => {
 
 const closeModal = () => {
     myModal.hide();
-    emit('modealClosed');
+    emit('modalClosed');
 }
 
 </script>

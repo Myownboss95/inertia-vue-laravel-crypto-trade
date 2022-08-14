@@ -1,7 +1,7 @@
 <template>
   <Head title="Trades" />
   <breadcrumb title="Trades" :crumbs="['Dashboard', 'Trades']" />
-  <div class="card shadow col-lg-10 mx-auto">
+  <div class="card shadow-lg col-lg-10 mx-auto radius-20">
     <div class="card-body">
         <div class="table-responsive">
           <table class="table">

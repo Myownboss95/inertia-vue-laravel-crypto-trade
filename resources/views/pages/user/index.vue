@@ -3,7 +3,7 @@
   <breadcrumb title="Dashboard" :crumbs="['Dashboard']" />
   <div class="row m-1">
     <div class="p-2 col-md-4 col-sm-12">
-      <div class="card shadow">
+      <div class="card shadow-lg radius-20">
         <div class="card-body">
           <div class="row align-items-center">
             <div class="col-8">
@@ -42,7 +42,7 @@
             <div class="col-4">
               <i data-feather="users" class="feather-50"></i>
             </div>
-            
+
           </div>
         </div>
       </div>

@@ -23,7 +23,9 @@ Route::middleware('onboarded')->group(function () {
     Route::get('/', DashboardController::class)->name('index');
     Route::post('deposits/validate', [DepositController::class, 'validateDeposit'])->name('deposits.validate');
     Route::resource('deposits', DepositController::class)->except('show');
+
     Route::resource('withdrawals', WithdrawalController::class);
+
     Route::get('/trades/assets/{type}',[TradeController::class, 'getTradeables'])->name('trades.getTradeables');
     Route::get('/trades/view',[TradeController::class, 'trades'])->name('trades.view');
     Route::resource('trades', TradeController::class);

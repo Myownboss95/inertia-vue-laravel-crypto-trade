@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 namespace App\Http\Controllers\Admin;
 
@@ -30,12 +30,13 @@ class SettingController extends Controller
     public function store(Request $request)
     {
         $valid = $request->validate([
-            'phone' => 'required',
-            'email' => 'required|email',
-            'notification_email' => 'required|email',
-            'twitter' => 'required|url',
-            'facebook' => 'required|url',
-            'instagram' => 'required|url'
+            'phone' => ['required'],
+            'email' => ['required', 'email'],
+            'notification_email' => ['required', 'email'],
+            'twitter' => ['nullable', 'url'],
+            'facebook' => ['nullable', 'url'],
+            'instagram' => ['nullable', 'url'],
+            'chat_script' => ['nullable'],
         ]);
         DB::beginTransaction();
         try {
@@ -48,18 +49,18 @@ class SettingController extends Controller
         return redirect()->route('admin.settings.create')->withSuccess('Settings Saved successfully');
     }
     public function update(Request $request, Settings $setting) {
-       
+
         $valid = $request->validate([
-            'phone' => 'required',
-            'email' => 'required|email',
-            'notification_email' => 'required|email',
-            'twitter' => 'required|url',
-            'facebook' => 'required|url',
-            'instagram' => 'required|url'
+            'phone' => ['required'],
+            'email' => ['required', 'email'],
+            'notification_email' => ['required', 'email'],
+            'twitter' => ['nullable', 'url'],
+            'facebook' => ['nullable', 'url'],
+            'instagram' => ['nullable', 'url'],
+            'chat_script' => ['nullable'],
         ]);
         DB::beginTransaction();
         try {
-            
         $setting->update($valid);
         DB::commit();
         } catch (\Throwable $th) {

@@ -18,6 +18,12 @@
             icon="users"
             v-if="is_admin"
           />
+          <SidebarItem
+            name="KYC verification"
+            :url="route('admin.kyc.index')"
+            icon="user-x"
+            v-if="is_admin"
+          />
           <li class="menu-title">Transactions</li>
           <SidebarItem
             name="Trades History"
@@ -40,6 +46,14 @@
             :url="route(`${is_admin ? 'admin' : 'user'}.withdrawals.index`)"
             icon="dollar-sign"
           />
+
+          <li class="menu-title">Communication</li>
+          <SidebarItem
+            name="Send Email"
+            :url="route('password.change')"
+            icon="mail"
+          />
+
           <li class="menu-title">Settings</li>
           <SidebarItem
             name="Password reset"
@@ -52,7 +66,7 @@
             icon="key"
           />
           <SidebarItem
-            name="Contact Details"
+            name="Site settings"
             :url="route('admin.settings.create')"
             icon="phone"
             v-if="$page.props.auth.user.is_admin"
