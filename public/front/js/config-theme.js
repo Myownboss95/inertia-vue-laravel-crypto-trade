@@ -6,35 +6,28 @@
  * Indonez Copyright 2020 All Rights Reserved.
  * -------------------------------------------------------------------------- 
  * javascript handle initialization
-    1. uikit slideshow
-    2. Modal iframe
-    3. Counter config
+    1. Slideshow
+    2. Counter
+    3. Mobile nav button
+    4. Modal iframe
+    5. Tradingview widget
  * -------------------------------------------------------------------------- */
 
 'use strict';
 
 const HomepageApp = {
-    //----------- 1. uikit slideshow -----------
+    //----------- 1. Slideshow -----------
     theme_slideshow: function() {
         UIkit.slideshow('.in-slideshow', {
             autoplay: true,
-            autoplayInterval: 7000,
+            autoplayInterval: 8000,
             pauseOnHover: false,
-            animation: 'fade',
-            minHeight: 480,
-            maxHeight: 700
+            animation: 'slide',
+            minHeight: 440,
+            maxHeight: 580
         });
     },
-    //---------- 2. Modal iframe -----------
-    theme_iframe: function() {
-        const youtube = new iframeVid({
-            selector: '.in-iframe',
-            url: 'https://www.youtube.com/embed/F3QpgXBtDeo',
-            width: 900,
-            height: 506
-        });
-    },
-    //---------- 3. Counter config -----------
+    //---------- 2. Counter -----------
     theme_counter: function() {
         const counter = new counterUp({
             selector: '.count',
@@ -45,10 +38,69 @@ const HomepageApp = {
         });
         counter.start();
     },
+    //---------- 3. Mobile nav button -----------
+    theme_mobilenav: function() {
+        mobileNav({
+            addonButtons: true,
+            buttons: [{
+                name: 'Log in', // button name
+                url: '/signin.html', // button url
+                type: 'primary', // button type (default, primary, secondary, danger, text)
+                icon: 'sign-in-alt' // button icon, you can use all icons from here : https://fontawesome.com/icons?d=gallery&s=solid&m=free
+            }]
+        });
+    },
+    //---------- 4. Modal iframe -----------
+    theme_video: function() {
+        modalIframe({
+            videos: [{
+                id: 'video-1', // video id (should not be the same as the next video)
+                url: 'https://www.youtube.com/embed/F3QpgXBtDeo' // video embed url
+            }]
+        });
+    },
+    //---------- 5. Tradingview widget -----------
+    theme_tradingview: function() {
+        if (window.tradingWidget)
+            tradingWidget({
+                widget: [{
+                        type: "market-overview",
+                        theme: "light",
+                        symbol: [ // array of instruments symbol based on Tradingview
+                            {
+                                s: "FX:EURUSD"
+                            },
+                            {
+                                s: "FX:GBPUSD"
+                            },
+                            {
+                                s: "FX:USDJPY"
+                            },
+                            {
+                                s: "FX:USDCHF"
+                            },
+                            {
+                                s: "FX:AUDUSD"
+                            },
+                            {
+                                s: "FX:USDCAD"
+                            }
+                        ]
+                    },
+                    {
+                        type: "symbol-overview",
+                        theme: "dark",
+                        symbol: "GOOGL" // symbol based on Tradingview
+                    }
+                ]
+            });
+    },
     theme_init: function() {
         HomepageApp.theme_slideshow();
-        HomepageApp.theme_iframe();
         HomepageApp.theme_counter();
+        HomepageApp.theme_mobilenav();
+        HomepageApp.theme_video();
+        HomepageApp.theme_tradingview();
     }
 }
 

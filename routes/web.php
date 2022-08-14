@@ -56,10 +56,12 @@ Route::middleware('guest')->group(function () {
     Route::get('reset-password', SuccessfulPasswordResetController::class)->name('password.reset.successful');
 });
 
-Route::view('/', 'front.home', [
+$theme = config('app.theme','front2');
+
+Route::view('/', "$theme.home", [
     'plans' => Plan::latest()->take(2)->get(),
 ])->name('front.index');
-Route::view('/about-us', 'front.about-us');
-Route::view('/contact-us','front.contact');
-Route::view('/terms-and-conditions', 'front.terms-and-conditions');
-Route::view('/faqs', 'front.faqs');
+Route::view('/about-us', "$theme.about-us");
+Route::view('/contact-us',"$theme.contact");
+Route::view('/terms-and-conditions', "$theme.terms-and-conditions");
+Route::view('/faqs', "$theme.faqs");
