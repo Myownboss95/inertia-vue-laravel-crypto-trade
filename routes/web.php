@@ -58,9 +58,7 @@ Route::middleware('guest')->group(function () {
 
 $theme = config('app.theme','front2');
 
-Route::view('/', "$theme.home", [
-    'plans' => Plan::latest()->take(2)->get(),
-])->name('front.index');
+Route::view('/', "$theme.home")->name('front.index');
 Route::view('/about-us', "$theme.about-us");
 Route::view('/contact-us',"$theme.contact");
 Route::view('/terms-and-conditions', "$theme.terms-and-conditions");
