@@ -6,9 +6,11 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use App\Services\LocationService;
 use App\Http\Controllers\Controller;
+use App\Mail\Kyc\Uploaded;
 use Illuminate\Http\UploadedFile;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Validation\Rule;
+use Mail;
 
 class OnboardController extends Controller
 {
@@ -114,6 +116,8 @@ class OnboardController extends Controller
             $file = $this->uploadFile($request->file('photograph'), 'profile_pictures');
             $user->update(['image' => $file,]);
         }
+
+        Mail::to($user)->send(new Uploaded($user));
 
         return redirect()
             ->route('user.index')

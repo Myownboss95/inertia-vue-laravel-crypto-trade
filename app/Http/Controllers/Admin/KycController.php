@@ -5,7 +5,10 @@ namespace App\Http\Controllers\Admin;
 use App\Models\User;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Mail\Kyc\Approved;
+use App\Mail\Kyc\Declined;
 use App\Services\LocationService;
+use Mail;
 
 class KycController extends Controller
 {
@@ -33,6 +36,7 @@ class KycController extends Controller
         $user->update([
             'status' => 'active'
         ]);
+        Mail::to($user)->send(new Approved($user));
         session()->flash('success', 'User approved');
         return back();
     }
@@ -44,6 +48,7 @@ class KycController extends Controller
             'status' => 'active'
         ]);
         session()->flash('success', 'User declined');
+        Mail::to($user)->send(new Declined($user));
         return back();
     }
 }
