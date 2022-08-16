@@ -94,7 +94,7 @@ import ButtonLoader from '@/views/components/form/ButtonLoader.vue';
 
   const theme = useTheme();
 
-  const assets = ref(null);
+  const assets = ref({'':'Select Asset'});
 
   const props = defineProps({
     trades: Object,
@@ -128,7 +128,7 @@ import ButtonLoader from '@/views/components/form/ButtonLoader.vue';
 
   const placeTrade = (type) => {
     form.type = type;
-    form.post(route('admin.tradeables.store'));
+    form.post(route('user.trades.store'));
   };
 </script>
 

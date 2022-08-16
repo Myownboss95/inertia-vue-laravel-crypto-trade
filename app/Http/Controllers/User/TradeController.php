@@ -37,12 +37,13 @@ class TradeController extends Controller
     }
 
 
-    public function trade(Request $request)
+    public function store(Request $request)
     {
         $data = $request->validate([
-            'amount' => ['required', 'numeric'],
+            'amount' => ['required', 'numeric'],'type' => ['required', 'in:buy,sell'],
+
         ]);
-        
+
         $data = $request->all();
         $user = User::findOrFail(auth()->user()->id);
         $user->trades()->create(array_merge($data,['status' => 'active', ]));

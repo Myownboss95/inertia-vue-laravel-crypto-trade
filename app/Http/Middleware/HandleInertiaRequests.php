@@ -39,6 +39,7 @@ class HandleInertiaRequests extends Middleware
     {
         $user = auth()->check() ? User::findOrFail($request->user()->id) : null;
         return array_merge(parent::share($request), [
+            'app.locale' => app()->getLocale(),
             'auth.user' => function () use ($request, $user) {
                 if (!$user) return null;
                 return $user->only('id', 'is_admin', 'email', 'first_name', 'last_name', 'phone', 'image');

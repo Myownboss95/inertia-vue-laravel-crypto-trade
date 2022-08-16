@@ -73,4 +73,22 @@ class User extends Authenticatable implements MustVerifyEmail
         return (float) $account?->account ?? 0;
     }
 
+    public function generateAccounts()
+    {
+        $this->accounts()->createMany([
+            [
+                'account' => 0,
+                'type' => 'main',
+            ],
+            [
+                'account' => 0,
+                'type' => 'invested',
+            ],
+            [
+                'account' => 0,
+                'type' => 'referral',
+            ],
+        ]);
+    }
+
 }
