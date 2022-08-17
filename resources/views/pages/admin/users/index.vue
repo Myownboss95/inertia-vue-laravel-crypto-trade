@@ -113,7 +113,6 @@ import Paginator from '@/views/components/paginator.vue';
   import { profile_picture } from '@/js/functions';
 
   const props = defineProps(['users']);
-  console.log(props.users)
   const form = useForm({
     status: route().params.status || 'all',
     search: route().params.search || '',

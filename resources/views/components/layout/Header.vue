@@ -90,85 +90,30 @@
           >
             <img
               id="header-lang-img"
-              src="@/assets/images/flags/us.jpg"
+              :src="loadFlag(activeLocale.flag)"
               alt="Header Language"
               height="16"
             />
           </button>
           <div class="dropdown-menu dropdown-menu-end">
             <!-- item-->
-            <a
+            <div
               href="javascript:void(0);"
-              class="dropdown-item notify-item language"
+              class="dropdown-item notify-item language cursor-pointer"
               data-lang="en"
+              v-for="(lang, key) in locales"
+              :key="key"
+              @click="setLocale(lang)"
             >
               <img
-                src="@/assets/images/flags/us.jpg"
+                :src="loadFlag(lang.flag)"
                 alt="user-image"
                 class="me-1"
                 height="12"
               />
-              <span class="align-middle">English</span>
-            </a>
+              <span class="align-middle">{{lang.name}}</span>
+            </div>
             <!-- item-->
-            <a
-              href="javascript:void(0);"
-              class="dropdown-item notify-item language"
-              data-lang="sp"
-            >
-              <img
-                src="@/assets/images/flags/spain.jpg"
-                alt="user-image"
-                class="me-1"
-                height="12"
-              />
-              <span class="align-middle">Spanish</span>
-            </a>
-
-            <!-- item-->
-            <a
-              href="javascript:void(0);"
-              class="dropdown-item notify-item language"
-              data-lang="gr"
-            >
-              <img
-                src="@/assets/images/flags/germany.jpg"
-                alt="user-image"
-                class="me-1"
-                height="12"
-              />
-              <span class="align-middle">German</span>
-            </a>
-
-            <!-- item-->
-            <a
-              href="javascript:void(0);"
-              class="dropdown-item notify-item language"
-              data-lang="it"
-            >
-              <img
-                src="@/assets/images/flags/italy.jpg"
-                alt="user-image"
-                class="me-1"
-                height="12"
-              />
-              <span class="align-middle">Italian</span>
-            </a>
-
-            <!-- item-->
-            <a
-              href="javascript:void(0);"
-              class="dropdown-item notify-item language"
-              data-lang="ru"
-            >
-              <img
-                src="@/assets/images/flags/russia.jpg"
-                alt="user-image"
-                class="me-1"
-                height="12"
-              />
-              <span class="align-middle">Russian</span>
-            </a>
           </div>
         </div>
 
@@ -374,10 +319,47 @@
   import { useTheme } from '@/stores/theme';
 import { usePage } from '@inertiajs/inertia-vue3';
 import { profile_picture } from '@/js/functions';
+import { Inertia } from '@inertiajs/inertia';
+import route from 'ziggy-js';
 
 
 const user = computed(() => usePage().props.value.auth.user);
 const is_admin = user.is_admin;
+
+const locales = ref([
+    {
+        name: 'English',
+        short_name: 'en',
+        flag: 'us.jpg',
+    },
+    {
+        name: 'Spanish',
+        short_name: 'es',
+        flag: 'spain.jpg',
+    },
+    {
+        name: 'German',
+        short_name: 'de',
+        flag: 'germany.jpg',
+    },
+    {
+        name: 'Italian',
+        short_name: 'it',
+        flag: 'italy.jpg',
+    },
+]);
+
+const loadFlag = flag => {
+    return `/storage/flags/${ flag }`;
+}
+
+const locale = computed(() => usePage().props.value.app.locale);
+
+const activeLocale = computed(() => locales.value.filter(loc => loc.short_name == locale.value)[0]);
+
+const setLocale = locale => Inertia.post(route('set-locale', locale.short_name ));
+
+
 
   const theme = useTheme();
 

@@ -1,3 +1,7 @@
 {
-    "Dashboard :name" : "Welcome :name"
+    "Dashboard :name" : "Welcome :name",
+    "Address":"Address",
+    "Phone Number": "Phone Number",
+    "Email Address": "Email Address",
+    "Search...":"Search..."
 }

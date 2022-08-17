@@ -22,7 +22,7 @@ class TradeController extends Controller
 
     public function trades()
     {
-        return inertia('admin.trades.trades');
+        return inertia('user.trades.trades');
     }
 
     public function getTradeables($type)
@@ -39,13 +39,17 @@ class TradeController extends Controller
 
     public function store(Request $request)
     {
-        $data = $request->validate([
-            'amount' => ['required', 'numeric'],'type' => ['required', 'in:buy,sell'],
-
+        $data = $request->validate(['amount' => ['required', 'numeric'],
+            'type' => ['required', 'in:buy,sell'],
+            'stop_loss' => ['nullable'],
+            'tradeable_id' => ['required', 'numeric'],
         ]);
-
-        $data = $request->all();
         $user = User::findOrFail(auth()->user()->id);
+        $account = $user->accounts()->where('type', 'invested')->first();
+        if ($request->input('amount') > $account->account) {
+            session()->flash('error', 'You have insufficient funds to continue this trade');
+            return back();
+        }
         $user->trades()->create(array_merge($data,['status' => 'active', ]));
     }
 }

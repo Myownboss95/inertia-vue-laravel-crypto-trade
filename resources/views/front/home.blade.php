@@ -68,8 +68,7 @@
                         </div>
                         <div class="in-slide-img">
                             <img src="{{ asset('front/img/in-lazy.gif') }}"
-                                data-src="{{ asset('front/img/in-equity-slide-1.png') }}" alt="image-slide" width="652"
-                                height="746" data-uk-img>
+                                data-src="{{ asset('front/img/in-equity-slide-1.png') }}" alt="image-slide" style="height: 600px; width: auto" data-uk-img>
                         </div>
                     </div>
                 </div>
@@ -136,8 +135,8 @@
                         </div>
                         <div class="in-slide-img">
                             <img src="{{ asset('front/img/in-lazy.gif') }}"
-                                data-src="{{ asset('front/img/in-equity-slide-2.png') }}" alt="image-slide" width="652"
-                                height="746" data-uk-img>
+                                data-src="{{ asset('front/img/in-equity-slide-2.png') }}" alt="image-slide"
+                                data-uk-img style="height: 600px; width: auto">
                         </div>
                     </div>
                 </div>
@@ -216,7 +215,7 @@
 </div>
 <!-- section content end -->
 <!-- section content begin -->
-<div class="uk-section in-equity-2 uk-background-contain uk-background-center" data-src="{{asset('front/img/in-equity-2-bg.png')}}" style="background-image: 
+<div class="uk-section in-equity-2 uk-background-contain uk-background-center" data-src="{{asset('front/img/in-equity-2-bg.png')}}" style="background-image:
                                     url('{{asset('front/img/in-equity-2-bg.png')}}');"
     data-uk-img>
     <div class="uk-container uk-margin-top">
@@ -352,7 +351,7 @@
                     </div>
                 </div>
             </div>
-            
+
         </div>
     </div>
 </div>
@@ -423,7 +422,7 @@
                         <a href="/login" class="uk-button uk-button-secondary uk-border-rounded ml-2">Log into your account<i
                                 class="fas fa-arrow-circle-right uk-margin-small-left"></i></a>
                     </div>
-                    
+
                 </div>
             </div>
         </div>

@@ -4,6 +4,7 @@ use App\Http\Controllers\ChangePasswordController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LogoutController;
 use App\Http\Controllers\EmailVerifiedController;
+use App\Http\Controllers\LocaleController;
 use App\Http\Controllers\LocationController;
 use App\Http\Controllers\SuccessfulPasswordResetController;
 use App\Http\Controllers\TwoFactorAuthenticationController;
@@ -55,6 +56,8 @@ Route::middleware('guest')->group(function () {
     Route::get('logout', LogoutController::class);
     Route::get('reset-password', SuccessfulPasswordResetController::class)->name('password.reset.successful');
 });
+
+Route::post('set-locale/{locale}', [LocaleController::class, 'setLocale'])->name('set-locale');
 
 $theme = config('app.theme','front2');
 
