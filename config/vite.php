@@ -29,7 +29,7 @@ return [
                 'key' => env('DEV_SERVER_KEY'),
                 'cert' => env('DEV_SERVER_CERT'),
             ],
-            'build_path' => 'build',
+            'build_path' => env('VITE_BUILD_PATH', 'build'),
         ],
     ],
 
