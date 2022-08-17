@@ -139,7 +139,7 @@
         <div class="tab-pane active" id="overview" role="tabpanel">
           <div class="card">
             <div class="card-header">
-              <h5 class="card-title mb-0">About</h5>
+              <h5 class="card-title mb-0">Bio</h5>
             </div>
             <div class="card-body">
               <div>
@@ -321,7 +321,7 @@ let states = ref({});
 watch(() => form.country, (country) => {
     if (country != '') {
         axios.get(route('location.states', {
-            country: prop.countries[country]
+            country: props.countries[country]
         }))
         .then(response => {
             if (response.status == 200) {
