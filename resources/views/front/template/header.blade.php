@@ -84,27 +84,30 @@
                         </div>
                     </div>
                     <div class="uk-navbar-right">
-                        <div class="uk-navbar-item uk-visible@m in-optional-nav">
-                            <div style="margin-right: 10px">
-                                <a href="#">
-                                    <img src="{{asset('storage/flags/us.jpg')}}" style="width:16px; height: auto;" />
-                                    English
-                                </a>
-                                <div class="uk-navbar-dropdown uk-navbar-dropdown-width-1/2">
-                                    <div class="uk-navbar-dropdown-grid uk-child-width-1" data-uk-grid>
-                                        <div>
-                                            <ul class="uk-nav uk-navbar-dropdown-nav">
-                                                <li>
-                                                    <a href="/about-us">
-                                                        <img src="{{asset('storage/flags/us.jpg')}}" style="width:16px; height: auto;" />
-                                                        English
-                                                    </a>
-                                                </li>
-                                            </ul>
-                                        </div>
+                        <div style="margin-right: 75px">
+                            <a href="javascript:void(0);">
+                                <img src="{{asset('storage/flags/'.$active_language['flag'])}}" style="width:16px; height: auto;" />
+                                {{$active_language['name']}}
+                            </a>
+                            <div class="uk-navbar-dropdown uk-navbar-dropdown-width-1/2">
+                                <div class="uk-navbar-dropdown-grid uk-child-width-1" data-uk-grid>
+                                    <div>
+                                        <ul class="uk-nav uk-navbar-dropdown-nav">
+                                            @foreach ($languages as $language)
+
+                                            <li>
+                                                <a href="{{route('set-locale',$language['short_name'])}}">
+                                                    <img src="{{asset('storage/flags/'.$language['flag'])}}" style="width:16px; height: auto;" />
+                                                    {{$language['name']}}
+                                                </a>
+                                            </li>
+                                            @endforeach
+                                        </ul>
                                     </div>
                                 </div>
                             </div>
+                        </div>
+                        <div class="uk-navbar-item uk-visible@m in-optional-nav">
                             <a href="/login" class="uk-button uk-button-text">Log in<i class="fas fa-arrow-circle-right uk-margin-small-left"></i></a>
                             <a href="/register" class="uk-button uk-button-primary uk-border-rounded">Sign up<i class="fas fa-arrow-circle-right uk-margin-small-left"></i></a>
                         </div>

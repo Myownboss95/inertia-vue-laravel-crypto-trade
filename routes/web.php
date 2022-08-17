@@ -57,12 +57,12 @@ Route::middleware('guest')->group(function () {
     Route::get('reset-password', SuccessfulPasswordResetController::class)->name('password.reset.successful');
 });
 
-Route::post('set-locale/{locale}', [LocaleController::class, 'setLocale'])->name('set-locale');
+Route::match(['get', 'post'], 'set-locale/{locale}', [LocaleController::class, 'setLocale'])->name('set-locale');
 
-$theme = config('app.theme','front2');
+$theme = config('app.theme', 'front2');
 
 Route::view('/', "$theme.home")->name('front.index');
 Route::view('/about-us', "$theme.about-us");
-Route::view('/contact-us',"$theme.contact");
+Route::view('/contact-us', "$theme.contact");
 Route::view('/terms-and-conditions', "$theme.terms-and-conditions");
 Route::view('/faqs', "$theme.faqs");
