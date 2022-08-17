@@ -9,7 +9,7 @@ use App\Services\LocationService;
 
 class KycController extends Controller
 {
-    public function index()
+    public function index() 
     {
         $service = new LocationService();
 

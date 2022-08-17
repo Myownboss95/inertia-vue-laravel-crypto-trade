@@ -53,7 +53,13 @@
             :url="route('admin.mail.index')"
             icon="mail"
           />
-
+            <li class="menu-title">Profile</li>
+            <SidebarItem
+              name="My Profile"
+              :url="route('user.profile.view')"
+              icon="lock"
+               v-if="!is_admin"
+            />
           <li class="menu-title">Settings</li>
           <SidebarItem
             name="Password reset"
