@@ -5,6 +5,7 @@ namespace App\Http\Controllers\User;
 use App\Models\User;
 use Illuminate\Http\Request;
 use App\Services\LocationService;
+use DB;
 use App\Http\Controllers\Controller;
 
 class ProfileController extends Controller
@@ -76,6 +77,26 @@ class ProfileController extends Controller
     public function update(Request $request, $id)
     {
         //
+        $user = User::findOrFail(request()->user()->id);
+        $data = $request->validate([
+            'first_name' => ['required', 'string', 'max:191'],
+            'last_name' => ['required', 'string', 'max:191'],
+            'phone' => ['required', 'string', 'max:191'],
+            'country' => ['required', 'string', 'max:191'],
+            // 'state' => ['required', 'string', 'max:191'],
+            'city' => ['required', 'string', 'max:191'],
+            'address' => ['required', 'string', 'max:191'],
+            'zip_code' => ['required', 'string', 'max:191'],
+        ]);
+        DB::beginTransaction();
+        try {
+        $user->update($data);
+        DB::commit();
+        } catch(\Throwable $th) {
+            DB::rollBack();
+            throw $th;
+        }
+        session()->flash('success', 'Profile updated successfully');
     }
 
     /**

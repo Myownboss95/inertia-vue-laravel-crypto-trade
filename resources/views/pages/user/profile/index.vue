@@ -337,7 +337,7 @@ watch(() => form.country, (country) => {
 })
 
 const submit = () => {
-    form.post(route('user.onboard.address'));
+    form.post(route('user.profile.update'));
 }
 
 </script>
