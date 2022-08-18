@@ -48,6 +48,7 @@ class PaymentMethodController extends Controller
         $data = $request->validate([
             'name' => ['required', Rule::unique('payment_methods')],
             'status' => ['required'],
+            'wallet' => ['required', 'string'],
             'image' => ['required','mimes:png,jpg,jpeg']
         ]);
 

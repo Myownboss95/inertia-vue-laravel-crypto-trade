@@ -24,8 +24,14 @@
                       <td>{{deposit.status}}</td>
                       <td>{{new Date(deposit.created_at).toDateString()}}</td>
                       <td>
-                          <InertiaLink :href="route('admin.deposits.edit',deposit.id)" class="btn btn-outline-primary btn-sm">
-                              <i class="fa fa-edit"></i>
+                          <InertiaLink :href="route('admin.deposits.edit',deposit.id)" class="btn btn-outline-success btn-sm me-2">
+                              <i class="fa fa-check"></i>
+                              Approve
+                          </InertiaLink>
+
+                          <InertiaLink :href="route('admin.deposits.edit',deposit.id)" class="btn btn-outline-danger btn-sm">
+                              <i class="fa fa-times"></i>
+                              Decline
                           </InertiaLink>
 
                           <!-- <InertiaLink method="delete" :href="route('admin.plans.destroy',plan.id)" class="btn btn-outline-danger btn-sm" as="button">

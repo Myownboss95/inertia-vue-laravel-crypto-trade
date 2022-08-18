@@ -55,6 +55,7 @@
               <div class="placeholder">
                 <img :src="`/storage/payment_methods/${method.image}`" alt="" />
               </div>
+              <strong class="font-size-16 my-1">{{method.wallet}} <span class="ml-2" @click="copy(method.wallet)"><i class="fa fa-copy"></i></span></strong>
               <p class="mt-3">
                 Copy the wallet address or scan the Qrcode above and send the
                 equivalent of
@@ -95,7 +96,8 @@
   import ButtonLoader from '@/views/components/form/ButtonLoader.vue';
   import Error from '@/views/components/alerts/error.vue';
   import { ref, watch, computed, reactive } from 'vue';
-  import { info } from '@/js/toast';
+import { info } from '@/js/toast';
+import { copy } from '@/js/functions';
 
   const props = defineProps({
     payment_methods: Array,

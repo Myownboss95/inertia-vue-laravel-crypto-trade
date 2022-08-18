@@ -24,10 +24,19 @@
             v-model="form.status"
           />
 
+          <FormGroup
+            name="wallet"
+            placeholder="Wallet Address"
+            label="Wallet Address"
+            v-model="form.wallet"
+            class="mt-3"
+          />
+
           <div class="mt-3 mb-3">
           <label >File Upload</label>
           <input class="form-control" type="file" @input="form.image = $event.target.files[0]" />
           </div>
+
           <FormButton
             type="submit"
             class="w-100 btn btn-outline-primary mt-3"
@@ -54,7 +63,8 @@ import { error } from '@/js/toast';
   const form = useForm({
     name: '',
     status: 1,
-    image:'',
+    image: '',
+    wallet:'',
   });
 
 

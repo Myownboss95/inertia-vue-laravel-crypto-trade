@@ -33,4 +33,9 @@ class Transaction extends Model
         }
         $this->reference = $ref;
     }
+
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
 }
