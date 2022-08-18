@@ -100,7 +100,7 @@
 
   </div>
 </template>
-
+ 
 <script setup>
   import breadcrumb from '@/views/components/layout/breadcrumb.vue';
   import { computed } from '@vue/runtime-core';

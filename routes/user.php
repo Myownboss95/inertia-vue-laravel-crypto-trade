@@ -4,9 +4,11 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\User\DashboardController;
 use App\Http\Controllers\User\DepositController;
 use App\Http\Controllers\User\OnboardController;
+use App\Http\Controllers\User\ProfileController;
 use App\Http\Controllers\User\SubscriptionController;
 use App\Http\Controllers\User\TradeController;
 use App\Http\Controllers\User\WithdrawalController;
+use App\Models\User;
 
 /*
 |--------------------------------------------------------------------------
@@ -23,7 +25,8 @@ Route::middleware('onboarded')->group(function () {
     Route::get('/', DashboardController::class)->name('index');
     Route::post('deposits/validate', [DepositController::class, 'validateDeposit'])->name('deposits.validate');
     Route::resource('deposits', DepositController::class)->except('show');
-
+    Route::get('/profile/view',[ProfileController::class, 'index'])->name('profile.view');
+    Route::resource('profile', ProfileController::class);
     Route::resource('withdrawals', WithdrawalController::class);
 
     Route::get('/trades/assets/{type}',[TradeController::class, 'getTradeables'])->name('trades.getTradeables');
