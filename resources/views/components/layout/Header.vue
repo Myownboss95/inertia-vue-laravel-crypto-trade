@@ -96,7 +96,6 @@
             />
           </button>
           <div class="dropdown-menu dropdown-menu-end">
-            <!-- item-->
             <div
               href="javascript:void(0);"
               class="dropdown-item notify-item language cursor-pointer"
@@ -113,7 +112,6 @@
               />
               <span class="align-middle">{{lang.name}}</span>
             </div>
-            <!-- item-->
           </div>
         </div>
 
@@ -129,7 +127,7 @@
           </button>
         </div>
 
-        <div class="dropdown d-inline-block">
+        <!-- <div class="dropdown d-inline-block">
           <button
             type="button"
             class="btn header-item noti-icon position-relative"
@@ -273,7 +271,7 @@
               </a>
             </div>
           </div>
-        </div>
+        </div> -->
 
 
         <div class="dropdown d-inline-block">
@@ -295,12 +293,12 @@
             <i class="mdi mdi-chevron-down d-inline-block"></i>
           </button>
           <div class="dropdown-menu dropdown-menu-end">
-            <!-- item-->
-            <a class="dropdown-item" href="apps-contacts-profile.html"
+            <inertia-link v-if="!is_admin" class="dropdown-item" :href="route('user.profile.view')"
               ><i
                 class="mdi mdi-user font-size-16 align-middle me-1"
               ></i>
-              Profile</a>
+              Profile
+            </inertia-link>
             <div class="dropdown-divider"></div>
             <inertia-link method="post" as="button" class="dropdown-item" :href="route('logout')" replace>
                 <i class="mdi mdi-logout font-size-16 align-middle me-1"></i>

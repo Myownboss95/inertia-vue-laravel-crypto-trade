@@ -1,33 +1,9 @@
 <template>
   <Head title="Profile" />
-  <breadcrumb title="Profile" :crumbs="['Dashboard', 'Users']" />
-
-  <!-- start page title -->
-  <div class="row">
-    <div class="col-12">
-      <div
-        class="
-          page-title-box
-          d-sm-flex
-          align-items-center
-          justify-content-between
-        "
-      >
-        <div class="page-title-right">
-          <ol class="breadcrumb m-0">
-            <li class="breadcrumb-item">
-              <a href="javascript: void(0);">Contacts</a>
-            </li>
-            <li class="breadcrumb-item active">Profile</li>
-          </ol>
-        </div>
-      </div>
-    </div>
-  </div>
-  <!-- end page title -->
+  <breadcrumb title="Profile" :crumbs="['Dashboard', 'Profile']" />
 
   <div class="row">
-    <div class="col-xl-9 col-lg-8">
+    <div class="col-xl-9 col-lg-8 mx-auto">
       <div class="card">
         <div class="card-body">
           <div class="row">
@@ -55,7 +31,7 @@
                 </div>
               </div>
             </div>
-            <div class="col-sm-auto order-1 order-sm-2">
+            <!-- <div class="col-sm-auto order-1 order-sm-2">
               <div class="d-flex align-items-start justify-content-end gap-2">
                 <div>
                   <button type="button" class="btn btn-soft-light">
@@ -94,7 +70,7 @@
                   </div>
                 </div>
               </div>
-            </div>
+            </div> -->
           </div>
 
           <ul
@@ -108,7 +84,7 @@
                 data-bs-toggle="tab"
                 href="#overview"
                 role="tab"
-                >Overview</a
+                >Bio</a
               >
             </li>
             <li class="nav-item">
@@ -120,7 +96,7 @@
                 >Transactions</a
               >
             </li>
-            <li class="nav-item">
+            <!-- <li class="nav-item">
               <a
                 class="nav-link px-3"
                 data-bs-toggle="tab"
@@ -128,7 +104,7 @@
                 role="tab"
                 >KYC</a
               >
-            </li>
+            </li> -->
           </ul>
         </div>
         <!-- end card body -->
@@ -145,11 +121,11 @@
               <div>
                 <div class="pb-3">
                   <div class="row">
-                   
+
                     <div class="col-xl">
                       <div class="text-muted">
                        <form class="py-3 px-2" @submit.prevent="submit">
-           
+
                 <div class="row">
                     <FormGroup class="col-md-6" placeholder="First name" label="First name" v-model="form.first_name" name="first_name" />
                     <FormGroup class="col-md-6" placeholder="Last name" label="Last name" v-model="form.last_name" name="last_name" />
@@ -223,7 +199,7 @@
                 >No Transactions to Display</span
               >
             </div>
-                  
+
                 </div>
 
               </div>
@@ -234,7 +210,7 @@
         </div>
         <!-- end tab pane -->
 
-        <div class="tab-pane" id="kyc" role="tabpanel">
+        <!-- <div class="tab-pane" id="kyc" role="tabpanel">
           <div class="card">
             <div class="card-header">
               <h5 class="card-title mb-0">KYC</h5>
@@ -242,23 +218,20 @@
             <div class="card-body">
               <div>
                 <div class="row justify-content-center">
-                  
-                  <!-- end col -->
+
                 </div>
-                
+
               </div>
             </div>
-            <!-- end card body -->
           </div>
-          <!-- end card -->
-        </div>
+        </div> -->
         <!-- end tab pane -->
       </div>
       <!-- end tab content -->
     </div>
     <!-- end col -->
 
-    <div class="col-xl-3 col-lg-4">
+    <!-- <div class="col-xl-3 col-lg-4">
       <div class="card">
         <div class="card-body">
           <h5 class="card-title mb-3">Skills</h5>
@@ -267,19 +240,13 @@
             <a href="#" class="badge badge-soft-primary">Photoshop</a>
           </div>
         </div>
-        <!-- end card body -->
       </div>
-      <!-- end card -->
-
-     
-
-     
-    </div>
+    </div> -->
     <!-- end col -->
   </div>
   <!-- end row -->
 </template>
- 
+
 <script setup>
 import breadcrumb from "@/views/components/layout/breadcrumb.vue";
 import { computed } from "@vue/runtime-core";
