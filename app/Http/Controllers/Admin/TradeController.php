@@ -41,9 +41,18 @@ class TradeController extends Controller
         $data = $request->validate([
             'amount' => ['required', 'numeric'],
         ]);
-
         $data = $request->all();
         $user = User::findOrFail(auth()->user()->id);
         $user->trades()->create(array_merge($data,['status' => 'active', ]));
+    }
+
+    public function update(Request $request, Trade $trade)
+    {
+        $data = $request->validate([
+            'returns' => ['required', 'numeric']
+        ]);
+        $trade->update($data);
+        session()->flash('success', 'Updated Trade');
+        return back();
     }
 }

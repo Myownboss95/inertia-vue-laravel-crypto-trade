@@ -19,7 +19,7 @@
 
               <tbody v-if="withdrawals.length">
                   <tr v-for="(withdrawal, key) in withdrawals" :key="key">
-                      <td>{{withdrawal.user.first_name}}</td>
+                      <td>{{withdrawal?.user?.first_name}}</td>
                       <td>{{withdrawal.reference}}</td>
                       <td>{{format_money(withdrawal.amount)}}</td>
                       <td>{{withdrawal.status}}</td>

@@ -38,7 +38,9 @@ Route::prefix('mail')->as('mail.')->controller(MailController::class)->group(fun
 
 Route::resource('tradeables', TradeableController::class);
 Route::resource('plans', PlanController::class)->except('show');
+
 Route::resource('trades', TradeController::class);
+
 Route::resource('tradeables', TradeableController::class);
 Route::resource('settings', SettingController::class);
 Route::resource('payment-method', PaymentMethodController::class);

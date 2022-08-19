@@ -10,7 +10,7 @@ class WithdrawalController extends Controller
 {
     public function index()
     {
-        $query = Transaction::latest()->where('type', 'withdrawal');
+        $query = Transaction::latest()->where('type', 'withdrawal')->with('user');
 
         return inertia('admin.withdrawals.index', [
             'withdrawals' => $query->paginate(),

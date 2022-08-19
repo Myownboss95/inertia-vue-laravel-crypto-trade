@@ -8,9 +8,9 @@
               <thead>
                   <tr>
                       <th>User</th>
-                      <th>Closes at</th>
                       <th>Stop loss</th>
                       <th>Amount</th>
+                      <th>Returns (Profit/Loss)</th>
                       <th>Type</th>
                       <th>Status</th>
                       <th>Asset</th>
@@ -22,19 +22,24 @@
 
               <tbody v-if="trades.length">
                   <tr v-for="(trade, key) in trades" :key="key">
-                      <td>{{trade.user.first_name}}</td>
-                      <td>{{trade.close_at}}</td>
+                      <td>{{trade?.user?.first_name}}</td>
                       <td>{{trade.stop_loss}}</td>
                       <td>{{format_money(trade.amount)}}</td>
+                      <td :class="{'text-danger':trade.returns < 0, 'text-success':trade.returns > 0 }">
+                            {{format_money(trade.returns)}}
+                    </td>
                       <td>{{trade.type}}</td>
                       <td>{{trade.status}}</td>
                       <td>{{trade.tradeable.name}}</td>
                       <td>{{trade.tradeable.type}}</td>
                       <td>{{new Date(trade.created_at).toDateString()}}</td>
                       <td>
-                          <InertiaLink :href="route('admin.trades.edit',trade.id)" class="btn btn-outline-primary btn-sm">
+                        <FormButton class="btn btn-outline-primary btn-sm" @button-clicked="view(trade.id)">
+                            <ButtonLoader text="<i class='fa fa-edit'></i>" />
+                        </FormButton>
+                          <!-- <InertiaLink :href="route('admin.trades.edit',trade.id)">
                               <i class="fa fa-edit"></i>
-                          </InertiaLink>
+                          </InertiaLink> -->
 
                           <!-- <InertiaLink method="delete" :href="route('admin.plans.destroy',plan.id)" class="btn btn-outline-danger btn-sm" as="button">
                               <i class="fa fa-trash"></i>
@@ -54,18 +59,69 @@
         </div>
     </div>
   </div>
+  <Modal title="Modify Trade" :open="modalState" @modal-closed="modalState = false">
+    <div class="modal-body">
+        <form class="row" @submit.prevent="updateTrade">
+            <FormGroup class="col-md-6" :disabled="true" name="user" label="User" :model-value="form.user" />
+            <FormGroup class="col-md-6" :disabled="true" name="amount" label="Amount" :model-value="form.amount" />
+            <FormGroup class="col-md-6" :disabled="true" name="type" label="Type" :model-value="form.type" />
+            <FormGroup class="col-md-6" :disabled="true" name="status" label="Status" v-model="form.status" />
+            <FormGroup class="col-md-6" :disabled="true" name="asset" label="Asset" v-model="form.asset" />
+            <FormGroup class="col-md-6" :disabled="true" name="stop_loss" label="Stop Loss" v-model="form.stop_loss" />
+            <FormGroup name="returns" label="Returns (Profit/Loss)" v-model="form.returns" />
+
+            <div class="text-center">
+                <FormButton type="submit" class="btn btn-outline-primary" :disabled="form.processing">
+                    <ButtonLoader text="Update Trade" :loading="form.processing" />
+                </FormButton>
+            </div>
+        </form>
+    </div>
+  </Modal>
 </template>
 
 <script setup>
 import breadcrumb from '@/views/components/layout/breadcrumb.vue';
-import { computed } from 'vue';
+import { computed, ref } from 'vue';
 import Paginator from '@/views/components/paginator.vue';
+import FormButton from '@/views/components/form/FormButton.vue';
+import ButtonLoader from '@/views/components/form/ButtonLoader.vue';
+import Modal from '@/views/components/modal.vue';
+import FormGroup from '@/views/components/form/FormGroup.vue';
+import { useForm } from '@inertiajs/inertia-vue3';
 
 const props = defineProps({
     trades: Object,
 })
+const form = useForm({
+    returns: '',
+    asset: '',
+    type: '',
+    status: '',
+    stop_loss: '',
+    user: '',
+    id: '',
+});
 const trades = computed(() => props.trades.data);
 const links = computed(() => props.trades.links);
+const trade = ref(null);
+const modalState = ref(false);
+const view = id => {
+    let trade = trades.value.filter(item => item.id == id)[ 0 ];
+    form.returns = trade.returns;
+    form.amount = trade.amount;
+    form.type = trade.type;
+    form.status = trade.status;
+    form.stop_loss = trade.stop_loss;
+    form.asset = trade.tradeable.name;
+    form.user = trade.user.first_name;
+    form.id = trade.id;
+    modalState.value = true;
+}
+
+const updateTrade = () => {
+    form.put(route('admin.trades.update',form.id));
+}
 
 
 </script>
