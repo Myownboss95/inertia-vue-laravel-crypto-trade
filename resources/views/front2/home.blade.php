@@ -255,7 +255,7 @@
         </div>
         <!-- section content end -->
         <!-- section content begin -->
-        <div class="uk-section uk-padding-large">
+        {{-- <div class="uk-section uk-padding-large">
             <div class="uk-container in-wave-4">
                 <div class="uk-grid uk-flex uk-flex-center">
                     <div class="uk-width-1-1 uk-text-center">
@@ -332,7 +332,7 @@
                     </div>
                 </div>
             </div>
-        </div>
+        </div> --}}
         <!-- section content end -->
         <!-- section content begin -->
         <div class="uk-section uk-section-default uk-padding-remove-vertical in-wave-5 in-offset-bottom-40">
