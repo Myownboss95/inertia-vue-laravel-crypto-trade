@@ -260,17 +260,19 @@ header .uk-card-secondary a:hover {
     color: #666;
 }
 
-.uk-sticky.uk-active .uk-logo img {
+/* .uk-sticky.uk-active .uk-logo img {
     display: none;
 }
 
 .uk-sticky.uk-active a.uk-logo {
     width: 134px;
     height: 23px;
-    background: url(../img/in-logo-1.svg);
+    background: url('logo_algo.png');
     background-size: 99.7%;
     margin-top: -2px;
 }
+
+*/
 
 .uk-sticky.uk-active .in-optional-nav a:first-child {
     border-left: 1px solid rgba(255, 255, 255, 0.15);

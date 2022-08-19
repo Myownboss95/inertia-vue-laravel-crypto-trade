@@ -52,7 +52,7 @@
                         <div class="uk-navbar-item">
                             <!-- module logo begin -->
                             <a class="uk-logo" href="/">
-                                <img class="uk-margin-small-right in-offset-top-10" src="{{asset('front2/img/in-lazy.gif')}}" data-src="{{asset('front2/img/in-logo-1.svg')}}" alt="wave" width="134" height="23" data-uk-img>
+                                <img class="uk-margin-small-right in-offset-top-10" src="{{asset('front2/img/in-lazy.gif')}}" data-src="{{asset('logo_algo.png')}}" alt="wave" style="height:100px; width: 120px" data-uk-img>
                             </a>
                             <!-- module logo begin -->
                         </div>
@@ -60,8 +60,8 @@
                     <div class="uk-navbar-right uk-width-expand uk-flex uk-flex-right">
                         <ul class="uk-navbar-nav uk-visible@m">
                             <li><a href="/">Home</a></li>
-                            
-                            
+
+
                             <li><a href="#">About Us<i class="fas fa-chevron-down"></i></a>
                                 <div class="uk-navbar-dropdown uk-navbar-dropdown-width-2">
                                     <div class="uk-navbar-dropdown-grid uk-child-width-1-2" data-uk-grid>
@@ -83,7 +83,7 @@
                             <li><a href="/packages">Packages</a></li>
                             <li><a href="/testimonials">Testimonials</a></li>
                             <li><a href="/faqs">FAQs</a></li>
-                            
+
                         </ul>
                         <div class="uk-navbar-item uk-visible@m in-optional-nav">
                             <a href="/login" class="uk-button uk-button-text"><i class="fas fa-user-circle uk-margin-small-right"></i>Log in</a>
