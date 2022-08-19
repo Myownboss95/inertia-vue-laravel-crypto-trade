@@ -112,7 +112,7 @@
                                 <img src="{{asset('front2/img/in-lazy.gif')}}" data-src="{{asset('front2/img/in-wave-icon-3.svg')}}" alt="wave-icon" width="48" height="48" data-uk-img>
                             </div>
                             <div class="uk-width-expand">
-                                <p>Low minimum<br>deposit of $100</p>
+                                <p>Low minimum<br>deposit.</p>
                             </div>
                         </div>
                     </div>
