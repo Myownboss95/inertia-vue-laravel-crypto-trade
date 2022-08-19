@@ -18,18 +18,18 @@
 
               <tbody v-if="deposits.length">
                   <tr v-for="(deposit, key) in deposits" :key="key">
-                      <td>{{deposit.user.first_name}}</td>
-                      <td>{{deposit.reference}}</td>
-                      <td>{{format_money(deposit.amount)}}</td>
-                      <td>{{deposit.status}}</td>
-                      <td>{{new Date(deposit.created_at).toDateString()}}</td>
+                      <td>{{deposit?.user?.first_name}}</td>
+                      <td>{{deposit?.reference}}</td>
+                      <td>{{format_money(deposit?.amount)}}</td>
+                      <td>{{deposit?.status}}</td>
+                      <td>{{new Date(deposit?.created_at).toDateString()}}</td>
                       <td>
-                          <InertiaLink :href="route('admin.deposits.approve',deposit.id)" class="btn btn-outline-success btn-sm me-2">
+                          <InertiaLink :href="route('admin.deposits.approve',deposit?.id)" class="btn btn-outline-success btn-sm me-2">
                               <i class="fa fa-check"></i>
                               Approve
                           </InertiaLink>
 
-                          <InertiaLink :href="route('admin.deposits.decline',deposit.id)" class="btn btn-outline-danger btn-sm">
+                          <InertiaLink :href="route('admin.deposits.decline',deposit?.id)" class="btn btn-outline-danger btn-sm">
                               <i class="fa fa-times"></i>
                               Decline
                           </InertiaLink>
