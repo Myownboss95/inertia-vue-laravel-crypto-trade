@@ -24,12 +24,12 @@
                       <td>{{deposit.status}}</td>
                       <td>{{new Date(deposit.created_at).toDateString()}}</td>
                       <td>
-                          <InertiaLink :href="route('admin.deposits.edit',deposit.id)" class="btn btn-outline-success btn-sm me-2">
+                          <InertiaLink :href="route('admin.deposits.approve',deposit.id)" class="btn btn-outline-success btn-sm me-2">
                               <i class="fa fa-check"></i>
                               Approve
                           </InertiaLink>
 
-                          <InertiaLink :href="route('admin.deposits.edit',deposit.id)" class="btn btn-outline-danger btn-sm">
+                          <InertiaLink :href="route('admin.deposits.decline',deposit.id)" class="btn btn-outline-danger btn-sm">
                               <i class="fa fa-times"></i>
                               Decline
                           </InertiaLink>

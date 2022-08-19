@@ -42,7 +42,11 @@ Route::resource('trades', TradeController::class);
 Route::resource('tradeables', TradeableController::class);
 Route::resource('settings', SettingController::class);
 Route::resource('payment-method', PaymentMethodController::class);
-Route::resource('deposits', DepositController::class);
+Route::resource('deposits', DepositController::class)->only('index');
+
+Route::get('deposits/approve/{id}', [DepositController::class, 'approve'])->name('deposits.approve');
+Route::get('deposits/decline/{id}', [DepositController::class, 'decline'])->name('deposits.approve');
+
 Route::resource('withdrawals', WithdrawalController::class);
 Route::as('kyc.')->prefix('kyc')->controller(KycController::class)->group(function () {
     Route::get('', 'index')->name('index');
