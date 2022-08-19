@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Settings;
 use Illuminate\Http\Request;
 
 class FrontendController extends Controller
@@ -13,7 +14,8 @@ class FrontendController extends Controller
     }
     public function home()
     {
-        return view("$this->theme.home");
+        $setting = Settings::first();
+        return view("$this->theme.home", compact('setting'));
     }
 
     public function about()
