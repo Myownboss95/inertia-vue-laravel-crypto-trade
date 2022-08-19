@@ -5,6 +5,7 @@ namespace App\Http\Controllers\User;
 use App\Http\Controllers\Controller;
 use App\Models\Plan;
 use App\Models\User;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 
 class SubscriptionController extends Controller
@@ -21,18 +22,31 @@ class SubscriptionController extends Controller
     {
         $user = User::findOrFail(auth()->user()->id);
         $account = $user->accounts()->where('type', 'main')->first();
+        $investedAccount = $user->accounts()->where('type', 'invested')->first();
         $amount = $account?->account ?? 0;
+
         if ($plan->max_investment < $amount) {
             $account->account -= $plan->max_investment;
+            $investedAccount->account += $plan->max_investment;
         } elseif ($plan->max_investment < $amount && $amount > $plan->min_investment) {
             $account->account -= $plan->min_investment;
+            $investedAccount->account = $plan->min_investment;
         } else {
-            session()->flash('info', 'You do not have enough balance to subscribe to this plan. Make a deposit');
+            session()->flash('error', 'You do not have enough balance to subscribe to this plan. Make a deposit');
             return redirect()->route('user.deposits.create');
         }
 
-        dd($amount);
+        $user->subscriptions()->create([
+            'plan_id' => $plan->id,
+            'status' => 'active',
+            'expires_at' => Carbon::now()->addDays("$plan->tenure")->toDateTimeString(),
+        ]);
 
-        dd($plan);
+        $account->save();
+        $investedAccount->save();
+        session()->flash('success', 'Subscribed successfully');
+        return redirect()->route('user.index');
+
+
     }
 }

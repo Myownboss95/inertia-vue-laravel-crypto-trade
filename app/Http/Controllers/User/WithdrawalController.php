@@ -40,10 +40,10 @@ class WithdrawalController extends Controller
 
         $user = User::findOrFail(auth()->user()->id);
 
-        $amount = $request->input('account');
-        $userAccount = $user->accounts()->where('type', $amount)->first();
+        $amount = $request->input('amount');
+        $userAccount = $user->accounts()->where('type', $request->input('account'))->first();
 
-        if ($userAccount?->account < $amount) {
+        if ($amount > $userAccount?->account) {
             session()->flash('error', "Insufficient funds on your {$data['account']} balance");
             return back();
         }

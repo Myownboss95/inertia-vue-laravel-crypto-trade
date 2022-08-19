@@ -12,7 +12,7 @@ class TradeController extends Controller
 {
     public function index()
     {
-        $query = Trade::latest()->where('user_id', auth()->user()->id);
+        $query = Trade::latest()->where('user_id', auth()->user()->id)->with('tradeable');
 
         return inertia('user.trades.index', [
             'trades' => $query->paginate(),
@@ -46,10 +46,21 @@ class TradeController extends Controller
         ]);
         $user = User::findOrFail(auth()->user()->id);
         $account = $user->accounts()->where('type', 'invested')->first();
+
+        $subscription = $user->subscriptions()->where('status', 'active')->first();
+
+        if (!$subscription) {
+            session()->flash('error', 'You do not have an active subscription plan');
+            return redirect()->route('user.subscriptions.plans');
+        }
+
         if ($request->input('amount') > $account->account) {
             session()->flash('error', 'You have insufficient funds to continue this trade');
-            return back();
+            return redirect()->route('user.subscriptions.plans');
         }
         $user->trades()->create(array_merge($data,['status' => 'active', ]));
+
+        session()->flash('success', 'Trade placed successfully');
+        return redirect()->route('user.trades.index');
     }
 }

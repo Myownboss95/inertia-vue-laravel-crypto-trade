@@ -7,37 +7,37 @@
           <table class="table">
               <thead>
                   <tr>
-                      <th>Closes at</th>
-                      <th>Stop loss</th>
                       <th>Amount</th>
                       <th>Type</th>
                       <th>Status</th>
+                      <th>Returns</th>
                       <th>Asset</th>
                       <th>Asset Type</th>
+                      <th>Stop loss</th>
                       <th>Date</th>
-                      <th>Actions</th>
+                      <!-- <th>Actions</th> -->
                   </tr>
               </thead>
 
               <tbody v-if="trades.length">
                   <tr v-for="(trade, key) in trades" :key="key">
-                      <td>{{trade.close_at}}</td>
-                      <td>{{trade.stop_loss}}</td>
                       <td>{{format_money(trade.amount)}}</td>
                       <td>{{trade.type}}</td>
                       <td>{{trade.status}}</td>
+                      <td>{{format_money(trade.returns)}}</td>
                       <td>{{trade.tradeable.name}}</td>
                       <td>{{trade.tradeable.type}}</td>
+                      <td>{{trade.stop_loss || 'none'}}</td>
                       <td>{{new Date(trade.created_at).toDateString()}}</td>
-                      <td>
+                      <!-- <td>
                           <InertiaLink :href="route('admin.trades.edit',trade.id)" class="btn btn-outline-primary btn-sm">
-                              <i class="fa fa-edit"></i>
+                              <i class="fa fa-times"></i>
                           </InertiaLink>
 
-                          <!-- <InertiaLink method="delete" :href="route('admin.plans.destroy',plan.id)" class="btn btn-outline-danger btn-sm" as="button">
+                          <InertiaLink method="delete" :href="route('admin.plans.destroy',plan.id)" class="btn btn-outline-danger btn-sm" as="button">
                               <i class="fa fa-trash"></i>
-                          </InertiaLink> -->
-                      </td>
+                          </InertiaLink>
+                      </td> -->
                   </tr>
               </tbody>
               <tbody v-else>

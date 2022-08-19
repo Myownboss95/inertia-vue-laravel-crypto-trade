@@ -40,7 +40,7 @@
             id="stop_loss"
             name="stop_loss"
             label="Stop Loss"
-            :options="{ 5: '5%', 15: '15%', 25: '25%', 35: '35%', 50: '50%' }"
+            :options="{'':'Set stop loss', 5: '5%', 15: '15%', 25: '25%', 35: '35%', 50: '50%' }"
             v-model="form.stop_loss"
           />
 
@@ -128,8 +128,7 @@ import ButtonLoader from '@/views/components/form/ButtonLoader.vue';
   );
 
   const placeTrade = (type) => {
-      form.type = type;
-      console.log(form.data());
+    form.type = type;
     form.post(route('user.trades.store'));
   };
 </script>
