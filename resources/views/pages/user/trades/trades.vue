@@ -32,7 +32,7 @@
             name="tradeable_id"
             label="Asset"
             :options="assets"
-            v-model="form.type"
+            v-model="form.tradeable_id"
           />
 
           <FormSelect
@@ -103,10 +103,11 @@ import ButtonLoader from '@/views/components/form/ButtonLoader.vue';
   const links = computed(() => props.trades.links);
 
   const form = useForm({
-    name: '',
+    amount: '',
     type: '',
     tradeable_type: '',
     stop_loss: '',
+    tradeable_id: '',
   });
 
   watch(
