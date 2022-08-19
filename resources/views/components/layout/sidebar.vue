@@ -47,19 +47,20 @@
             icon="dollar-sign"
           />
 
-          <li class="menu-title">Communication</li>
+          <li class="menu-title" v-if="is_admin">Communication</li>
           <SidebarItem
             name="Send Email"
             :url="route('admin.mail.index')"
             icon="mail"
+            v-if="is_admin"
           />
-            <li class="menu-title">Profile</li>
-            <SidebarItem
-              name="My Profile"
-              :url="route('user.profile.view')"
-              icon="lock"
-               v-if="!is_admin"
-            />
+          <li class="menu-title">Profile</li>
+          <SidebarItem
+            name="My Profile"
+            :url="route('user.profile.view')"
+            icon="lock"
+            v-if="!is_admin"
+          />
           <li class="menu-title">Settings</li>
           <SidebarItem
             name="Password reset"
