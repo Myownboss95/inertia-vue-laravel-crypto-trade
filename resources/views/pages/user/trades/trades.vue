@@ -117,8 +117,8 @@ import ButtonLoader from '@/views/components/form/ButtonLoader.vue';
         axios
           .get(route('user.trades.getTradeables', { type }))
           .then((res) => {
-            if (res.status != 200) throw Error();
-            assets.value = res.data.data;
+              if (res.status != 200) throw Error();
+              Object.assign(assets.value, res.data.data);
           })
           .catch((err) => {
             error('Failed to load assets, refresh page.');
@@ -128,7 +128,8 @@ import ButtonLoader from '@/views/components/form/ButtonLoader.vue';
   );
 
   const placeTrade = (type) => {
-    form.type = type;
+      form.type = type;
+      console.log(form.data());
     form.post(route('user.trades.store'));
   };
 </script>
