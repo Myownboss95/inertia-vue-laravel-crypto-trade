@@ -159,7 +159,9 @@
         <div style="margin-bottom: 12px">
             <div style="display:flex; justify-content: space-between">
                 <strong style="font-size: 18px">{{__('Popular products')}}</strong>
-                <a href="{{route('register')}}" class="uk-button uk-button-secondary uk-border-rounded ml-2">{{__('Create an Account')}}</a>
+                <a href="{{route('register')}}" class="uk-button uk-button-secondary uk-border-rounded" style="z-index: 99">
+                    {{__('Create an Account')}}
+                </a>
             </div>
         </div>
         <div class="uk-grid-match uk-grid-medium uk-child-width-1-4@m uk-child-width-1-2@s uk-margin-bottom"
