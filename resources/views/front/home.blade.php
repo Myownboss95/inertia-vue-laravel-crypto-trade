@@ -13,12 +13,13 @@
                     <div class="uk-grid-large uk-flex-middle" data-uk-grid>
                         <div class="uk-width-1-2@s in-slide-text">
                             <p class="in-badge-text uk-text-small uk-margin-remove-bottom uk-visible@m"><span
-                                    class="uk-label uk-label-success in-label-small">New</span>Trade the markets
-                                directly with leading trading platforms.</p>
-                            <h1 class="uk-heading-small">The world's most <span class="in-highlight">powerful</span>
-                                trade app.</h1>
-                            <p class="uk-text-lead uk-visible@m">Get the most accurate market data, alerts, conversions,
-                                tools and more — all within the same app.</p>
+                                    class="uk-label uk-label-success in-label-small">{{__('New')}}
+                                </span>{{__('Trade the markets directly with leading trading platforms.')}}</p>
+                            <h1 class="uk-heading-small">{{__("The world's most")}} <span class="in-highlight">{{__('powerful')}}</span>
+                                {{__('trade app.')}}</h1>
+                            <p class="uk-text-lead uk-visible@m">
+                                {{__('Get the most accurate market data, alerts, conversions,tools and more — all within the same app.')}}
+                            </p>
                             <div class="uk-grid-medium uk-child-width-1-3@m uk-child-width-1-2@s uk-margin-medium-top uk-visible@s"
                                 data-uk-grid data-market="TSLA,GOOGL,AAPL">
                                 <div>
@@ -77,13 +78,14 @@
                 <div class="uk-container">
                     <div class="uk-grid-large uk-flex-middle" data-uk-grid>
                         <div class="uk-width-1-2@s in-slide-text">
-                            <p class="in-badge-text uk-text-small uk-margin-remove-bottom uk-visible@m"><span
-                                    class="uk-label uk-label-success in-label-small">New</span>Trade the markets
-                                directly with leading trading platforms.</p>
-                            <h1 class="uk-heading-small">Reach out to new trading <span
-                                    class="in-highlight">experience</span>.</h1>
-                            <p class="uk-text-lead uk-visible@m">Bring your trading ventures go around the world, way
-                                beyond the space of your trading account.</p>
+                            <p class="in-badge-text uk-text-small uk-margin-remove-bottom uk-visible@m">
+                                <span class="uk-label uk-label-success in-label-small">{{__('New')}}</span>
+                                {{__('Trade the markets directly with leading trading platforms.')}}
+                            </p>
+                            <h1 class="uk-heading-small">{{__('Reach out to new trading')}} <span
+                                    class="in-highlight">{{__('experience.')}}</span></h1>
+                            <p class="uk-text-lead uk-visible@m">
+                                {{__('Bring your trading ventures go around the world, way  beyond the space of your trading account.')}}</p>
                             <div class="uk-grid-medium uk-child-width-1-3@m uk-child-width-1-2@s uk-margin-medium-top uk-visible@s"
                                 data-uk-grid data-market="MCD,AMZN,MSFT">
                                 <div>
@@ -154,9 +156,10 @@
 <!-- section content begin -->
 <div class="uk-section uk-section-primary uk-preserve-color in-equity-1">
     <div class="uk-container">
-        <div class="uk-grid">
-            <div class="uk-width-1-1">
-                <h4>Popular products</h4>
+        <div style="margin-bottom: 12px">
+            <div style="display:flex; justify-content: space-between">
+                <strong style="font-size: 18px">{{__('Popular products')}}</strong>
+                <a href="{{route('register')}}" class="uk-button uk-button-secondary uk-border-rounded ml-2">{{__('Create an Account')}}</a>
             </div>
         </div>
         <div class="uk-grid-match uk-grid-medium uk-child-width-1-4@m uk-child-width-1-2@s uk-margin-bottom"
@@ -167,9 +170,9 @@
                         <span class="in-product-name red">EQ</span>
                         <h5 class="uk-margin-remove">Stocks</h5>
                     </div>
-                    <p>Access 19,000+ stocks across core and emerging markets on 40+ exchanges worldwide.</p>
+                    <p>{{__('Access 19,000+ stocks across core and emerging markets on 40+ exchanges worldwide.')}}</p>
                     <a href="/register"
-                        class="uk-button uk-button-text uk-float-right uk-position-bottom-right">Get Started<i
+                        class="uk-button uk-button-text uk-float-right uk-position-bottom-right">{{__('Get Started')}}<i
                             class="fas fa-arrow-circle-right uk-margin-small-left"></i></a>
                 </div>
             </div>
@@ -177,9 +180,9 @@
                 <div class="uk-card uk-card-body uk-card-default uk-border-rounded">
                     <div class="uk-flex uk-flex-middle">
                         <span class="in-product-name green">LQ</span>
-                        <h5 class="uk-margin-remove">Listed Options</h5>
+                        <h5 class="uk-margin-remove">{{__('Listed Options')}}</h5>
                     </div>
-                    <p>Access 1,200+ listed options across equities, indices, interest rates, energy, metals and more.
+                    <p>{{__('Access 1,200+ listed options across equities, indices, interest rates, energy, metals and more.')}}
                     </p>
                     <a href="/register"
                         class="uk-button uk-button-text uk-float-right uk-position-bottom-right">Get Started<i
@@ -190,11 +193,11 @@
                 <div class="uk-card uk-card-body uk-card-default uk-border-rounded">
                     <div class="uk-flex uk-flex-middle">
                         <span class="in-product-name blue">FU</span>
-                        <h5 class="uk-margin-remove">Futures</h5>
+                        <h5 class="uk-margin-remove">{{__('Futures')}}</h5>
                     </div>
-                    <p>Access 300+ futures covering equity indices, energy, metals, agriculture, rates and more.</p>
+                    <p>{{__('Access 300+ futures covering equity indices, energy, metals, agriculture, rates and more.')}}</p>
                     <a href="/register"
-                        class="uk-button uk-button-text uk-float-right uk-position-bottom-right">Get Started<i
+                        class="uk-button uk-button-text uk-float-right uk-position-bottom-right">{{__('Get Started')}}<i
                             class="fas fa-arrow-circle-right uk-margin-small-left"></i></a>
                 </div>
             </div>
@@ -202,9 +205,9 @@
                 <div class="uk-card uk-card-body uk-card-default uk-border-rounded">
                     <div class="uk-flex uk-flex-middle">
                         <span class="in-product-name"><i class="fas fa-ellipsis-h fa-xs"></i></span>
-                        <h5 class="uk-margin-remove">More products</h5>
+                        <h5 class="uk-margin-remove">{{__('More products')}}</h5>
                     </div>
-                    <p>Get Started the full range of cash and leveraged products</p>
+                    <p>{{__('Get Started the full range of cash and leveraged products')}}</p>
                     <a href="/register"
                         class="uk-button uk-button-text uk-float-right uk-position-bottom-right">Get Started<i
                             class="fas fa-arrow-circle-right uk-margin-small-left"></i></a>
@@ -221,11 +224,12 @@
     <div class="uk-container uk-margin-top">
         <div class="uk-grid uk-flex uk-flex-center">
             <div class="uk-width-2xlarge@m uk-text-center">
-                <span class="uk-label uk-label-warning">Fast execution, low latency<i
+                <span class="uk-label uk-label-warning">{{__('Fast execution, low latency')}}<i
                         class="fas fa-arrow-right fa-xs uk-margin-small-left"></i></span>
-                <h1 class="uk-margin-top">Your premium choice for trading currencies & stocks online</h1>
-                <p class="uk-text-lead uk-margin-medium-top">Harness the power of technology to make a quicker, smarter
-                    and more precise decision on CFD currency pairs, stocks, commodities and more</p>
+                <h1 class="uk-margin-top">{{__('Your premium choice for trading currencies & stocks online')}}</h1>
+                <p class="uk-text-lead uk-margin-medium-top">
+                    {{__('Harness the power of technology to make a quicker, smarter and more precise decision on CFD currency pairs, stocks, commodities and more')}}
+                    </p>
             </div>
             <div class="uk-width-3-4@m uk-margin-medium-top">
                 <img class="uk-align-center" src="{{asset('front/img/in-lazy.gif')}}" data-src="{{asset('front/img/in-equity-2-img.png')}}" alt="image"
@@ -239,21 +243,21 @@
                             <img src="{{asset('front/img/in-lazy.gif')}}" data-src="{{asset('front/img/in-equity-2-icon-1.svg')}}" alt="icon-1"
                                 width="35" height="42" data-uk-img>
                         </span>
-                        <p class="uk-margin-top">Trading calculators</p>
+                        <p class="uk-margin-top">{{__('Trading calculators')}}</p>
                     </a>
                     <a href="#">
                         <span class="in-icon-wrap">
                             <img src="{{asset('front/img/in-lazy.gif')}}" data-src="{{asset('front/img/in-equity-2-icon-2.svg')}}" alt="icon-2"
                                 width="38" height="42" data-uk-img>
                         </span>
-                        <p class="uk-margin-top">Market analysis</p>
+                        <p class="uk-margin-top">{{__('Market analysis')}}</p>
                     </a>
                     <a href="#">
                         <span class="in-icon-wrap">
                             <img src="{{asset('front/img/in-lazy.gif')}}" data-src="{{asset('front/img/in-equity-2-icon-3.svg')}}" alt="icon-3"
                                 width="42" height="42" data-uk-img>
                         </span>
-                        <p class="uk-margin-top">Market reviews</p>
+                        <p class="uk-margin-top">{{__('Market reviews')}}</p>
                     </a>
                     <a href="#">
                         <span class="in-icon-wrap">
@@ -273,15 +277,16 @@
     <div class="uk-container uk-margin-large-bottom">
         <div class="uk-grid uk-flex uk-flex-middle">
             <div class="uk-width-expand@m">
-                <h1 class="uk-margin-small-bottom">Tight spreads and <span class="in-highlight">ultra-fast</span>
-                    execution</h1>
-                <h3 class="uk-margin-top uk-text-warning">Best market prices available so you can receive excellent
-                    conditions.</h3>
+                <h1 class="uk-margin-small-bottom">{{__('Tight spreads and')}} <span class="in-highlight">{{__('ultra-fast')}}</span>
+                    {{__('execution')}}</h1>
+                <h3 class="uk-margin-top uk-text-warning">
+                    {{__('Best market prices available so you can receive excellent conditions.')}}
+                </h3>
                 <hr class="uk-margin-medium-top uk-margin-medium-bottom">
                 <ul class="uk-list in-list-check">
-                    <li>Negative balance protection</li>
-                    <li>Segregated and supervised client funds</li>
-                    <li>Instant deposit & fast withdrawal</li>
+                    <li>{{__('Negative balance protection')}}</li>
+                    <li>{{__('Segregated and supervised client funds')}}</li>
+                    <li>{{__('Instant deposit & fast withdrawal')}}</li>
                 </ul>
             </div>
             <div class="uk-width-2xlarge uk-flex uk-flex-right uk-flex-center@s">
@@ -367,8 +372,8 @@
                             width="91" height="82" data-uk-img>
                     </div>
                     <div>
-                        <h6>Best Mobile Trading App</h6>
-                        <p class="provider">European CEO Magazine</p>
+                        <h6>{{__('Best Mobile Trading App')}}</h6>
+                        <p class="provider">{{__('European CEO Magazine')}}</p>
                         <p class="year">2019</p>
                     </div>
                 </div>
@@ -380,8 +385,8 @@
                             width="91" height="82" data-uk-img>
                     </div>
                     <div>
-                        <h6>Best Forex Ecn Broker</h6>
-                        <p class="provider">UK Forex awards</p>
+                        <h6>{{_('Best Forex Ecn Broker')}}</h6>
+                        <p class="provider">{{__('UK Forex awards')}}</p>
                         <p class="year">2020</p>
                     </div>
                 </div>
@@ -393,8 +398,8 @@
                             width="91" height="82" data-uk-img>
                     </div>
                     <div>
-                        <h6>Best Trading Conditions</h6>
-                        <p class="provider">Forex report magazine</p>
+                        <h6>{{__('Best Trading Conditions')}}</h6>
+                        <p class="provider">{{__('Forex report magazine')}}</p>
                         <p class="year">2021</p>
                     </div>
                 </div>
@@ -409,18 +414,19 @@
     <div class="uk-container uk-margin-small-bottom">
         <div class="uk-grid uk-flex uk-flex-center">
             <div class="uk-width-2xlarge@m uk-text-center">
-                <h1>Ready to get started?</h1>
-                <p class="uk-text-lead">Global access to financial markets from a single account</p>
+                <h1>{{__('Ready to get started?')}}</h1>
+                <p class="uk-text-lead">{{__('Global access to financial markets from a single account')}}</p>
             </div>
             <div class="uk-width-3-4@m uk-margin-medium-top">
                 <div class="uk-flex uk-flex-center uk-flex-middle button-app">
                     <div>
-                        <a href="/register" class="uk-button uk-button-secondary uk-border-rounded m-2" style="margin-right: 10px">Open your account<i
+                        <a href="/register" class="uk-button uk-button-secondary uk-border-rounded m-2" style="margin-right: 10px">{{__('Open your account')}}<i
                                 class="fas fa-arrow-circle-right uk-margin-small-left "></i></a>
                     </div>
                     <div>
-                        <a href="/login" class="uk-button uk-button-secondary uk-border-rounded ml-2">Log into your account<i
-                                class="fas fa-arrow-circle-right uk-margin-small-left"></i></a>
+                        <a href="/login" class="uk-button uk-button-secondary uk-border-rounded ml-2">
+                            {{__('Log into your account')}}
+                            <i class="fas fa-arrow-circle-right uk-margin-small-left"></i></a>
                     </div>
 
                 </div>

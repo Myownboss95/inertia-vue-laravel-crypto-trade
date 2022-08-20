@@ -4,8 +4,10 @@
         <div class="uk-grid">
             <div class="uk-width-1-1">
                 <div class="uk-width-3-5@m">
-                    <h1 class="uk-margin-small-bottom">Putting our clients first <span class="in-highlight">since 2001</span></h1>
-                    <p class="uk-text-lead uk-text-muted uk-margin-remove-top">For more than 30 years, we’ve been empowering clients by helping them take control of their financial lives.</p>
+                    <h1 class="uk-margin-small-bottom">{{__('Putting our clients first')}} <span class="in-highlight">{{__('since 2001')}}</span></h1>
+                    <p class="uk-text-lead uk-text-muted uk-margin-remove-top">
+                        {{__('For more than 30 years, we’ve been empowering clients by helping them take control of their financial lives.')}}
+                    </p>
                 </div>
             </div>
             <div class="uk-grid uk-grid-large uk-child-width-1-3@m uk-margin-medium-top" data-uk-grid>
@@ -14,8 +16,10 @@
                         <i class="fas fa-leaf fa-lg in-icon-wrap primary-color"></i>
                     </div>
                     <div>
-                        <h3>Philosophy</h3>
-                        <p>Profiitrend empowers every trader to master the arts of Forex Trading and Crypto Trading, and Robot Trading.</p>
+                        <h3>{{__('Philosophy')}}</h3>
+                        <p>
+                            {{__('Profiitrend empowers every trader to master the arts of Forex Trading and Crypto Trading, and Robot Trading.')}}
+                        </p>
                     </div>
                 </div>
                 <div class="uk-flex uk-flex-left">
@@ -23,8 +27,8 @@
                         <i class="fas fa-hourglass-end fa-lg in-icon-wrap primary-color"></i>
                     </div>
                     <div>
-                        <h3>History</h3>
-                        <p>We've had a rich history of providing the best ROI and Customer Care Support in this industry</p>
+                        <h3>{{__('History')}}</h3>
+                        <p>{{__("We've had a rich history of providing the best ROI and Customer Care Support in this industry")}}</p>
                     </div>
                 </div>
                 <div class="uk-flex uk-flex-left">
@@ -32,8 +36,8 @@
                         <i class="fas fa-flag fa-lg in-icon-wrap primary-color"></i>
                     </div>
                     <div>
-                        <h3>Culture</h3>
-                        <p>At Binotomo, we implement world best practices in our dealings</p>
+                        <h3>{{__('Culture')}}</h3>
+                        <p>{{__('At Binotomo, we implement world best practices in our dealings')}}</p>
                     </div>
                 </div>
             </div>
@@ -50,8 +54,8 @@
                     <div class="uk-card-body">
                         <div class="uk-grid uk-flex uk-flex-center">
                             <div class="uk-width-3-4@m uk-text-center">
-                                <h2>Trust the Professionals</h2>
-                                <p>We are a group of passionate, independent thinkers who never stop exploring new ways to improve trading for the self-directed investor.</p>
+                                <h2>{{__("Trust the Professionals")}}</h2>
+                                <p>{{__("We are a group of passionate, independent thinkers who never stop exploring new ways to improve trading for the self-directed investor")}}.</p>
                             </div>
                         </div>
                         <div class="uk-grid uk-child-width-1-2@m uk-margin-medium-top" data-uk-grid>
@@ -60,7 +64,7 @@
                                     <img class="uk-align-center " src="{{asset('front/img/in-team-1.png')}}" alt="image-team" width="300">
                                 </div>
                                 <div>
-                                    <p class="uk-text-small uk-text-muted uk-text-uppercase uk-margin-remove-bottom">Chief Executive Officer</p>
+                                    <p class="uk-text-small uk-text-muted uk-text-uppercase uk-margin-remove-bottom">{{__('Chief Executive Officer')}}</p>
                                     <h4 class="uk-margin-small-top">Cynthia Dixon</h4>
                                     {{-- <p>Nostrum exercitationem ullam corporis suscipit labor samnisi ute aliquid fugiat.</p> --}}
                                     <div>
@@ -75,7 +79,7 @@
                                     <img class="uk-align-center " src="{{asset('front/img/in-team-2.png')}}" alt="image-team" width="300">
                                 </div>
                                 <div>
-                                    <p class="uk-text-small uk-text-muted uk-text-uppercase uk-margin-remove-bottom">Executive Assistant</p>
+                                    <p class="uk-text-small uk-text-muted uk-text-uppercase uk-margin-remove-bottom">{{__('Executive Assistant')}}</p>
                                     <h4 class="uk-margin-small-top">Arthur Parker</h4>
                                     {{-- <p>Nostrum exercitationem ullam corporis suscipit labor samnisi ute aliquid fugiat.</p> --}}
                                     <div>
@@ -130,9 +134,9 @@
             <div class="uk-width-3-4@m">
                 <div class="uk-grid uk-flex uk-flex-middle" data-uk-grid>
                     <div class="uk-width-1-2@m">
-                        <h4 class="uk-text-muted">Number speaks</h4>
-                        <h1 class="uk-margin-medium-bottom">We always ready<br>for a <span class="in-highlight">challenge.</span></h1>
-                        <a href="/register" class="uk-button uk-button-primary uk-border-rounded">Get Started<i class="fas fa-chevron-circle-right fa-xs uk-margin-small-left"></i></a>
+                        <h4 class="uk-text-muted">{{__('Number speaks')}}</h4>
+                        <h1 class="uk-margin-medium-bottom">{{__('We always ready')}}<br>{{__('for a')}} <span class="in-highlight">{{__('challenge.')}}</span></h1>
+                        <a href="/register" class="uk-button uk-button-primary uk-border-rounded">{{__('Get Started')}}<i class="fas fa-chevron-circle-right fa-xs uk-margin-small-left"></i></a>
                     </div>
                     <div class="uk-width-1-2@m">
                         <div class="uk-margin-large" data-uk-grid>
@@ -143,8 +147,8 @@
                                 <hr class="uk-divider-small uk-text-right@m">
                             </div>
                             <div class="uk-width-expand@m">
-                                <h4>+ Million Trades Placed</h4>
-                                <p>trading 24Hours a day,7 Days a week</p>
+                                <h4>+ {{__('Million Trades Placed')}}</h4>
+                                <p>{{__('trading 24Hours a day,7 Days a week')}}</p>
                             </div>
                         </div>
                         <div class="uk-margin-large" data-uk-grid>
@@ -155,8 +159,8 @@
                                 <hr class="uk-divider-small uk-text-right@m">
                             </div>
                             <div class="uk-width-expand@m">
-                                <h4>Active Clients Registered</h4>
-                                <p>Clients Rewarded</p>
+                                <h4>{{__('Active Clients Registered')}}</h4>
+                                <p>{{__('Clients Rewarded')}}</p>
                             </div>
                         </div>
                     </div>
