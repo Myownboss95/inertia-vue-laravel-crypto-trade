@@ -26,13 +26,15 @@
                       <td>{{withdrawal.status}}</td>
                       <td>{{new Date(withdrawal.created_at).toDateString()}}</td>
                       <td>
-                          <InertiaLink :href="route('admin.withdrawals.edit',withdrawal.id)" class="btn btn-outline-primary btn-sm">
-                              <i class="fa fa-edit"></i>
-                          </InertiaLink>
+                          <span @click="approve(withdrawal.id)" class="btn btn-outline-success btn-sm cursor-pointer me-2">
+                              <i class="fa fa-check"></i>
+                              Approve
+                          </span>
 
-                          <!-- <InertiaLink method="delete" :href="route('admin.plans.destroy',plan.id)" class="btn btn-outline-danger btn-sm" as="button">
-                              <i class="fa fa-trash"></i>
-                          </InertiaLink> -->
+                          <span @click="decline(withdrawal.id)" class="btn btn-outline-danger btn-sm cursor-pointer">
+                              <i class="fa fa-times"></i>
+                              Decline
+                          </span>
                       </td>
                   </tr>
               </tbody>
@@ -54,12 +56,28 @@
 import breadcrumb from '@/views/components/layout/breadcrumb.vue';
 import { computed } from 'vue';
 import Paginator from '@/views/components/paginator.vue';
+import { Inertia } from '@inertiajs/inertia';
+import { useForm } from '@inertiajs/inertia-vue3';
 
 const props = defineProps({
     withdrawals: Object,
 })
 const withdrawals = computed(() => props.withdrawals.data);
 const links = computed(() => props.withdrawals.links);
+
+const form = useForm({});
+
+const approve = id => {
+    form.post(route('admin.withdrawals.approve', id), {
+        onBefore: () => confirm('Are you sure you want approve this withdrawal?'),
+    })
+}
+
+const decline = id => {
+    form.post(route('admin.withdrawals.decline', id), {
+        onBefore: () => confirm('Are you sure you want decline this withdrawal?'),
+    })
+}
 
 
 </script>

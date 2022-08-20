@@ -11,6 +11,7 @@ use App\Http\Controllers\Admin\TradeableController;
 use App\Http\Controllers\Admin\TradeController;
 use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\Admin\WithdrawalController;
+use App\Models\Withdrawal;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -50,6 +51,9 @@ Route::get('deposits/approve/{id}', [DepositController::class, 'approve'])->name
 Route::get('deposits/decline/{id}', [DepositController::class, 'decline'])->name('deposits.decline');
 
 Route::resource('withdrawals', WithdrawalController::class);
+Route::post('withdrawals/approve/{id}', [WithdrawalController::class, 'approve'])->name('withdrawals.approve');
+Route::post('withdrawals/decline/{id}', [WithdrawalController::class, 'approve'])->name('withdrawals.decline');
+
 Route::as('kyc.')->prefix('kyc')->controller(KycController::class)->group(function () {
     Route::get('', 'index')->name('index');
     Route::post('approve/{user}', 'approve')->name('approve');
