@@ -52,7 +52,7 @@
                         <div class="uk-navbar-item">
                             <!-- module logo begin -->
                             <a class="uk-logo" href="/">
-                                <img class="uk-margin-small-right in-offset-top-10" src="{{asset('front2/img/in-lazy.gif')}}" data-src="{{asset('logo_algo.png')}}" alt="wave" style="height:100px; width: 120px" data-uk-img>
+                                <img class="uk-margin-small-right in-offset-top-10" src="{{asset('front2/img/in-lazy.gif')}}" data-src="{{asset(config('app.logo'))}}" alt="wave" style="height:100px; width: 120px" data-uk-img>
                             </a>
                             <!-- module logo begin -->
                         </div>

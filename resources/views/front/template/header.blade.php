@@ -49,7 +49,7 @@
                         <div class="uk-navbar-item">
                             <!-- logo begin -->
                             <a class="uk-logo" href="/">
-                                <img src="{{asset('front/img/in-lazy.gif')}}" data-src="{{asset('/logo_algo.png')}}" alt="logo" width="146" height="39" data-uk-img>
+                                <img src="{{asset('front/img/in-lazy.gif')}}" data-src="{{asset(config('app.logo'))}}" alt="logo" width="146" height="39" data-uk-img>
                             </a>
                             <!-- logo end -->
                             <!-- navigation begin -->
