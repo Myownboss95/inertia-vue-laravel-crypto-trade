@@ -42,22 +42,25 @@
     <!-- preloader end -->
     <header>
         <!-- header content begin -->
-        <div class="uk-section uk-padding-remove-vertical">
+        <div class="uk-section uk-padding-remove-vertical" style="background-color: black">
             <nav class="uk-navbar-container uk-navbar-transparent" data-uk-sticky="show-on-up: true; animation: uk-animation-slide-top;">
                 <div class="uk-container" data-uk-navbar>
                     <div class="uk-navbar-left">
                         <div class="uk-navbar-item">
                             <!-- logo begin -->
                             <a class="uk-logo" href="/">
-                                <img src="{{asset('front/img/in-lazy.gif')}}" data-src="{{asset(config('app.logo'))}}" alt="logo" width="146" height="39" data-uk-img>
+                                <img src="{{asset('front/img/in-lazy.gif')}}" data-src="{{asset(config('app.logo'))}}" alt="logo" style="width:100px; height: auto;" data-uk-img>
                             </a>
                             <!-- logo end -->
                             <!-- navigation begin -->
                             <ul class="uk-navbar-nav uk-visible@m">
                                 <li><a href="/">Home</a></li>
+                                <li><a href="/about-us">About Us</a></li>
+                                <li><a href="/contact-us">Contact Us</a></li>
+                                <li><a href="/faqs">FAQs</a></li>
 
 
-                                <li><a href="#">About Us<i class="fas fa-chevron-down"></i></a>
+                                {{-- <li><a href="#">About Us<i class="fas fa-chevron-down"></i></a>
                                     <div class="uk-navbar-dropdown uk-navbar-dropdown-width-2">
                                         <div class="uk-navbar-dropdown-grid uk-child-width-1-2" data-uk-grid>
                                             <div>
@@ -74,10 +77,10 @@
                                             </div>
                                         </div>
                                     </div>
-                                </li>
-                                <li><a href="/packages">Packages</a></li>
-                                <li><a href="/testimonials">Testimonials</a></li>
-                                <li><a href="/faqs">FAQs</a></li>
+                                </li> --}}
+                                {{-- <li><a href="/packages">Packages</a></li> --}}
+                                {{-- <li><a href="/testimonials">Testimonials</a></li> --}}
+                                {{-- <li><a href="/faqs">FAQs</a></li> --}}
 
                             </ul>
                             <!-- navigation end -->

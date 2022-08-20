@@ -1,4 +1,4 @@
-@include('front.template.header2')
+@include('front.template.header')
 <main>
   <!-- section content begin -->
   <div class="uk-section">
@@ -15,13 +15,13 @@
                         <p class="uk-margin-small-top">Satrio Tower 16th Floor, Jl. Prof Dr Satrio Kuningan, Jakarta</p>
                         <h4 class="uk-margin-medium-top uk-margin-remove-bottom">Message us</h4>
                         <p class="uk-margin-small-top">hello@company.com<br>(888)234-5686</p>
-                        <div class="uk-margin-medium-top in-contact-socials">
+                        {{-- <div class="uk-margin-medium-top in-contact-socials">
                             <a href="#" class="fab fa-facebook-square fa-lg uk-margin-right"></a>
                             <a href="#" class="fab fa-twitter fa-lg uk-margin-right"></a>
                             <a href="#" class="fab fa-linkedin-in fa-lg uk-margin-right"></a>
                             <a href="#" class="fab fa-instagram fa-lg uk-margin-right"></a>
                             <a href="#" class="fab fa-pinterest fa-lg uk-margin-right"></a>
-                        </div>
+                        </div> --}}
                     </div>
                     <div class="uk-width-2-3@m">
                         <div class="uk-margin-medium-left in-margin-remove-left@s">

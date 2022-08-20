@@ -65,7 +65,7 @@ Route::controller(FrontendController::class)->group(function () {
     $theme = config('app.theme', 'front2');
     Route::get('/', "home")->name('front.index');
     Route::get('/about-us', "about");
-    Route::get('/contact-us', "contact");
+    Route::get('/contact-us', "contact")->name('front.contact');
     Route::get('/terms-and-conditions', "terms_and_conditions");
     Route::get('/faqs', "faqs");
 });

@@ -12,15 +12,17 @@ use Mail;
 
 class KycController extends Controller
 {
-    public function index() 
+    public function index()
     {
         $service = new LocationService();
 
-        $users = User::with(['documents'])
+        $query = User::with(['documents'])
             ->where('is_admin', 0)
-            ->whereHas('documents')
-            ->where('status', 'pending')
-            ->paginate()
+        ->where('status', 'pending');
+        if (config('app.id_verification')) {
+            $query = $query->whereHas('documents');
+        }
+        $users = $query->paginate()
             ->through(function (User $user) use ($service) {
                 $user->state = $service->getState($user->country, $user->state);
                 $user->country = $service->getCountry($user->country);

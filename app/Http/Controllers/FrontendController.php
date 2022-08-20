@@ -26,7 +26,7 @@ class FrontendController extends Controller
 
     public function contact()
     {
-        return view("$this->theme.contatct");
+        return view("$this->theme.contact");
     }
 
     public function terms_and_conditions()

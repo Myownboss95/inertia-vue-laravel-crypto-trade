@@ -50,14 +50,14 @@
                         <div class="uk-navbar-item">
                             <!-- logo begin -->
                             <a class="uk-logo" href="/">
-                                <img src="{{asset('front/img/in-lazy.gif')}}" data-src="{{asset('front/img/in-logo.svg')}}" alt="logo" width="146" height="39" data-uk-img>
+                                <img src="{{asset('front/img/in-lazy.gif')}}" data-src="{{asset(config('app.logo'))}}" alt="logo" width="146" height="39" data-uk-img>
                             </a>
                             <!-- logo end -->
                             <!-- navigation begin -->
                             <ul class="uk-navbar-nav uk-visible@m">
                             <li><a href="/">Home</a></li>
-                            
-                            
+
+
                             <li><a href="#">About Us<i class="fas fa-chevron-down"></i></a>
                                 <div class="uk-navbar-dropdown uk-navbar-dropdown-width-2">
                                     <div class="uk-navbar-dropdown-grid uk-child-width-1-2" data-uk-grid>
@@ -65,7 +65,7 @@
                                             <ul class="uk-nav uk-navbar-dropdown-nav">
                                                 <li><a href="/about-us">About Us</a></li>
                                                 <li><a href="/contact-us">Contact Us<i class="fas fa-external-link-square-alt fa-sm"></i></a></li>
-                                                <li><a href="/terms-and-conditions">Terms & conditions<i class="fas fa-gavel fa-sm"></i></a></li>
+                                                {{-- <li><a href="/terms-and-conditions">Terms & conditions<i class="fas fa-gavel fa-sm"></i></a></li> --}}
                                             </ul>
                                         </div>
                                         <div>
@@ -76,14 +76,18 @@
                                     </div>
                                 </div>
                             </li>
-                            <li><a href="/packages">Packages</a></li>
-                            <li><a href="/testimonials">Testimonials</a></li>
+                            {{-- <li><a href="/packages">Packages</a></li>
+                            <li><a href="/testimonials">Testimonials</a></li> --}}
                             <li><a href="/faqs">FAQs</a></li>
-                            
+
                         </ul>
-                        <div class="uk-navbar-item uk-visible@m in-optional-nav">
-                            <a href="/login" class="uk-button uk-button-text"><i class="fas fa-user-circle uk-margin-small-right"></i>Log in</a>
-                            <a href="/register" class="uk-button uk-button-primary uk-button-small uk-border-pill">Sign up</a>
+                        </div>
+                        <div class="uk-navbar-right">
+                            <div class="uk-navbar-item uk-visible@m in-optional-nav">
+                                <a href="/login" class="uk-button uk-button-text"><i class="fas fa-user-circle uk-margin-small-right"></i>Log in</a>
+                                <a href="/register" class="uk-button uk-button-primary uk-button-small uk-border-pill">Sign up</a>
+                            </div>
+
                         </div>
                     </div>
                 </div>
