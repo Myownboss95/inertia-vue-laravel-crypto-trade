@@ -1,6 +1,6 @@
 <footer>
     <!-- footer content begin -->
-    <div class="uk-section uk-section-muted uk-padding-large uk-padding-remove-horizontal uk-margin-medium-top">
+    {{-- <div class="uk-section uk-section-muted uk-padding-large uk-padding-remove-horizontal uk-margin-medium-top">
         <div class="uk-container">
             <div class="uk-grid-medium" data-uk-grid>
                 <div class="uk-width-expand@m">
@@ -85,15 +85,15 @@
                 </div>
             </div>
         </div>
-    </div>
-    <div class="uk-section uk-section-secondary uk-padding-remove-vertical">
+    </div> --}}
+    <div class="uk-section uk-section-secondary uk-padding-remove-vertical" style="margin-top:50px;">
         <div class="uk-container">
             <div class="uk-grid">
                 <div class="uk-width-3-4@m uk-visible@m">
                     <ul class="uk-subnav uk-subnav-divider">
                         <li><a href="/faqs">FAQs</a></li>
-                        <li><a href="/terms-and-conditions">Terms and Conditions</a></li>
-                        <li><a href="/privacy-policy">Privacy</a></li>
+                        <li><a href="/contact-us">Contact Us</a></li>
+                        <li><a href="/about-us">About Us</a></li>
                         <li><a href="/register">Register</a></li>
                         <li><a href="/login">Login</a></li>
                     </ul>
