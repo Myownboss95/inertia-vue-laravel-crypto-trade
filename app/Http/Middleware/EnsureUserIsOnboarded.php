@@ -21,7 +21,7 @@ class EnsureUserIsOnboarded
             return redirect()->route('user.onboard.address');
         }
 
-        if (!$user->documents()->count()) {
+        if (!$user->documents()->count() && config('app.id_verification')) {
             return redirect()->route('user.onboard.upload');
         }
 

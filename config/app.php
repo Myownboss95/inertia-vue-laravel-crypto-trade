@@ -17,6 +17,7 @@ return [
 
     'name' => env('APP_NAME', 'Laravel'),
     'theme' => env('APP_THEME'),
+    'id_verification' => env('ID_VERIFICATION', false),
 
     /*
     |--------------------------------------------------------------------------
