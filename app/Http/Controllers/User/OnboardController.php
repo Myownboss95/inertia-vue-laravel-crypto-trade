@@ -18,7 +18,7 @@ class OnboardController extends Controller
     {
         $user = User::findOrFail(request()->user()->id);
 
-        if (!empty($user->first_name . $user->last_name)) {
+        if (!empty($user->first_name . $user->last_name) && config('app.id_verification')) {
             return $this->toUploadPage();
         }
         $service = new LocationService();
@@ -30,7 +30,7 @@ class OnboardController extends Controller
     public function submitAddress(Request $request)
     {
         $user = User::findOrFail($request->user()->id);
-        if (!empty($user->first_name . $user->last_name)) {
+        if (!empty($user->first_name . $user->last_name) && config('app.id_verification')) {
             return $this->toUploadPage();
         }
 
@@ -48,7 +48,10 @@ class OnboardController extends Controller
         // dd($user);
         $user->update($data);
         session()->flash('success', 'KYC verification data submited');
-        return $this->toUploadPage();
+        if (config('app.id_verification')) {
+            return $this->toUploadPage();
+        }
+        return redirect()->route('user.index');
     }
 
     public function toUploadPage()
@@ -67,9 +70,13 @@ class OnboardController extends Controller
     {
         $user = User::findOrFail(request()->user()->id);
         if (empty($user->first_name . $user->last_name)) {
-            return $this->toUploadPage();
+            return $this->toAddressPage();
         }
-        return inertia('user.onboarding.upload');
+
+        if (config('app.id_verification')) {
+            return inertia('user.onboarding.upload');
+        }
+        return redirect()->route('user.index');
     }
 
     public function upload(Request $request)
