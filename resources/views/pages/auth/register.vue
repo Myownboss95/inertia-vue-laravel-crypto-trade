@@ -1,4 +1,5 @@
 <template>
+<Head title="Register" />
   <div class="auth-content my-auto">
     <div class="text-center">
       <h5 class="mb-0">Register Account</h5>

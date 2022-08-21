@@ -2,7 +2,7 @@
   <Head title="Dashboard" />
   <breadcrumb title="Dashboard" :crumbs="['Dashboard']" />
   <div class="row m-1">
-    <div class="p-2 col-md-4 col-sm-12">
+    <div class="p-2 col-md-3 col-sm-12">
       <div class="card shadow-lg radius-20">
         <div class="card-body">
           <div class="row align-items-center">
@@ -11,8 +11,8 @@
                 >Main Balance</span
               >
               <h4 class="mb-3">
-                $<span class="counter-value" data-target="{{userMainBalance}}">
-                  {{ userMainBalance }}</span
+                <span class="counter-value" data-target="{{userMainBalance}}">
+                  {{ format_money(userMainBalance) }}</span
                 >
               </h4>
             </div>
@@ -24,30 +24,52 @@
       </div>
     </div>
 
-    <div class="p-2 col-md-4 col-sm-12">
+    <div class="p-2 col-md-3 col-sm-12">
       <div class="card shadow">
         <div class="card-body">
           <div class="row align-items-center">
             <div class="col-8">
-              <span class="text-muted mb-3 lh-1 d-block">Referral Balance</span>
+              <span class="text-muted mb-3 lh-1 d-block">Investment Balance</span>
               <h4 class="mb-3">
-                $<span
+                <span
                   class="counter-value"
-                  data-target="{{userRefBalance}}"
+                  data-target="{{userInvestedBalance}}"
                 >
-                  {{ userRefBalance }}</span
+                  {{ format_money(userInvestedBalance) }}</span
                 >
               </h4>
             </div>
             <div class="col-4">
-              <i data-feather="users" class="feather-50"></i>
+              <i data-feather="dollar-sign" class="feather-50"></i>
             </div>
 
           </div>
         </div>
       </div>
     </div>
-    <div class="p-2 col-md-4 col-sm-12">
+
+    <div class="p-2 col-md-3 col-sm-12">
+      <div class="card shadow">
+        <div class="card-body">
+          <div class="row align-items-center">
+            <div class="col-6">
+              <span class="text-muted mb-3 lh-1 d-block">Total Profits</span>
+              <h4 class="mb-3">
+                <span class="counter-value" data-target="{userInvestedBalance}">
+                    {{format_money(trade_profits)}}
+                    </span
+                >
+              </h4>
+            </div>
+            <div class="col-6">
+              <i data-feather="credit-card" class="feather-50"></i>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="p-2 col-md-3 col-sm-12">
       <div class="card shadow">
         <div class="card-body">
           <div class="row align-items-center">
@@ -285,10 +307,10 @@ const props = defineProps({
   num_buyTrades: Number,
   buyTrades: Object,
   num_sellTrades: Number,
-  sellTrades: Object,
+    sellTrades: Object,
+  trade_profits: Number
 });
 onMounted(() => {
-  // console.log(props.num_users);
   feather.replace();
 });
 
@@ -304,6 +326,7 @@ const num_buyTrades = computed(() => props.num_buyTrades);
 const buyTrades = computed(() => props.buyTrades);
 const num_sellTrades = computed(() => props.num_sellTrades);
 const sellTrades = computed(() => props.sellTrades);
+const trade_profits = computed(() => props.trade_profits);
 </script>
 
 

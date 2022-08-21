@@ -25,12 +25,12 @@ class SubscriptionController extends Controller
         $investedAccount = $user->accounts()->where('type', 'invested')->first();
         $amount = $account?->account ?? 0;
 
-        if ($plan->max_investment < $amount) {
+        if ($amount >= $plan->max_investment) {
             $account->account -= $plan->max_investment;
             $investedAccount->account += $plan->max_investment;
-        } elseif ($plan->max_investment < $amount && $amount > $plan->min_investment) {
+        } elseif ($amount < $plan->max_investment && $amount > $plan->min_investment) {
             $account->account -= $plan->min_investment;
-            $investedAccount->account = $plan->min_investment;
+            $investedAccount->account += $plan->min_investment;
         } else {
             session()->flash('error', 'You do not have enough balance to subscribe to this plan. Make a deposit');
             return redirect()->route('user.deposits.create');

@@ -2,6 +2,7 @@
 
 namespace App\Providers;
 
+use App\Events\CreateUserAccounts as EventsCreateUserAccounts;
 use App\Listeners\CreateUserAccounts;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Auth\Events\Verified;
@@ -20,7 +21,7 @@ class EventServiceProvider extends ServiceProvider
         Registered::class => [
             SendEmailVerificationNotification::class,
         ],
-        Verified::class => [
+        EventsCreateUserAccounts::class => [
             CreateUserAccounts::class
         ]
     ];

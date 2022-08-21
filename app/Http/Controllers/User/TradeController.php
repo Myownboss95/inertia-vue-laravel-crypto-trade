@@ -50,8 +50,9 @@ class TradeController extends Controller
         $subscription = $user->subscriptions()->where('status', 'active')->first();
 
         if (!$subscription) {
-            session()->flash('error', 'You do not have an active subscription plan');
-            return redirect()->route('user.subscriptions.plans');
+            // session()->flash('error', 'You do not have an active subscription plan');
+            return redirect()->route('user.subscriptions.plans')
+                ->withError('You do not have an active subscription plan');
         }
 
         if ($request->input('amount') > $account->account) {

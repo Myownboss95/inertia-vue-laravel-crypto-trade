@@ -14,12 +14,12 @@ class DashboardController extends Controller
     {
         //return main account balance
         $user = User::findOrFail(auth()->user()->id);
-        $userMainBalance = ($user->accountBalance());
+        $userMainBalance = $user->accountBalance();
         //return referral account balance
-        $userRefBalance = ($user->accountBalance('referral'));
+        $userRefBalance = $user->accountBalance('referral');
         //return referral account balance
-        $userInvestedBalance = ($user->accountBalance('invested'));
-       
+        $userInvestedBalance = $user->accountBalance('invested');
+
         //return withdrawals
         $withdrawals = $user->transactions()->where('type', 'withdrawal')->limit(6)->get();
         $num_withdrawals = $user->transactions()->where('type', 'withdrawal')->count();
@@ -33,6 +33,8 @@ class DashboardController extends Controller
         $sellTrades = $user->transactions()->where('type', 'sell')->limit(6)->get();
         $num_sellTrades = $user->transactions()->where('type', 'buy')->count();
 
+        $trade_profits = $user->trades()->where('status', 'active')->sum('returns');
+
         return inertia('user.index', [
             'userMainBalance' => $userMainBalance,
             'userRefBalance' => $userRefBalance,
@@ -45,6 +47,7 @@ class DashboardController extends Controller
             'num_buyTrades' => $num_buyTrades,
             'sellTrades' => $sellTrades,
             'num_sellTrades' => $num_sellTrades,
+            'trade_profits' => $trade_profits,
         ]);
     }
 }

@@ -2,6 +2,7 @@
 
 namespace App\Listeners;
 
+use App\Events\CreateUserAccounts as EventsCreateUserAccounts;
 use App\Models\User;
 use Illuminate\Auth\Events\Verified;
 use Illuminate\Queue\InteractsWithQueue;
@@ -25,7 +26,7 @@ class CreateUserAccounts
      * @param  object  $event
      * @return void
      */
-    public function handle(Verified $event)
+    public function handle(EventsCreateUserAccounts $event)
     {
         $user = $event->user;
         $user->generateAccounts();

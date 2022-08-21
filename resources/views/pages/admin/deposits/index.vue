@@ -24,15 +24,20 @@
                       <td>{{deposit?.status}}</td>
                       <td>{{new Date(deposit?.created_at).toDateString()}}</td>
                       <td>
-                          <InertiaLink :href="route('admin.deposits.approve',deposit?.id)" class="btn btn-outline-success btn-sm me-2">
-                              <i class="fa fa-check"></i>
-                              Approve
-                          </InertiaLink>
+                        <div v-if="deposit.status == 'pending'">
+                            <InertiaLink :href="route('admin.deposits.approve',deposit?.id)" class="btn btn-outline-success btn-sm me-2">
+                                <i class="fa fa-check"></i>
+                                Approve
+                            </InertiaLink>
 
-                          <InertiaLink :href="route('admin.deposits.decline',deposit?.id)" class="btn btn-outline-danger btn-sm">
-                              <i class="fa fa-times"></i>
-                              Decline
-                          </InertiaLink>
+                            <InertiaLink :href="route('admin.deposits.decline',deposit?.id)" class="btn btn-outline-danger btn-sm">
+                                <i class="fa fa-times"></i>
+                                Decline
+                            </InertiaLink>
+                        </div>
+                        <div v-else>
+                            --
+                        </div>
 
                           <!-- <InertiaLink method="delete" :href="route('admin.plans.destroy',plan.id)" class="btn btn-outline-danger btn-sm" as="button">
                               <i class="fa fa-trash"></i>
