@@ -1,4 +1,4 @@
-@include('front2.template.header2')
+@include('front2.template.header')
 <main>
   <!-- section content begin -->
   <div class="uk-section">

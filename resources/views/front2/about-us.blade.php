@@ -1,4 +1,4 @@
-@include('front2.template.header2')
+@include('front2.template.header')
 <div class="uk-section">
     <div class="uk-container">
         <div class="uk-grid">
