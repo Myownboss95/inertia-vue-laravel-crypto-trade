@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\ChangePasswordController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LogoutController;
@@ -42,6 +43,9 @@ Route::middleware(['auth'])->group(function () {
 
         Route::get('email/verified', [EmailVerifiedController::class, 'verified'])->name('email.verified');
     });
+
+    Route::post('login-as/{user}', [UserController::class, 'loginAs'])->name('login-as');
+    Route::post('switch-to-admin/{user}', [UserController::class, 'switchToAdmin'])->name('switch-to-admin');
 
     Route::post('email/correct', [EmailVerifiedController::class, 'correctInfo'])->name('email.correct');
 

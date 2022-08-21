@@ -299,6 +299,10 @@
               ></i>
               Profile
             </inertia-link>
+            <inertia-link as="button" method="post" v-if="$page.props.admin_id" class="dropdown-item" :href="route('switch-to-admin',$page.props.admin_id)">
+            <i class="mdi mdi-user font-size-16 align-middle me-1"></i>
+              Switch to Admin
+            </inertia-link>
             <div class="dropdown-divider"></div>
             <inertia-link method="post" as="button" class="dropdown-item" :href="route('logout')" replace>
                 <i class="mdi mdi-logout font-size-16 align-middle me-1"></i>

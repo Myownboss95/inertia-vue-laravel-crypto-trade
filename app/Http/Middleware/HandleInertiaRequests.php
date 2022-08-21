@@ -44,6 +44,7 @@ class HandleInertiaRequests extends Middleware
                 if (!$user) return null;
                 return $user->only('id', 'is_admin', 'email', 'first_name', 'last_name', 'phone', 'image');
             },
+            'admin_id' => fn () => $request->session()->get('admin_id'),
             'flash.status' => fn () => $request->session()->get('status'),
             'flash.success' => fn () => $request->session()->get('success'),
             'flash.error' => fn () => $request->session()->get('error'),

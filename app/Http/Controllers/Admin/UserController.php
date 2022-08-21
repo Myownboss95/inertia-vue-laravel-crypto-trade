@@ -43,4 +43,21 @@ class UserController extends Controller
             })->withQueryString(),
         ]);
     }
+
+    public function loginAs(User $user)
+    {
+        $adminUser = auth()->user();
+        auth()->logout();
+        session()->put('admin_id', $adminUser->id);
+        auth()->loginUsingId($user->id);
+        return redirect()->route('user.index');
+    }
+
+    public function switchToAdmin(User $user)
+    {
+        auth()->logout();
+        session()->forget('admin_id');
+        auth()->loginUsingId($user->id);
+        return redirect()->route('admin.index');
+    }
 }

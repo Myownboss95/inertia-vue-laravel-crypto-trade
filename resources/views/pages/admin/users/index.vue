@@ -80,8 +80,8 @@
                       <i class="fa fa-cog font-size-20"></i>
                     </div>
                     <div class="dropdown-menu dropdown-menu-right">
-                      <a class="dropdown-item" href="javascript:void(0);">Edit</a>
-                      <a class="dropdown-item" href="javascript:void(0);">Delete</a>
+                      <inertia-link class="dropdown-item" as="button" method="post" :href="route('login-as',user.id)">Login As</inertia-link>
+                      <!-- <a class="dropdown-item" href="javascript:void(0);">Delete</a> -->
                     </div>
                   </div>
                 </div>
@@ -100,7 +100,7 @@
 
   </div>
 </template>
- 
+
 <script setup>
   import breadcrumb from '@/views/components/layout/breadcrumb.vue';
   import { computed } from '@vue/runtime-core';
