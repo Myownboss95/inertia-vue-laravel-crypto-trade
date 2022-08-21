@@ -17,12 +17,14 @@ class EnsureUserIsOnboarded
     public function handle(Request $request, Closure $next)
     {
         $user = $request->user();
-        if (empty($user->first_name) || empty($user->last_name)) {
-            return redirect()->route('user.onboard.address');
-        }
+        if (!$user->is_admin) {
+            if (empty($user->first_name) || empty($user->last_name)) {
+                return redirect()->route('user.onboard.address');
+            }
 
-        if (!$user->documents()->count() && config('app.id_verification')) {
-            return redirect()->route('user.onboard.upload');
+            if (!$user->documents()->count() && config('app.id_verification')) {
+                return redirect()->route('user.onboard.upload');
+            }
         }
 
         return $next($request);
