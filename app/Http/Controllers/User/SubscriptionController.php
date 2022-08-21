@@ -28,7 +28,7 @@ class SubscriptionController extends Controller
         if ($amount >= $plan->max_investment) {
             $account->account -= $plan->max_investment;
             $investedAccount->account += $plan->max_investment;
-        } elseif ($amount < $plan->max_investment && $amount > $plan->min_investment) {
+        } elseif ($amount <= $plan->max_investment && $amount >= $plan->min_investment) {
             $account->account -= $plan->min_investment;
             $investedAccount->account += $plan->min_investment;
         } else {
