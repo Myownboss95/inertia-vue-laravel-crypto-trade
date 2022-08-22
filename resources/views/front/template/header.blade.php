@@ -54,10 +54,10 @@
                             <!-- logo end -->
                             <!-- navigation begin -->
                             <ul class="uk-navbar-nav uk-visible@m">
-                                <li><a href="/">Home</a></li>
-                                <li><a href="/about-us">About Us</a></li>
-                                <li><a href="/contact-us">Contact Us</a></li>
-                                <li><a href="/faqs">FAQs</a></li>
+                                <li><a href="/">{{__('Home')}}</a></li>
+                                <li><a href="/about-us">{{__('About Us')}}</a></li>
+                                <li><a href="/contact-us">{{__('Contact Us')}}</a></li>
+                                <li><a href="/faqs">{{__('FAQs')}}</a></li>
 
 
                                 {{-- <li><a href="#">About Us<i class="fas fa-chevron-down"></i></a>
@@ -111,8 +111,8 @@
                             </div>
                         </div>
                         <div class="uk-navbar-item uk-visible@m in-optional-nav">
-                            <a href="/login" class="uk-button uk-button-text">Log in<i class="fas fa-arrow-circle-right uk-margin-small-left"></i></a>
-                            <a href="/register" class="uk-button uk-button-primary uk-border-rounded">Sign up<i class="fas fa-arrow-circle-right uk-margin-small-left"></i></a>
+                            <a href="/login" class="uk-button uk-button-text">{{__('Log in')}}<i class="fas fa-arrow-circle-right uk-margin-small-left"></i></a>
+                            <a href="/register" class="uk-button uk-button-primary uk-border-rounded">{{__('Sign up')}}<i class="fas fa-arrow-circle-right uk-margin-small-left"></i></a>
                         </div>
                     </div>
                 </div>

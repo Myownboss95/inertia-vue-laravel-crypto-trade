@@ -6,10 +6,10 @@
             <div class="uk-grid uk-flex uk-flex-middle">
                 <div class="uk-width-2-3@m uk-text-small">
                     <ul class="uk-subnav uk-subnav-divider uk-visible@s" data-uk-margin>
-                        <li><a href="/faqs">FAQs</a></li>
-                        <li><a href="/contact-us">Contact Us</a></li>
-                        <li><a href="/register">Register</a></li>
-                        <li><a href="/login">Login</a></li>
+                        <li><a href="/faqs">{{__('FAQs')}}</a></li>
+                        <li><a href="/contact-us">{{__('Contact Us')}}</a></li>
+                        <li><a href="/register">{{__('Sign up')}}</a></li>
+                        <li><a href="/login">{{__('Log in')}}</a></li>
                     </ul>
                     <p class="copyright-text">©{{ now()->year }} {{ config('app.name') }}. All Rights Reserved.</p>
                 </div>
