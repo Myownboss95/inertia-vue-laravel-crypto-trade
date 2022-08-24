@@ -22,7 +22,7 @@
                         <div class="placeholder d-block mb-3 shadow-lg">
                             <img :src="back" alt="" class="img-fluid" />
                         </div>
-                        <label for="" class="form-label">Front</label>
+                        <label for="" class="form-label">Back</label>
                         <input type="file" class="form-control" @change="form.back = $event.target.files[0]" accept="image/*" />
                         <Error name="back"  />
                     </div>
