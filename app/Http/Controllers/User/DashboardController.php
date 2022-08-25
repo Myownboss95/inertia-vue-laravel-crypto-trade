@@ -35,6 +35,7 @@ class DashboardController extends Controller
 
         $trade_profits = $user->trades()->where('status', 'active')->sum('returns');
 
+
         return inertia('user.index', [
             'userMainBalance' => $userMainBalance,
             'userRefBalance' => $userRefBalance,
@@ -48,6 +49,7 @@ class DashboardController extends Controller
             'sellTrades' => $sellTrades,
             'num_sellTrades' => $num_sellTrades,
             'trade_profits' => $trade_profits,
+            'active_trades' => $user->trades()->where('status', 'active')->count()
         ]);
     }
 }

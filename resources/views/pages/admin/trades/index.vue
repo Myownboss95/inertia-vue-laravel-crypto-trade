@@ -34,12 +34,18 @@
                       <td>{{trade.tradeable.type}}</td>
                       <td>{{new Date(trade.created_at).toDateString()}}</td>
                       <td>
-                        <FormButton class="btn btn-outline-primary btn-sm" @button-clicked="view(trade.id)">
-                            <ButtonLoader text="<i class='fa fa-edit'></i>" />
-                        </FormButton>
-                          <!-- <InertiaLink :href="route('admin.trades.edit',trade.id)">
-                              <i class="fa fa-edit"></i>
-                          </InertiaLink> -->
+                        <div v-if="trade.status == 'active'">
+                            <FormButton class="btn btn-outline-primary btn-sm" @button-clicked="view(trade.id)">
+                                <ButtonLoader text="<i class='fa fa-edit'></i>" />
+                            </FormButton>
+
+                            <FormButton @button-clicked="closeTrade(trade.id)" class="btn btn-outline-danger btn-sm ms-2">
+                                <ButtonLoader text="<i class='fa fa-times'></i>  Close" :loading="form.processeing" />
+                            </FormButton>
+                        </div>
+                        <div else>
+                            --
+                        </div>
 
                           <!-- <InertiaLink method="delete" :href="route('admin.plans.destroy',plan.id)" class="btn btn-outline-danger btn-sm" as="button">
                               <i class="fa fa-trash"></i>
@@ -89,6 +95,7 @@ import ButtonLoader from '@/views/components/form/ButtonLoader.vue';
 import Modal from '@/views/components/modal.vue';
 import FormGroup from '@/views/components/form/FormGroup.vue';
 import { useForm } from '@inertiajs/inertia-vue3';
+import { Inertia } from '@inertiajs/inertia';
 
 const props = defineProps({
     trades: Object,
@@ -121,6 +128,12 @@ const view = id => {
 
 const updateTrade = () => {
     form.put(route('admin.trades.update',form.id));
+}
+
+const closeTrade = id => {
+    Inertia.post(route('admin.trades.close',id), {}, {
+        onBefore: () => confirm('Are you sure you want to close this trade?')
+    })
 }
 
 

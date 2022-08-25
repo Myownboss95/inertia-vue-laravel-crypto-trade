@@ -21,4 +21,14 @@ class Trade extends Model
         return $this->belongsTo(User::class);
     }
 
+    public function close()
+    {
+        $user = $this->user;
+        $account = $user->accounts()->where('type', 'invested')->first();
+        $account->account += $this->returns + $this->amount;
+        $this->status = 'closed';
+        $this->save();
+        $account->save();
+    }
+
 }

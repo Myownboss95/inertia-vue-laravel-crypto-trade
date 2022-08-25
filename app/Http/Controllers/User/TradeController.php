@@ -64,4 +64,11 @@ class TradeController extends Controller
         session()->flash('success', 'Trade placed successfully');
         return redirect()->route('user.trades.index');
     }
+
+    public function close(Trade $trade)
+    {
+        $trade->close();
+        session()->flash('success', 'Trade closed');
+        return back();
+    }
 }

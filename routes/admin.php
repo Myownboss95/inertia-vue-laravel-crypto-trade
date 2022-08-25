@@ -40,7 +40,8 @@ Route::prefix('mail')->as('mail.')->controller(MailController::class)->group(fun
 Route::resource('tradeables', TradeableController::class);
 Route::resource('plans', PlanController::class)->except('show');
 
-Route::resource('trades', TradeController::class);
+Route::resource('trades', TradeController::class)->except('show', 'destroy', 'edit');
+Route::post('trades/close/{trade}', [TradeController::class, 'close'])->name('trades.close');
 
 Route::resource('tradeables', TradeableController::class);
 Route::resource('settings', SettingController::class);

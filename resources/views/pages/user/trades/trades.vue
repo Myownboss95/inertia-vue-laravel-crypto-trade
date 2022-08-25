@@ -51,7 +51,7 @@
               :disabled="form.processing"
               @button-clicked="placeTrade('buy')"
             >
-              <ButtonLoader text="Buy" :loading="form.processing" />
+              <ButtonLoader text="Buy" :loading="form.processing && form.type == 'buy'" />
             </FormButton>
             <FormButton
               type="button"
@@ -59,7 +59,7 @@
               :disabled="form.processing"
               @button-clicked="placeTrade('sell')"
             >
-              <ButtonLoader text="Sell" :loading="form.processing" />
+              <ButtonLoader text="Sell" :loading="form.processing && form.type == 'buy'" />
             </FormButton>
           </div>
         </form>

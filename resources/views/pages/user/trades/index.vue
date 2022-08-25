@@ -15,7 +15,7 @@
                       <th>Asset Type</th>
                       <th>Stop loss</th>
                       <th>Date</th>
-                      <!-- <th>Actions</th> -->
+                      <th>Actions</th>
                   </tr>
               </thead>
 
@@ -29,15 +29,15 @@
                       <td>{{trade.tradeable.type}}</td>
                       <td>{{trade.stop_loss || 'none'}}</td>
                       <td>{{new Date(trade.created_at).toDateString()}}</td>
-                      <!-- <td>
-                          <InertiaLink :href="route('admin.trades.edit',trade.id)" class="btn btn-outline-primary btn-sm">
-                              <i class="fa fa-times"></i>
-                          </InertiaLink>
+                      <td>
+                          <FormButton @button-clicked="closeTrade(trade.id)" class="btn btn-outline-danger btn-sm">
+                            <ButtonLoader text="<i class='fa fa-times'></i>  Close" :loading="form.processeing" />
+                          </FormButton>
 
-                          <InertiaLink method="delete" :href="route('admin.plans.destroy',plan.id)" class="btn btn-outline-danger btn-sm" as="button">
+                          <!-- <InertiaLink method="delete" :href="route('admin.plans.destroy',plan.id)" class="btn btn-outline-danger btn-sm" as="button">
                               <i class="fa fa-trash"></i>
-                          </InertiaLink>
-                      </td> -->
+                          </InertiaLink> -->
+                      </td>
                   </tr>
               </tbody>
               <tbody v-else>
@@ -58,12 +58,25 @@
 import breadcrumb from '@/views/components/layout/breadcrumb.vue';
 import { computed } from 'vue';
 import Paginator from '@/views/components/paginator.vue';
+import FormButton from '@/views/components/form/FormButton.vue';
+import ButtonLoader from '@/views/components/form/ButtonLoader.vue';
+import { useForm } from '@inertiajs/inertia-vue3';
 
 const props = defineProps({
     trades: Object,
 })
 const trades = computed(() => props.trades.data);
 const links = computed(() => props.trades.links);
+
+const form = useForm({});
+
+
+const closeTrade = id => {
+    form.post(route('user.trades.close', id), {
+        onBefore: () => confirm('Are you sure you want to close this trade'),
+    });
+}
+
 
 
 </script>

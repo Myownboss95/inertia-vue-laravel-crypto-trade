@@ -55,4 +55,11 @@ class TradeController extends Controller
         session()->flash('success', 'Updated Trade');
         return back();
     }
+
+    public function close(Trade $trade)
+    {
+        $trade->close();
+        session()->flash('success', 'Trade closed');
+        return back();
+    }
 }

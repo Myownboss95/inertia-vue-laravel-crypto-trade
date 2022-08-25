@@ -31,7 +31,8 @@ Route::middleware('onboarded')->group(function () {
 
     Route::get('/trades/assets/{type}',[TradeController::class, 'getTradeables'])->name('trades.getTradeables');
     Route::get('/trades/view',[TradeController::class, 'trades'])->name('trades.view');
-    Route::resource('trades', TradeController::class);
+    Route::post('trades/close/{trade}', [TradeController::class, 'close'])->name('trades.close');
+    Route::resource('trades', TradeController::class)->only('index', 'store');
 });
 
 Route::get('subscriptions', [SubscriptionController::class, 'plans'])->name('subscriptions.plans');
