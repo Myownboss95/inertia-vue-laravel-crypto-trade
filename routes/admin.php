@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Admin\BotController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\PaymentMethodController;
 use App\Http\Controllers\Admin\DepositController;
@@ -42,6 +43,7 @@ Route::resource('plans', PlanController::class)->except('show');
 
 Route::resource('trades', TradeController::class)->except('show', 'destroy', 'edit');
 Route::post('trades/close/{trade}', [TradeController::class, 'close'])->name('trades.close');
+Route::resource('bots', BotController::class);
 
 Route::resource('tradeables', TradeableController::class);
 Route::resource('settings', SettingController::class);

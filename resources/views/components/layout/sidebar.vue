@@ -24,7 +24,7 @@
             icon="user-x"
             v-if="is_admin"
           />
-          <li class="menu-title">Transactions</li>
+          <li class="menu-title">Trading</li>
           <SidebarItem
             name="Trades History"
             :url="route(`${is_admin ? 'admin' : 'user'}.trades.index`)"
@@ -33,9 +33,15 @@
           <SidebarItem
             name="Place Trade"
             :url="route('user.trades.view')"
-            icon="table"
+            icon="server"
             v-if="!is_admin"
           />
+          <SidebarItem
+            name="Trade Bots"
+            :url="route(`${is_admin ? 'admin' : 'user'}.bots.index`)"
+            icon="cpu"
+          />
+          <li class="menu-title">Transactions</li>
           <SidebarItem
             name="Deposits"
             :url="route(`${is_admin ? 'admin' : 'user'}.deposits.index`)"
@@ -54,14 +60,14 @@
             icon="mail"
             v-if="is_admin"
           />
-          <li class="menu-title">Profile</li>
+          <li class="menu-title">Settings</li>
+
           <SidebarItem
             name="My Profile"
             :url="route('user.profile.view')"
-            icon="lock"
+            icon="user"
             v-if="!is_admin"
           />
-          <li class="menu-title">Settings</li>
           <SidebarItem
             name="Password reset"
             :url="route('password.change')"

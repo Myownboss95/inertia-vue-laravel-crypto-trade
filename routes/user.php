@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\User\BotController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\User\DashboardController;
 use App\Http\Controllers\User\DepositController;
@@ -33,6 +34,7 @@ Route::middleware('onboarded')->group(function () {
     Route::get('/trades/view',[TradeController::class, 'trades'])->name('trades.view');
     Route::post('trades/close/{trade}', [TradeController::class, 'close'])->name('trades.close');
     Route::resource('trades', TradeController::class)->only('index', 'store');
+    Route::resource('bots', BotController::class);
 });
 
 Route::get('subscriptions', [SubscriptionController::class, 'plans'])->name('subscriptions.plans');
