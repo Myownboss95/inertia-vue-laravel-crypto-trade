@@ -6,9 +6,7 @@
 <!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=UTF-8" /><!-- /Added by HTTrack -->
 <head>
     <meta charset="utf-8">
-    <meta name="description" content="Premium HTML5 Template by Indonez">
-    <meta name="keywords" content="blockit, uikit3, indonez, handlebars, scss, vanilla javascript">
-    <meta name="author" content="Indonez">
+    <meta name="description" content="{{config('app.name')}} Cryptocurrency, Forex Broker">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="theme-color" content="#313131" />
     <!-- Site Properties -->

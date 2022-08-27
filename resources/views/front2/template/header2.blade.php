@@ -6,9 +6,7 @@
 <!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=UTF-8" /><!-- /Added by HTTrack -->
 <head>
     <meta charset="utf-8">
-    <meta name="description" content="Premium HTML5 Template by Indonez">
-    <meta name="keywords" content="blockit, uikit3, indonez, handlebars, scss, vanilla javascript">
-    <meta name="author" content="Indonez">
+    <meta name="description" content="{{config('app.name')}} Cryptocurrency, Forex Broker">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="theme-color" content="#313131" />
     <!-- Site Properties -->
@@ -59,8 +57,8 @@
                     <div class="uk-navbar-right uk-width-expand uk-flex uk-flex-right">
                         <ul class="uk-navbar-nav uk-visible@m">
                             <li><a href="/">Home</a></li>
-                            
-                            
+
+
                             <li><a href="#">About Us<i class="fas fa-chevron-down"></i></a>
                                 <div class="uk-navbar-dropdown uk-navbar-dropdown-width-2">
                                     <div class="uk-navbar-dropdown-grid uk-child-width-1-2" data-uk-grid>
@@ -82,7 +80,7 @@
                             <li><a href="/packages">Packages</a></li>
                             <li><a href="/testimonials">Testimonials</a></li>
                             <li><a href="/faqs">FAQs</a></li>
-                            
+
                         </ul>
                         <div class="uk-navbar-item uk-visible@m in-optional-nav">
                             <a href="/login" class="uk-button uk-button-text"><i class="fas fa-user-circle uk-margin-small-right"></i>Log in</a>

@@ -17,15 +17,7 @@
     <meta charset="utf-8">
     <meta
         name="description"
-        content="Premium HTML5 Template by Indonez"
-    >
-    <meta
-        name="keywords"
-        content="blockit, uikit3, indonez, handlebars, scss, vanilla javascript"
-    >
-    <meta
-        name="author"
-        content="Indonez"
+        content="{{ config('app.name') }} Cryptocurrency, Forex Broker"
     >
     <meta
         name="viewport"
@@ -195,4 +187,4 @@
             </nav>
         </div>
     </header>
-            <!-- module navigation end -->
+    <!-- module navigation end -->
