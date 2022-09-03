@@ -28,13 +28,17 @@ Route::middleware('onboarded')->group(function () {
     Route::resource('deposits', DepositController::class)->except('show');
     Route::get('/profile/view',[ProfileController::class, 'index'])->name('profile.view');
     Route::resource('profile', ProfileController::class);
-    Route::resource('withdrawals', WithdrawalController::class);
+    Route::resource('withdrawals', WithdrawalController::class)->middleware('active');
 
     Route::get('/trades/assets/{type}',[TradeController::class, 'getTradeables'])->name('trades.getTradeables');
     Route::get('/trades/view',[TradeController::class, 'trades'])->name('trades.view');
-    Route::post('trades/close/{trade}', [TradeController::class, 'close'])->name('trades.close');
+    Route::post('trades/close/{trade}', [TradeController::class, 'close'])->name('trades.close')->middleware('active');
     Route::resource('trades', TradeController::class)->only('index', 'store');
-    Route::resource('bots', BotController::class);
+    Route::post('bots/activation-request', [BotController::class, 'requestActivation'])->name('bots.activation.request');
+    Route::post('bots/activate', [BotController::class, 'activate'])->name('bots.activate');
+    Route::post('bots/deactivate/{id}', [BotController::class, 'deactivate'])->name('bots.deactivate');
+    Route::post('bots/reactivate/{id}', [BotController::class, 'reactivate'])->name('bots.reactivate');
+    Route::resource('bots', BotController::class)->except('show', 'update');
 });
 
 Route::get('subscriptions', [SubscriptionController::class, 'plans'])->name('subscriptions.plans');

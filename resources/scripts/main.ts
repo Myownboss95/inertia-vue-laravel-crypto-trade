@@ -4,8 +4,6 @@ import { importPageComponent } from '@/scripts/vite/import-page-component'
 import { InertiaProgress } from '@inertiajs/progress'
 import { createPinia } from 'pinia';
 import route from 'ziggy-js'
-import { success, error } from '@/js/toast';
-
 
 const pinia = createPinia();
 

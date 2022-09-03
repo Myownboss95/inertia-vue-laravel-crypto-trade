@@ -96,4 +96,9 @@ class User extends Authenticatable implements MustVerifyEmail
         return $this->hasMany(Subscription::class);
     }
 
+    public function bots()
+    {
+        return $this->belongsToMany(Bot::class)->withPivot(['status', 'id']);
+    }
+
 }

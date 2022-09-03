@@ -326,7 +326,7 @@ import route from 'ziggy-js';
 
 
 const user = computed(() => usePage().props.value.auth.user);
-const is_admin = user.is_admin;
+const is_admin = user.value.is_admin;
 
 const locales = ref([
     {

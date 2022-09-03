@@ -39,6 +39,7 @@ class TradeController extends Controller
 
     public function store(Request $request)
     {
+        $this->middleware('active');
         $data = $request->validate(['amount' => ['required', 'numeric'],
             'type' => ['required', 'in:buy,sell'],
             'stop_loss' => ['nullable'],

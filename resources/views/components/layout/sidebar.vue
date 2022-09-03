@@ -37,7 +37,7 @@
             v-if="!is_admin"
           />
           <SidebarItem
-            name="Trade Bots"
+            :name="botsMenu"
             :url="route(`${is_admin ? 'admin' : 'user'}.bots.index`)"
             icon="cpu"
           />
@@ -130,7 +130,9 @@
   import SidebarItem from './sidebarItem.vue';
   import { usePage } from '@inertiajs/inertia-vue3';
 
-  const is_admin = computed(() => usePage().props.value.auth.user.is_admin);
+const is_admin = computed(() => usePage().props.value.auth.user.is_admin);
+
+const botsMenu = computed(() => is_admin == true ? 'Trade Bots' : 'Trade Bot');
 
   onMounted((_) => {
     new MetisMenu('#side-menu');

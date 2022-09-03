@@ -5,6 +5,11 @@
   <div class="card shadow col-lg-10 mx-auto">
     <div class="card-body">
         <div class="text-end">
+            <InertiaLink :href="route('admin.bots.activation.requests')" class="btn btn-outline-info me-2">
+                <i class="fa fa-link"></i>
+                Activation request
+            </InertiaLink>
+
             <InertiaLink :href="route('admin.bots.create')" class="btn btn-outline-primary">
                 <i class="fa fa-plus"></i>
                 Add Bot
@@ -58,6 +63,7 @@
 <script setup>
 import breadcrumb from '@/views/components/layout/breadcrumb.vue';
 import { computed } from '@vue/runtime-core';
+import Paginator from '@/views/components/paginator.vue';
 
 const props = defineProps({
     bots: Object,

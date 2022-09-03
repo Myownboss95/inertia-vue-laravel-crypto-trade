@@ -2,10 +2,16 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Http\Controllers\Controller;
 use App\Models\Bot;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Validation\Rule;
+use App\Http\Controllers\Controller;
+use App\Mail\Bot\SendActivationToken;
+use DB;
+use Illuminate\Database\Eloquent\Builder;
+use Mail;
+use Str;
 
 class BotController extends Controller
 {
@@ -45,7 +51,7 @@ class BotController extends Controller
             // 'description' => ['required', 'string'],
             'profit_percentage' => ['required', 'numeric'],
             'loss_percentage' => ['required', 'numeric'],
-            'trades_per_day' => ['required', 'numeric']
+            'trades_per_day' => ['required', 'numeric', 'max:4']
         ]);
 
         Bot::create($valid);
@@ -109,5 +115,41 @@ class BotController extends Controller
     {
         $bot->delete();
         return redirect()->route('admin.bots.index');
+    }
+
+    public function showBotActivationRequest()
+    {
+
+        $requests = DB::table('bot_user')
+        ->where('bot_user.status', 'requested')
+        ->join('bots', 'bot_user.bot_id', 'bots.id')
+        ->join('users', 'bot_user.user_id', 'users.id')
+        ->select([
+            'bot_user.*',
+            'bots.name AS bot_name',
+            'users.first_name',
+            'users.last_name',
+            'users.email',
+            'users.image'
+        ])->paginate();
+
+        return inertia('admin.bots.activation', [
+            'requests' => $requests
+        ]);
+    }
+
+    public function generateBotActivationToken($id)
+    {
+        DB::table('bot_user')->where('id', $id)->update([
+            'token' => Str::random(12),
+        ]);
+        $payload = DB::table('bot_user')
+        ->where('bot_user.id', $id)
+            ->join('users', 'bot_user.user_id', 'users.id')
+            ->select('bot_user.*', 'users.email', 'users.first_name', 'users.id')
+            ->first();
+        Mail::to($payload->email)->send(new SendActivationToken($payload));
+        session()->flash('success', 'Activation Token Generated and sent to user\'s email');
+        return back();
     }
 }

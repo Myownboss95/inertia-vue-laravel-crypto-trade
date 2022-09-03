@@ -43,7 +43,9 @@ Route::resource('plans', PlanController::class)->except('show');
 
 Route::resource('trades', TradeController::class)->except('show', 'destroy', 'edit');
 Route::post('trades/close/{trade}', [TradeController::class, 'close'])->name('trades.close');
-Route::resource('bots', BotController::class);
+Route::resource('bots', BotController::class)->except('show');
+Route::get('bots/activations', [BotController::class, 'showBotActivationRequest'])->name('bots.activation.requests');
+Route::post('bots/activations/{id}', [BotController::class, 'generateBotActivationToken'])->name('bots.activation.token-generate');
 
 Route::resource('tradeables', TradeableController::class);
 Route::resource('settings', SettingController::class);

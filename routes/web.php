@@ -32,7 +32,7 @@ use App\Models\Plan;
 Route::middleware(['auth'])->group(function () {
 
     Route::middleware(['verified'])->group(function () {
-        Route::prefix('user')->as('user.')->group(fn () => require_once('user.php'));
+        Route::prefix('user')->as('user.')->middleware('can:is_user')->group(fn () => require_once('user.php'));
         Route::prefix('admin')->as('admin.')->middleware('can:is_admin')->group(fn () => require_once('admin.php'));
 
         Route::get('change-password', [ChangePasswordController::class, 'getChangePasswordView'])->name('password.change');

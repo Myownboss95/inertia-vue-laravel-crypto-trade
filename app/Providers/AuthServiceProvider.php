@@ -32,5 +32,6 @@ class AuthServiceProvider extends ServiceProvider
     private function registerGates()
     {
         Gate::define('is_admin', fn (User $user) => $user->is_admin == 1);
+        Gate::define('is_user', fn (User $user) => $user->is_admin == 0);
     }
 }
