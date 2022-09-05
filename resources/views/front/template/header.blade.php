@@ -104,7 +104,7 @@
         window.googleTranslateElementInit = () => {
             new google.translate.TranslateElement({
                 pageLanguage: 'en',
-                layout: google.translate.TranslateElement.InlineLayout.SIMPLE
+                // layout: google.translate.TranslateElement.InlineLayout.SIMPLE
             }, 'google_translate_element');
         }
     </script>
@@ -119,6 +119,9 @@
 
         body {
             top: 0 !important;
+        }
+        ['id' = ':0.targetLanguage'] span {
+            display: none;
         }
     </style>
 
