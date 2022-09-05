@@ -11,6 +11,24 @@
     @vite
     @routes
     @inertiaHead
+
+    <style>
+        body>div.skiptranslate{
+            display: none;
+            visibility: hidden;
+            height: 0;
+            width:0;
+        }
+
+        #google_translate_element img{
+            display:none;
+        }
+
+        body {
+            top: 0 !important;
+        }
+    </style>
+
 </head>
 
 <body class="antialiased bg-gray-900">
@@ -23,6 +41,20 @@
             <x-live-chat />
         @endif
     @endguest
+
+    <script
+        type="text/javascript"
+        src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"
+    ></script>
+
+    <script type="text/javascript">
+        window.googleTranslateElementInit = () => {
+            new google.translate.TranslateElement({
+                pageLanguage: 'en',
+                layout: google.translate.TranslateElement.InlineLayout.SIMPLE
+            }, 'google_translate_element');
+        }
+    </script>
 </body>
 
 </html>

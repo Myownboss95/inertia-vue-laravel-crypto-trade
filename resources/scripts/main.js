@@ -25,13 +25,15 @@ import { format_money } from './mixins/money';
 import AuthVue from '@/views/layouts/auth.vue';
 import DefaultVue from '@/views/layouts/default.vue';
 
+// import vGoogleTranslate from "v-google-translate";
+
 createInertiaApp({
-    title: title => `${title} - ${import.meta.env.VITE_APP_NAME}`,
+    title: title => `${ title } - ${ import.meta.env.VITE_APP_NAME }`,
     resolve: async (name) => {
         const { default: page } = await importPageComponent(name, import.meta.glob('../views/pages/**/*.vue'))
         if (name.startsWith('auth.')) {
             page.layout = AuthVue;
-        } else  {
+        } else {
             page.layout = DefaultVue;
         }
         return page;
@@ -40,16 +42,17 @@ createInertiaApp({
         const vue = createApp({ render: () => h(app, props) })
             .use(plugin)
             .use(pinia)
+            // .use(vGoogleTranslate)
             .mixin(translations)
             .mixin(format_money)
             .mixin({ methods: { route } })
-            .component('Head',Head)
+            .component('Head', Head)
             .component('InertiaLink', Link);
 
         vue.config.globalProperties.$appName = import.meta.env.VITE_APP_NAME;
 
 
-            vue.mount(el)
+        vue.mount(el)
     },
 });
 InertiaProgress.init();
