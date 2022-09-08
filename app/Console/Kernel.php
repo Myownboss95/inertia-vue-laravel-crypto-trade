@@ -16,7 +16,10 @@ class Kernel extends ConsoleKernel
     protected function schedule(Schedule $schedule)
     {
         // $schedule->command('inspire')->hourly();
-        $schedule->command('trade:end-tenure')->everyTwoHours();
+        $schedule->command('trade:end-tenure')
+        ->everyFifteenMinutes()
+            ->withoutOverlapping()
+            ->runInBackground();
     }
 
     /**
