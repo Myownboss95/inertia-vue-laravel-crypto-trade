@@ -14,7 +14,7 @@ class Subscription extends Model
 
     public function scopeExpired(Builder $query)
     {
-        return $query->whereTime('expires_at', '<=', now()->toDateTimeString());
+        return $query->whereDate('expires_at', '<=', now()->toDateTimeString());
     }
 
     public function scopeActive(Builder $query)
