@@ -29,6 +29,7 @@ Route::middleware('onboarded')->group(function () {
     Route::get('/profile/view',[ProfileController::class, 'index'])->name('profile.view');
     Route::resource('profile', ProfileController::class);
     Route::resource('withdrawals', WithdrawalController::class)->middleware('active');
+    Route::post('withdrawals/bank', [WithdrawalController::class, 'bankWithdrawal'])->name('withdrawals.bank')->middleware('active');
 
     Route::get('/trades/assets/{type}',[TradeController::class, 'getTradeables'])->name('trades.getTradeables');
     Route::get('/trades/view',[TradeController::class, 'trades'])->name('trades.view');

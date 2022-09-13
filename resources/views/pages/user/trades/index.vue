@@ -30,9 +30,10 @@
                       <td>{{trade.stop_loss || 'none'}}</td>
                       <td>{{new Date(trade.created_at).toDateString()}}</td>
                       <td>
-                          <FormButton @button-clicked="closeTrade(trade.id)" class="btn btn-outline-danger btn-sm">
+                          <FormButton @button-clicked="closeTrade(trade.id)" class="btn btn-outline-danger btn-sm" v-if="trade.status == 'active'">
                             <ButtonLoader text="<i class='fa fa-times'></i>  Close" :loading="form.processeing" />
                           </FormButton>
+                          <span v-else>--</span>
 
                           <!-- <InertiaLink method="delete" :href="route('admin.plans.destroy',plan.id)" class="btn btn-outline-danger btn-sm" as="button">
                               <i class="fa fa-trash"></i>

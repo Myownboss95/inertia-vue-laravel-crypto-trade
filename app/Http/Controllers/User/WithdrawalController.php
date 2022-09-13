@@ -40,6 +40,10 @@ class WithdrawalController extends Controller
 
         $user = User::findOrFail(auth()->user()->id);
 
+        if ($request->input('amount') < 10) {
+            return back()->withError('Withdrawal amount cannot be lower than $10');
+        }
+
         $amount = $request->input('amount');
         $userAccount = $user->accounts()->where('type', $request->input('account'))->first();
 
@@ -54,6 +58,53 @@ class WithdrawalController extends Controller
             'options' => [
                 'address' => $data['address'],
                 'payment_method_id' => $data['method_id']
+            ],
+            'type' => 'withdrawal',
+            'status' => 'pending'
+        ]);
+        $userAccount->save();
+
+        session()->flash('success', 'Withdrawal request sent successfully');
+        return redirect()->route('user.withdrawals.index');
+    }
+
+    public function bankWithdrawal(Request $request)
+    {
+        $data = $request->validate([
+            'amount' => ['required', 'numeric'],
+            'bank_name' => ['required'],
+            'account_name' => ['required'],
+            'account_number' => ['required'],
+            'routing_number' => ['required'],
+            'swift_code' => ['required'],
+        ]);
+
+        $user = User::findOrFail(auth()->user()->id);
+
+        if ($request->input('amount') < 10) {
+            return back()->withError('Withdrawal amount cannot be lower than $10');
+        }
+
+        $amount = $request->input('amount');
+        $userAccount = $user->accounts()->where('type', 'main')->first();
+
+        if ($amount > $userAccount?->account) {
+            session()->flash('error', "Insufficient funds on your main balance");
+            return back();
+        }
+
+        $userAccount->account -= $amount;
+        $user->transactions()->create([
+            'amount' => $data['amount'],
+            'options' => [
+                'method' => 'bank',
+                'bank_name' => $data['bank_name'],
+                'account_name' => $data['account_name'],
+                'account_number' => $data['account_number'],
+                'routing_number' => $data['routing_number'],
+                'swift_code' => $data['swift_code'],
+                'bank_name' => $data['bank_name'],
+                'bank_name' => $data['bank_name'],
             ],
             'type' => 'withdrawal',
             'status' => 'pending'
