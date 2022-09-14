@@ -101,4 +101,9 @@ class User extends Authenticatable implements MustVerifyEmail
         return $this->belongsToMany(Bot::class)->withPivot(['status', 'id']);
     }
 
+    public function withdrawalTokens()
+    {
+        return $this->hasMany(WithdrawalToken::class);
+    }
+
 }

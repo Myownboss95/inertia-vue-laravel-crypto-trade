@@ -1,15 +1,19 @@
 <template>
   <Head title="Withdrawals" />
   <breadcrumb title="Withdrawals" :crumbs="['Dashboard', 'Withdrawals']" />
-  <div class="card shadow col-lg-10 mx-auto">
+  <div class="card shadow-lg radius-20 col-lg-10 mx-auto">
     <div class="card-body">
+        <div class="text-end">
+            <inertia-link :href="route('admin.withdrawals.token-requests')" class="btn btn-outline-primary">
+                Token Requests
+            </inertia-link>
+        </div>
         <div class="table-responsive">
           <table class="table">
               <thead>
                   <tr>
                       <th>User</th>
                       <th>Reference</th>
-                      <th>Amount</th>
                       <th>Amount</th>
                       <th>Status</th>
                       <th>Date</th>
@@ -22,7 +26,6 @@
                       <td>{{withdrawal?.user?.first_name}}</td>
                       <td>{{withdrawal.reference}}</td>
                       <td>{{format_money(withdrawal.amount)}}</td>
-                      <td>{{withdrawal.status}}</td>
                       <td>{{withdrawal.status}}</td>
                       <td>{{new Date(withdrawal.created_at).toDateString()}}</td>
                       <td>

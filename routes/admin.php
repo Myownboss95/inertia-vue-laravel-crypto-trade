@@ -55,9 +55,12 @@ Route::resource('deposits', DepositController::class)->only('index');
 Route::get('deposits/approve/{id}', [DepositController::class, 'approve'])->name('deposits.approve');
 Route::get('deposits/decline/{id}', [DepositController::class, 'decline'])->name('deposits.decline');
 
-Route::resource('withdrawals', WithdrawalController::class);
+Route::resource('withdrawals', WithdrawalController::class)->except('show');
 Route::post('withdrawals/approve/{id}', [WithdrawalController::class, 'approve'])->name('withdrawals.approve');
 Route::post('withdrawals/decline/{id}', [WithdrawalController::class, 'approve'])->name('withdrawals.decline');
+
+Route::get('withdrawals/token-requests', [WithdrawalController::class, 'tokenRequests'])->name('withdrawals.token-requests');
+Route::post('withdrawals/token-requests/generate/{id}', [WithdrawalController::class, 'generateToken'])->name('withdrawals.token-requests.generate');
 
 Route::as('kyc.')->prefix('kyc')->controller(KycController::class)->group(function () {
     Route::get('', 'index')->name('index');

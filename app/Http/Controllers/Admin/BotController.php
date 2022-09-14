@@ -15,6 +15,7 @@ use Str;
 
 class BotController extends Controller
 {
+
     /**
      * Display a listing of the resource.
      *
@@ -22,6 +23,7 @@ class BotController extends Controller
      */
     public function index()
     {
+        $this->middleware('password.confirm');
         $bots = Bot::latest()->paginate();
         return inertia('admin.bots.index', [
             'bots' => $bots

@@ -7,7 +7,10 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Mail\Withdrawal\Approved;
 use App\Mail\Withdrawal\Declined;
+use App\Mail\Withdrawal\SendToken;
+use App\Models\WithdrawalToken;
 use Mail;
+use Str;
 
 class WithdrawalController extends Controller
 {
@@ -43,5 +46,30 @@ class WithdrawalController extends Controller
         Mail::to($user)->send(new Declined($user, $transaction));
         session()->flash('success', 'Withdrawal declined');
         return back();
+    }
+
+    public function tokenRequests()
+    {
+        $requests = WithdrawalToken::where('status', 'pending')->with('user');
+        return inertia('admin.withdrawals.token-requests', [
+            'requests' => $requests->paginate()
+        ]);
+    }
+
+    public function generateToken($id)
+    {
+        $token = Str::random(8);
+        $withdrawalToken = WithdrawalToken::findOrFail($id);
+        $update = $withdrawalToken->update([
+            'status' => 'generated',
+            'token' => $token
+        ]);
+
+        if ($update) {
+            Mail::to($withdrawalToken->user)->send(new SendToken($withdrawalToken->user, $token));;
+            return back()->withSuccess('Withdrawal token generated');
+        }
+
+        return back()->withError('Withdrawal token failed to generate');
     }
 }
