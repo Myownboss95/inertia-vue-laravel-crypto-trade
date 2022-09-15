@@ -81,7 +81,7 @@
                     </div>
                     <div class="dropdown-menu dropdown-menu-right">
                       <inertia-link class="dropdown-item" as="button" method="post" :href="route('login-as',user.id)">Login As</inertia-link>
-                      <!-- <a class="dropdown-item" href="javascript:void(0);">Delete</a> -->
+                      <inertia-link class="dropdown-item" :href="route('admin.users.add-or-remove-funds',user.id)">Add/Remove Funds</inertia-link>
                     </div>
                   </div>
                 </div>
@@ -109,7 +109,7 @@
   import { useForm } from '@inertiajs/inertia-vue3';
   import { watch } from 'vue';
   import route from 'ziggy-js';
-import Paginator from '@/views/components/paginator.vue';
+    import Paginator from '@/views/components/paginator.vue';
   import { profile_picture } from '@/js/functions';
 
   const props = defineProps(['users']);

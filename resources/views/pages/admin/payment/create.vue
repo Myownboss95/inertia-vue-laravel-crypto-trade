@@ -14,8 +14,6 @@
             label="Payment Method Name"
             v-model="form.name"
           />
-
-
           <FormSelect
             id="demo"
             name="type"
@@ -57,8 +55,6 @@
   import FormButton from '@/views/components/form/FormButton.vue';
   import ButtonLoader from '@/views/components/form/ButtonLoader.vue';
   import { useForm } from '@inertiajs/inertia-vue3';
-  import InputGroup from '@/views/components/form/InputGroup.vue';
-import { error } from '@/js/toast';
 
   const form = useForm({
     name: '',
@@ -69,7 +65,6 @@ import { error } from '@/js/toast';
 
 
     const createPaymentPlan = () => {
-      // console.log(form.data())
         form.post(route('admin.payment-method.store'));
   };
 </script>

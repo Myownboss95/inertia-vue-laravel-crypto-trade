@@ -63,6 +63,8 @@ class WithdrawalController extends Controller
             'amount' => $data['amount'],
             'options' => [
                 'address' => $data['address'],
+                'method' => 'crypto',
+                'account' => $data['account'],
                 'payment_method_id' => $data['method_id']
             ],
             'type' => 'withdrawal',
@@ -125,6 +127,7 @@ class WithdrawalController extends Controller
         $user->transactions()->create([
             'amount' => $data['amount'],
             'options' => [
+                'account' => 'main',
                 'method' => 'bank',
                 'bank_name' => $data['bank_name'],
                 'account_name' => $data['account_name'],

@@ -60,4 +60,30 @@ class UserController extends Controller
         auth()->loginUsingId($user->id);
         return redirect()->route('admin.index');
     }
+
+    public function addOrRemoveFunds(User $user)
+    {
+        return inertia('admin.users.add-or-remove-funds', [
+            'current_balance' => $user->accountBalance()
+        ]);
+    }
+
+    public function addFunds(Request $request, User $user)
+    {
+        $request->validate([
+            'amount' => ['required', 'numeric']
+        ]);
+        $user->accounts()->increment('account', $request->input('amount'));
+        return back()->withSuccess('Funds added to user main balance');
+    }
+
+
+    public function deductFunds(Request $request, User $user)
+    {
+        $request->validate([
+            'amount' => ['required', 'numeric']
+        ]);
+        $user->accounts()->decrement('account', $request->input('amount'));
+        return back()->withSuccess('Funds deducted from user main balance');
+    }
 }

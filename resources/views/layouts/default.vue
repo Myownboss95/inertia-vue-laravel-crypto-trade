@@ -17,7 +17,7 @@
       <!-- End Page-content -->
       <footer class="footer">
         <div class="container-fluid">
-          <div class="text-end">{{ new Date().getFullYear() }} © Minia.</div>
+          <div class="text-end">{{ new Date().getFullYear() }} © <strong>{{appName}}</strong>.</div>
         </div>
       </footer>
     </div>
@@ -28,8 +28,9 @@
     import HeaderVue from '../components/layout/Header.vue';
     import SidebarVue from '../components/layout/sidebar.vue';
     import { watch } from 'vue';
+import { error, success } from '@/js/toast';
 
-  import { error, success } from '@/js/toast';
+const appName = import.meta.env.VITE_APP_NAME;
 
   const props = defineProps(['errors','flash']);
   watch(
