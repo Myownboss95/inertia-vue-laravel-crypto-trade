@@ -5,7 +5,6 @@ import inertia from './resources/scripts/vite/inertia-layout'
 import * as fs from 'fs'
 import os from 'node:os'
 import process from 'node:process'
-import {exec} from 'child_process'
 
 const domain = 'binotomo.test';
 let certPath = `${os.homedir()}/.config/valet/Certificates/${domain}`;

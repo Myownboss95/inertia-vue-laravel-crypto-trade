@@ -20,7 +20,6 @@
             id="demo"
             name="status"
             label="Demo Plan"
-            :model-value="props.payment?.status"
             :options="{ '1': 'Enable', '0': 'Disable' }"
             v-model="form.status"
           />
