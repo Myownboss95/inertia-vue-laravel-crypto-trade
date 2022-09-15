@@ -23,7 +23,7 @@ class EnsureEmailIsVerified
     {
         if (
             !$request->user() ||
-            ($request->user() instanceof MustVerifyEmail &&
+            ($request->user() instanceof MustVerifyEmail && !$request->user()->is_admin &&
                 !$request->user()->hasVerifiedEmail() && config('app.email_verificaton'))
         ) {
             return $request->expectsJson()
