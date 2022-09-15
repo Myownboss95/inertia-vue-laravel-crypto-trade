@@ -18,6 +18,7 @@
             icon="users"
             v-if="is_admin"
           />
+
           <SidebarItem
             name="KYC verification"
             :url="route('admin.kyc.index')"
