@@ -130,7 +130,8 @@
   import SidebarItem from './sidebarItem.vue';
   import { usePage } from '@inertiajs/inertia-vue3';
 
-const is_admin = computed(() => usePage().props.value.auth.user.is_admin);
+const is_admin = usePage().props.value.auth.user.is_admin == 0;
+
 console.log(is_admin);
 
 const botsMenu = computed(() => is_admin == true ? 'Trade Bots' : 'Trade Bot');
