@@ -10,6 +10,6 @@ class LoginResponse implements LoginResponseContract
     public function toResponse($request)
     {
         $to = $request->user()->is_admin === 1 ? route('admin.index') : route('user.index');
-        return redirect()->intended($to);
+        return redirect()->to($to);
     }
 }

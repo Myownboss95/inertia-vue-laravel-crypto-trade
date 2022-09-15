@@ -123,9 +123,9 @@
                 <div class="">
                   <h4>Instructions:</h4>
                   <ul>
-                    <li>Enter amount you want.</li>
-                    <li>Carefully fill the tranfer information.</li>
-                    <li>Click on withdraw.</li>
+                    <li>Request for a withdrawal token.</li>
+                    <li>Enter your passaword to confirm request.</li>
+                    <li>Token will be sent to your email.</li>
                   </ul>
                   <p>
                     <i
