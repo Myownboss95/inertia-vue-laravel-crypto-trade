@@ -132,6 +132,7 @@
 
 const is_admin = usePage().props.value.auth.user.is_admin == 1;
 
+console.log(is_admin);
 
 const botsMenu = computed(() => is_admin == true ? 'Trade Bots' : 'Trade Bot');
 
