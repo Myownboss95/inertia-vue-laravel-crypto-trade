@@ -82,25 +82,25 @@
             name="Site settings"
             :url="route('admin.settings.create')"
             icon="phone"
-            v-if="$page.props.auth.user.is_admin"
+            v-if="is_admin"
           />
           <SidebarItem
             name="Payment Methods"
             :url="route('admin.payment-method.index')"
             icon="plus-square"
-            v-if="$page.props.auth.user.is_admin"
+            v-if="is_admin"
           />
           <SidebarItem
             name="Plans"
             :url="route('admin.plans.index')"
             icon="package"
-            v-if="$page.props.auth.user.is_admin"
+            v-if="is_admin"
           />
           <SidebarItem
             name="Tradeable assets"
             :url="route('admin.tradeables.index')"
             icon="gift"
-            v-if="$page.props.auth.user.is_admin"
+            v-if="is_admin"
           />
           <hr />
           <SidebarItem
