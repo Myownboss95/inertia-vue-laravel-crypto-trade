@@ -130,7 +130,7 @@
   import SidebarItem from './sidebarItem.vue';
   import { usePage } from '@inertiajs/inertia-vue3';
 
-const is_admin = usePage().props.value.auth.user.is_admin == 0;
+const is_admin = usePage().props.value.auth.user.is_admin == 1;
 
 console.log(is_admin);
 
