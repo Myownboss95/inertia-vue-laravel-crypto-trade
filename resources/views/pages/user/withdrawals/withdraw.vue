@@ -12,13 +12,13 @@
         style="min-height: 300px"
       >
         <div class="col-8 row" :class="{ 'd-none': withdrawalType != '' }">
-          <div class="col-6" @click="withdrawalType = 'bank'">
+          <div class="col-md-6" @click="withdrawalType = 'bank'">
             <div class="border p-4 w-100 text-center cursor-pointer">
               Bank Transfer
             </div>
           </div>
 
-          <div class="col-6" @click="withdrawalType = 'crypto'">
+          <div class="col-md-6" @click="withdrawalType = 'crypto'">
             <div class="border p-4 w-100 text-center cursor-pointer">
               Crypto currency
             </div>
