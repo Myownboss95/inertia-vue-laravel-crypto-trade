@@ -99,10 +99,10 @@
                           ></i>
 
                           <h4 class="mt-4 fw-medium lh-base text-white">
-                            “I feel confident imposing change on myself. It's a
-                            lot more progressing fun than looking back. That's
-                            why I ultricies enim at malesuada nibh diam on
-                            tortor neaded to throw curve balls.”
+                            “Finding Openedtrade was the best thing which could
+                            have happened to me as a trader. Their excellent
+                            trading conditions and constant support has boosted
+                            my success more than I could have ever imagined.”
                           </h4>
                           <div class="mt-4 pt-3 pb-5">
                             <div class="d-flex align-items-start">
@@ -131,10 +131,9 @@
                           ></i>
 
                           <h4 class="mt-4 fw-medium lh-base text-white">
-                            “Our task must be to free ourselves by widening our
-                            circle of compassion to embrace all living creatures
-                            and the whole of quis consectetur nunc sit amet
-                            semper justo. nature and its beauty.”
+                            “Having my own trading guide changed everything. His
+                            constant advice not only helped me succeed fast but
+                            it also helped me become a better trader.”
                           </h4>
                           <div class="mt-4 pt-3 pb-5">
                             <div class="d-flex align-items-start">
@@ -163,10 +162,10 @@
                           ></i>
 
                           <h4 class="mt-4 fw-medium lh-base text-white">
-                            “I've learned that people will forget what you said,
-                            people will forget what you did, but people will
-                            never forget how donec in efficitur lectus, nec
-                            lobortis metus you made them feel.”
+                            “The platform is so easy , I got used to it within a
+                            few hours, it didn't take long before I noticed the
+                            difference in trading level. I'm absolutely happy to
+                            be a openedtrade trader.”
                           </h4>
                           <div class="mt-4 pt-3 pb-5">
                             <div class="d-flex align-items-start">
@@ -217,8 +216,8 @@
     () => props.errors,
     (errors) => {
       if ('error' in errors) {
-          error(errors.error);
-          delete errors.error;
+        error(errors.error);
+        delete errors.error;
       }
     }
   );
