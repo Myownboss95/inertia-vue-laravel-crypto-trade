@@ -12,9 +12,11 @@
                 <div class="uk-grid uk-grid-large" data-uk-grid>
                     <div class="uk-width-1-3@m">
                         <h4 class="uk-margin-remove-bottom">Visit our office</h4>
-                        <p class="uk-margin-small-top">Satrio Tower 16th Floor, Jl. Prof Dr Satrio Kuningan, Jakarta</p>
+                        <p class="uk-margin-small-top">
+                            {{$setting?->address}}
+                        </p>
                         <h4 class="uk-margin-medium-top uk-margin-remove-bottom">Message us</h4>
-                        <p class="uk-margin-small-top">hello@company.com<br>(888)234-5686</p>
+                        <p class="uk-margin-small-top">{{$setting?->email}}<br>{{$setting?->phone}}</p>
                         <div class="uk-margin-medium-top in-contact-socials">
                             <a href="#" class="fab fa-facebook-square fa-lg uk-margin-right"></a>
                             <a href="#" class="fab fa-twitter fa-lg uk-margin-right"></a>

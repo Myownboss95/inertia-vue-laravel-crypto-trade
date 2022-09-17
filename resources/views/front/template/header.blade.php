@@ -20,6 +20,7 @@
         name="theme-color"
         content="#FCB42D"
     />
+    <meta name="og:image" content="{{asset(config('app.favicon'))}}" >
     <!-- Site Properties -->
     <title>{{ config('app.name') }}</title>
     <!-- critical preload -->
@@ -78,12 +79,12 @@
     <!-- Favicon and apple icon -->
     <link
         rel="shortcut icon"
-        href="{{ asset('front/favicon.ico') }}"
+        href="{{ asset(config('app.favicon')) }}"
         type="image/x-icon"
     >
     <link
-        rel="{{ asset('front/apple-touch-icon-precomposed') }}"
-        href="{{ asset('front/apple-touch-icon.png') }}"
+        rel="{{ asset(config('app.favicon')) }}"
+        href="{{ asset(config('app.favicon')) }}"
     >
     <!-- css -->
     <link

@@ -52,22 +52,25 @@
             v-model="form.chat_script"
           />
 
-          <!-- <FormSelect
-            id="demo"
-            name="demo"
-            label="Demo Plan"
-            :options="{ '1': 'Yes', '0': 'No' }"
-            v-model="form.demo"
-          /> -->
-
-
+          <div class="form-group mb-3">
+              <label for="address" class="form-label">Address</label>
+              <textarea
+                placeholder="Address"
+                name="address"
+                id="address"
+                cols="10"
+                class="form-control"
+                v-model="form.address"
+              ></textarea>
+              <Error name="address" />
+          </div>
 
           <FormButton
             type="submit"
             class="w-100 btn btn-outline-primary"
             :disabled="form.processing"
           >
-          <ButtonLoader :text="buttonText()" :loading="form.processing" />
+            <ButtonLoader :text="buttonText()" :loading="form.processing" />
           </FormButton>
         </form>
       </div>
@@ -82,35 +85,34 @@
   import FormButton from '@/views/components/form/FormButton.vue';
   import ButtonLoader from '@/views/components/form/ButtonLoader.vue';
   import { useForm } from '@inertiajs/inertia-vue3';
-  import InputGroup from '@/views/components/form/InputGroup.vue';
-import { error } from '@/js/toast';
+  import Error from '@/views/components/alerts/error.vue';
 
-const props = defineProps([ 'settings' ]);
+  const props = defineProps(['settings']);
 
-const buttonText = () => {
+  const buttonText = () => {
     let action = props.settings?.id ? 'Update' : 'Save';
     return `${action} Settings`;
-}
+  };
 
   const form = useForm({
     phone: props.settings?.phone || '',
     email: props.settings?.email || '',
     notification_email: props.settings?.notification_email || '',
     twitter: props.settings?.twitter || '',
-    facebook:props.settings?.facebook || '',
-    instagram:props.settings?.instagram || '',
-    chat_script:props.settings?.chat_script || '',
+    facebook: props.settings?.facebook || '',
+    instagram: props.settings?.instagram || '',
+    chat_script: props.settings?.chat_script || '',
+    address: props.settings?.address || '',
   });
 
-
-    const createPlan = (_) => {
-        if(props.settings?.id){
-            form.put(route('admin.settings.update',props.settings.id),{
-                onBefore: () => confirm('are you sure'),
-            });
-        }else{
-            form.post(route('admin.settings.store'));
-        }
+  const createPlan = (_) => {
+    if (props.settings?.id) {
+      form.put(route('admin.settings.update', props.settings.id), {
+        onBefore: () => confirm('are you sure'),
+      });
+    } else {
+      form.post(route('admin.settings.store'));
+    }
   };
 </script>
 

@@ -189,7 +189,7 @@
                     <div class="uk-width-3-5@m">
                         <div class="uk-card uk-card-default uk-card-body uk-text-center uk-border-rounded uk-box-shadow-small in-wave-2-card">
                             <span class="uk-label uk-text-small uk-text-uppercase uk-border-pill uk-margin-small-right">Start trade</span>
-                            Invest with Binotomo Today <a href="#">Join now!</a>
+                            Invest with {{$appName}} Today <a href="#">Join now!</a>
                         </div>
                         <div class="uk-grid-collapse uk-grid-divider uk-child-width-1-3@s uk-child-width-1-3@m uk-text-center uk-margin-top uk-margin-small-bottom" data-uk-grid>
                             <div>

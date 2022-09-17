@@ -92,14 +92,14 @@
                     </div>
                     <!-- end carouselIndicators -->
                     <div class="carousel-inner">
-                      <div class="carousel-item active" data-bs-interval="2000">
+                      <div class="carousel-item active" data-bs-interval="3000">
                         <div class="testi-contain text-white">
                           <i
                             class="bx bxs-quote-alt-left text-success display-6"
                           ></i>
 
                           <h4 class="mt-4 fw-medium lh-base text-white">
-                            “Finding Openedtrade was the best thing which could
+                            “Finding {{$appName}} was the best thing which could
                             have happened to me as a trader. Their excellent
                             trading conditions and constant support has boosted
                             my success more than I could have ever imagined.”
@@ -117,14 +117,14 @@
                                 <h5 class="font-size-18 text-white">
                                   Richard Drews
                                 </h5>
-                                <p class="mb-0 text-white-50">Web Designer</p>
+                                <p class="mb-0 text-white-50">Professional Trader</p>
                               </div>
                             </div>
                           </div>
                         </div>
                       </div>
 
-                      <div class="carousel-item" data-bs-interval="1000">
+                      <div class="carousel-item" data-bs-interval="3000">
                         <div class="testi-contain text-white">
                           <i
                             class="bx bxs-quote-alt-left text-success display-6"
@@ -148,14 +148,14 @@
                                 <h5 class="font-size-18 text-white">
                                   Rosanna French
                                 </h5>
-                                <p class="mb-0 text-white-50">Web Developer</p>
+                                <p class="mb-0 text-white-50">Banking Analyst</p>
                               </div>
                             </div>
                           </div>
                         </div>
                       </div>
 
-                      <div class="carousel-item" data-bs-interval="2000">
+                      <div class="carousel-item" data-bs-interval="3000">
                         <div class="testi-contain text-white">
                           <i
                             class="bx bxs-quote-alt-left text-success display-6"
@@ -165,7 +165,7 @@
                             “The platform is so easy , I got used to it within a
                             few hours, it didn't take long before I noticed the
                             difference in trading level. I'm absolutely happy to
-                            be a openedtrade trader.”
+                            be a {{$appName}} trader.”
                           </h4>
                           <div class="mt-4 pt-3 pb-5">
                             <div class="d-flex align-items-start">
@@ -178,7 +178,7 @@
                                 <h5 class="font-size-18 text-white">
                                   Ilse R. Eaton
                                 </h5>
-                                <p class="mb-0 text-white-50">Manager</p>
+                                <p class="mb-0 text-white-50">Financial Analyst</p>
                               </div>
                             </div>
                           </div>

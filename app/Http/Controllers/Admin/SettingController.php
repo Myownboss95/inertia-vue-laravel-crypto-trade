@@ -37,6 +37,7 @@ class SettingController extends Controller
             'facebook' => ['nullable', 'url'],
             'instagram' => ['nullable', 'url'],
             'chat_script' => ['nullable'],
+            'address' => ['required', 'string']
         ]);
         DB::beginTransaction();
         try {

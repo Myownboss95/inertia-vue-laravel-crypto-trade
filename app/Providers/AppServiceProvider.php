@@ -2,6 +2,7 @@
 
 namespace App\Providers;
 
+use App\Models\Settings;
 use Illuminate\Routing\Pipeline;
 use Illuminate\Support\ServiceProvider;
 use Laravel\Fortify\Actions\AttemptToAuthenticate;
@@ -28,6 +29,11 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        //
+        view()->composer([
+            'front.contact',
+            'front2.contact',
+        ], function ($view) {
+            $view->with('setting', Settings::first());
+        });
     }
 }

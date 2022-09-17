@@ -19,7 +19,8 @@ return [
     'theme' => env('APP_THEME'),
     'id_verification' => env('ID_VERIFICATION', false),
     'email_verificaton' => env('EMAIL_VERIFICATION', false),
-    'logo' => env('LOGO', 'logo_algo.png'),
+    'logo' => env('LOGO', 'logo_opened.png'),
+    'favicon' => env('FAVICON', 'favicon_opened.png'),
 
     /*
     |--------------------------------------------------------------------------

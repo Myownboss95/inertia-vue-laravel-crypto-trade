@@ -41,7 +41,7 @@ class WithdrawalController extends Controller
         $transaction = Transaction::findOrFail($id);
         $user = $transaction->user;
         $transaction->update(['status' => 'failed']);
-        $user->accounts()->where('type', $transaction?->options?->account ?? 'main');
+        $user->accounts()->where('type', $transaction?->options?->account ?? 'main')->increment('account', $transaction->amount);
         Mail::to($user)->send(new Declined($user, $transaction));
         session()->flash('success', 'Withdrawal declined');
         return back();

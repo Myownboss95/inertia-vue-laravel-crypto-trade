@@ -37,7 +37,7 @@
                     </div>
                     <div>
                         <h3>{{__('Culture')}}</h3>
-                        <p>{{__('At Binotomo, we implement world best practices in our dealings')}}</p>
+                        <p>{{__('At {{$appName}}, we implement world best practices in our dealings')}}</p>
                     </div>
                 </div>
             </div>
