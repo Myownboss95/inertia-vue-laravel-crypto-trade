@@ -33,7 +33,7 @@
                     </div>
                     <div>
                         <h3>Culture</h3>
-                        <p>At {{$appName}}, we implement world best practices in our dealings</p>
+                        <p>{{"At ".config('app.name').", we implement world best practices in our dealings"}}</p>
                     </div>
                 </div>
             </div>
