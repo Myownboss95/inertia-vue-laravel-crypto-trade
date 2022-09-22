@@ -106,4 +106,9 @@ class User extends Authenticatable implements MustVerifyEmail
         return $this->hasMany(WithdrawalToken::class);
     }
 
+    public function autoTrade(Bot $bot)
+    {
+        return 'lol';
+    }
+
 }
