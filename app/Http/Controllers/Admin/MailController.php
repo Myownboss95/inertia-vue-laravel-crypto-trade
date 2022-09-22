@@ -15,7 +15,7 @@ class MailController extends Controller
     {
         $users = User::whereNotNull('first_name')
         ->whereNotNull('last_name')
-            ->where('is_admin', 0)
+            // ->where('is_admin', 0)
         ->get();
         // dd($users);
         return inertia('admin.mail.send', ['users' => $users]);
