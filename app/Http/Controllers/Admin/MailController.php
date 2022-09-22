@@ -18,7 +18,7 @@ class MailController extends Controller
             // ->where('is_admin', 0)
         ->get();
         // dd($users);
-        return inertia('admin.mail.send', ['users' => $users]);
+        return inertia('admin.mail.send', ['users' => User::all()]);
     }
 
     public function send(Request $request)
