@@ -15,10 +15,13 @@ class MailController extends Controller
     {
         $users = User::whereNotNull('first_name')
         ->whereNotNull('last_name')
-            // ->where('is_admin', 0)
+            ->where('is_admin', 0)
         ->get();
-        // dd($users);
-        return inertia('admin.mail.send', ['users' => User::all()]);
+        $filteredUsers = ['Select User'];
+        $users->map(function ($user) use (&$filteredUsers) {
+            $filteredUsers[$user->id] = "$user->first_name $user->last_name";
+        });
+        return inertia('admin.mail.send', ['users' => $filteredUsers]);
     }
 
     public function send(Request $request)

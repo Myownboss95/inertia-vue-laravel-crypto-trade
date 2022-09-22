@@ -57,18 +57,19 @@ import route from 'ziggy-js';
     users: Array,
   });
 
-  const users = computed({
-    get() {
-      let filtered = { '': 'Select User' };
-      // filtered[0] = 'Select User';
-      props.users.forEach((item) => {
-        if (!item.is_admin) {
-          filtered[item.id] = `${item.first_name} ${item.last_name}`;
-        }
-      });
-      return filtered;
-    },
-  });
+const users = computed(() => props.users);
+//   const users = computed({
+//     get() {
+//       let filtered = { '': 'Select User' };
+//       // filtered[0] = 'Select User';
+//       props.users.forEach((item) => {
+//         if (!item.is_admin) {
+//           filtered[item.id] = `${item.first_name} ${item.last_name}`;
+//         }
+//       });
+//       return filtered;
+//     },
+//   });
 
 console.log(users.value)
 
