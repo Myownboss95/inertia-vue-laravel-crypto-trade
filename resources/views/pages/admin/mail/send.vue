@@ -70,6 +70,8 @@ import route from 'ziggy-js';
     },
   });
 
+console.log(users.value)
+
 const user = ref(null);
 
   const form = useForm({
