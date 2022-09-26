@@ -30,6 +30,6 @@ class ActivationRequest extends Mailable
      */
     public function build()
     {
-        return $this->markdown('emails.bot.activation-request');
+        return $this->markdown('emails.bots.activation-request');
     }
 }
