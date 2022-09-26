@@ -37,5 +37,8 @@
         "vue3-editor": "^0.1.1",
         "ziggy": "^2.4.0",
         "ziggy-js": "^1.4.6"
+    },
+    "resolutions": {
+        "vue-demi": "0.13.11"
     }
 }
