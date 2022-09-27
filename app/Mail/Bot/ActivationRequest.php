@@ -21,6 +21,7 @@ class ActivationRequest extends Mailable
     public function __construct(public User $user, public Bot $bot)
     {
         $this->subject('A new bot activation request.');
+
     }
 
     /**
