@@ -136,7 +136,7 @@
                                     src="{{ asset('front2/img/in-lazy.gif') }}"
                                     data-src="{{ asset(config('app.logo')) }}"
                                     alt="wave"
-                                    style="height:100px; width: auto;"
+                                    style="height:auto; width: 180px;"
                                     data-uk-img
                                 >
                             </a>
