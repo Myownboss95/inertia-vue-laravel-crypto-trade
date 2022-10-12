@@ -3,7 +3,7 @@
     <Head title="Send Mail" />
     <breadcrumb title="Send Mail" :crumbs="['Dahsboard', 'Communications', 'Mail', 'Send']" />
 
-    <div class="col-md-7 mx-auto">
+    <div class="col-md-8 mx-auto">
         <div class="card shadow-lg radius-20">
             <div class="card-body">
                 <form @submit.prevent="sendMail">
@@ -50,18 +50,6 @@ const props = defineProps({
 });
 
 const users = computed(() => props.users);
-//   const users = computed({
-//     get() {
-//       let filtered = { '': 'Select User' };
-//       // filtered[0] = 'Select User';
-//       props.users.forEach((item) => {
-//         if (!item.is_admin) {
-//           filtered[item.id] = `${item.first_name} ${item.last_name}`;
-//         }
-//       });
-//       return filtered;
-//     },
-//   });
 
 console.log(users.value)
 
@@ -92,5 +80,9 @@ body[data-layout-mode='dark'] .ql-toolbar {
 
 body[data-layout-mode='dark'] .ql-editor {
     color: black;
+}
+
+.ql-editor {
+    height: 500px;
 }
 </style>
