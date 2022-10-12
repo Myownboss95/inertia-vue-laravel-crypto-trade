@@ -49,7 +49,7 @@ Route::resource('bots', BotController::class)->except('show');
 Route::get('bots/activations', [BotController::class, 'showBotActivationRequest'])->name('bots.activation.requests');
 Route::post('bots/activations/{id}', [BotController::class, 'generateBotActivationToken'])->name('bots.activation.token-generate');
 
-Route::resource('tradeables', TradeableController::class);
+// Route::resource('tradeables', TradeableController::class);
 Route::resource('settings', SettingController::class);
 Route::resource('payment-method', PaymentMethodController::class);
 Route::resource('deposits', DepositController::class)->only('index');

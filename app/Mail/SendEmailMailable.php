@@ -16,9 +16,9 @@ class SendEmailMailable extends Mailable
      *
      * @return void
      */
-    public function __construct(public $mailMessage, public $files = [])
+    public function __construct(string $subject, public $mailMessage, public $files = [])
     {
-        //
+        $this->subject($subject);
     }
 
     /**
