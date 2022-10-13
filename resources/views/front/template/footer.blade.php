@@ -43,6 +43,7 @@
 <script src="{{asset('front/js/config-particles.js')}}"></script>
 <script src="{{asset('front/js/config-theme.js')}}"></script>
 <x-live-chat />
+@if (config('app.show_popup'))
 <style>
 .mgm {
         border-radius: 7px;
@@ -68,7 +69,6 @@
         color: #f2d516;
     }
     </style>
-    @if (config('app.show_popup'))
 <script src="https://code.jquery.com/jquery-3.6.1.min.js" integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>s
 <script type="text/javascript">
         var listCountries = ['South Africa', 'USA', 'Uganda', 'Kenya', 'Germany', 'France', 'Italy', 'South Africa',
