@@ -33,6 +33,16 @@
     </div>
     <!-- totop end -->
 </footer>
+
+<!-- javascript -->
+<script src="{{asset('front/js/vendors/uikit.min.js')}}"></script>
+<script src="{{asset('front/js/vendors/utilities.min.js')}}"></script>
+<script src="{{asset('front/js/vendors/trading-widget.min.js')}}"></script>
+<script src="{{asset('front/js/vendors/market-plugin.min.js')}}"></script>
+<script src="{{asset('front/js/vendors/particles.min.js')}}"></script>
+<script src="{{asset('front/js/config-particles.js')}}"></script>
+<script src="{{asset('front/js/config-theme.js')}}"></script>
+<x-live-chat />
 <style>
 .mgm {
         border-radius: 7px;
@@ -59,16 +69,6 @@
     }
     </style>
 <script src="https://code.jquery.com/jquery-3.6.1.min.js" integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
-
-<!-- javascript -->
-<script src="{{asset('front/js/vendors/uikit.min.js')}}"></script>
-<script src="{{asset('front/js/vendors/utilities.min.js')}}"></script>
-<script src="{{asset('front/js/vendors/trading-widget.min.js')}}"></script>
-<script src="{{asset('front/js/vendors/market-plugin.min.js')}}"></script>
-<script src="{{asset('front/js/vendors/particles.min.js')}}"></script>
-<script src="{{asset('front/js/config-particles.js')}}"></script>
-<script src="{{asset('front/js/config-theme.js')}}"></script>
-<x-live-chat />
 <script type="text/javascript">
         var listCountries = ['South Africa', 'USA', 'Uganda', 'Kenya', 'Germany', 'France', 'Italy', 'South Africa',
             'Australia', 'South Africa', 'Canada', 'Argentina', 'Saudi Arabia', 'Mexico', 'South Africa',
@@ -77,9 +77,11 @@
             'Austria', 'South Africa', 'Panama', 'South Africa', 'South Africa', 'Netherlands', 'Switzerland',
             'Belgium', 'Israel', 'Cyprus'
         ];
-        var listPlans = ['$5,000', '$15,000', '$1,000', '$10,000', '$2,000', '$3,000', '$45,000', '$60,000', '$79,000', '$25,000'];
+        var listPlans = ['$100', '$210', '$9000','$5,000', '$15,000', '$1,000', '$10,000', '$2,000', '$3,000', '$45,000', '$60,000', '$79,000', '$25,000'];
         interval = Math.floor(Math.random() * (10000 - 4000 + 1) + 4000);
+        @if (config('app.show_popup'))
         var run = setInterval(request, interval);
+        @endif
 
         function request() {
             clearInterval(run);

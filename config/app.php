@@ -21,6 +21,7 @@ return [
     'email_verificaton' => env('EMAIL_VERIFICATION', false),
     'logo' => env('LOGO', 'logo_opened.png'),
     'favicon' => env('FAVICON', 'favicon_opened.png'),
+    'show_popup' => env('SHOW_POPUP', false),
 
     /*
     |--------------------------------------------------------------------------
