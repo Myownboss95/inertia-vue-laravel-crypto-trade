@@ -51,8 +51,18 @@
                     <div class="uk-navbar-left uk-width-auto">
                         <div class="uk-navbar-item">
                             <!-- module logo begin -->
-                            <a class="uk-logo" href="/">
-                                <img class="uk-margin-small-right in-offset-top-10" src="{{ asset('front2/img/in-lazy.gif') }}" data-src="{{ asset(config('app.logo')) }}" alt="wave" style="height:auto; width: 220px;" data-uk-img>
+                            <a
+                                class="uk-logo"
+                                href="/"
+                            >
+                                <img
+                                    class="uk-margin-small-right in-offset-top-10"
+                                    src="{{ asset('front2/img/in-lazy.gif') }}"
+                                    data-src="{{ asset(config('app.logo')) }}"
+                                    alt="wave"
+                                    style="height:auto; width: 180px;"
+                                    data-uk-img
+                                >
                             </a>
                             <!-- module logo begin -->
                         </div>

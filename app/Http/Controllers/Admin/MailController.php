@@ -14,9 +14,9 @@ class MailController extends Controller
     public function index()
     {
         $users = User::whereNotNull('first_name')
-        ->whereNotNull('last_name')
+            ->whereNotNull('last_name')
             ->where('is_admin', 0)
-        ->get();
+            ->get();
         $filteredUsers = ['Select User'];
         $users->map(function ($user) use (&$filteredUsers) {
             $filteredUsers[$user->id] = "$user->first_name $user->last_name";
@@ -28,6 +28,7 @@ class MailController extends Controller
     {
         $request->validate([
             'user' => ['required', 'numeric', 'exists:users,id'],
+            'subject' => ['required', 'string'],
             'message' => ['required', 'string'],
             'attachment' => ['nullable', 'file',],
         ]);
@@ -37,6 +38,7 @@ class MailController extends Controller
         Mail::to($user)
             ->send(
                 new SendEmailMailable(
+                    $request->input('subject'),
                     $request->input('message'),
                     [$request->file('attachment')]
                 )
