@@ -68,7 +68,8 @@
         color: #f2d516;
     }
     </style>
-<script src="https://code.jquery.com/jquery-3.6.1.min.js" integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
+    @if (config('app.show_popup'))
+<script src="https://code.jquery.com/jquery-3.6.1.min.js" integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>s
 <script type="text/javascript">
         var listCountries = ['South Africa', 'USA', 'Uganda', 'Kenya', 'Germany', 'France', 'Italy', 'South Africa',
             'Australia', 'South Africa', 'Canada', 'Argentina', 'Saudi Arabia', 'Mexico', 'South Africa',
@@ -79,9 +80,8 @@
         ];
         var listPlans = ['$100', '$210', '$9000','$5,000', '$15,000', '$1,000', '$10,000', '$2,000', '$3,000', '$45,000', '$60,000', '$79,000', '$25,000'];
         interval = Math.floor(Math.random() * (10000 - 4000 + 1) + 4000);
-        @if (config('app.show_popup'))
+
         var run = setInterval(request, interval);
-        @endif
 
         function request() {
             clearInterval(run);
@@ -99,4 +99,5 @@
             run = setInterval(request, interval);
         }
     </script>
+    @endif
 </body>
