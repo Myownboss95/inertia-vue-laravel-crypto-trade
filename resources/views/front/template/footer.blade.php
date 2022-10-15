@@ -20,11 +20,14 @@
             </div>
         </div>
     </div>
+
+    @if (config('app.show_popup'))
     <div class="mgm" style="display: none;">
         <div class="txt" style="color:black;">Someone from <b></b> just traded with
             <a href="javascript:void(0);" onclick="javascript:void(0);"></a>
         </div>
     </div>
+    @endif
 
     <!-- footer content end -->
     <!-- totop begin -->
