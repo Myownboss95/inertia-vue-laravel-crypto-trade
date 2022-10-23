@@ -6,6 +6,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LogoutController;
 use App\Http\Controllers\EmailVerifiedController;
 use App\Http\Controllers\FrontendController;
+use App\Http\Controllers\FrontThreeController;
 use App\Http\Controllers\LocaleController;
 use App\Http\Controllers\LocationController;
 use App\Http\Controllers\SuccessfulPasswordResetController;
@@ -65,11 +66,20 @@ Route::middleware('guest')->group(function () {
 Route::match(['get', 'post'], 'set-locale/{locale}', [LocaleController::class, 'setLocale'])->name('set-locale');
 
 
-Route::controller(FrontendController::class)->group(function () {
-    $theme = config('app.theme', 'front2');
-    Route::get('/', "home")->name('front.index');
-    Route::get('/about-us', "about");
-    Route::get('/contact-us', "contact")->name('front.contact');
-    Route::get('/terms-and-conditions', "terms_and_conditions");
-    Route::get('/faqs', "faqs");
-});
+$theme = config('app.theme', 'front2');
+if ($theme != 'front3') {
+    Route::controller(FrontendController::class)->group(function () {
+        Route::get('/', "home")->name('front.index');
+        Route::get('/about-us', "about");
+        Route::get('/contact-us', "contact")->name('front.contact');
+        Route::get('/terms-and-conditions', "terms_and_conditions");
+        Route::get('/faqs', "faqs");
+    });
+} else {
+    Route::controller(FrontThreeController::class)->group(function () {
+        Route::get('/', 'home')->name('front.index');
+        Route::get('about-us', 'aboutUs')->name('front.about-us');
+        Route::get('contact-us', 'contactUs')->name('front.contact-us');
+        Route::get('faqs', 'faqs')->name('front.faqs');
+    });
+}
