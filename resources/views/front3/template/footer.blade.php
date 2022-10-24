@@ -45,7 +45,7 @@
                         <div class="subscribe-alert"></div>
                         <div class="clearfix"></div>
                         <p>Get the latest updates and offers.</p>
-                        <div class="footer-social-icon">
+                        {{-- <div class="footer-social-icon">
                             <a class="facebook" href="#">
                                 <i class="fa fa-facebook"></i><i class="fa fa-facebook"></i>
                             </a>
@@ -58,7 +58,7 @@
                             <a class="linkedin" href="#">
                                 <i class="fa fa-linkedin"></i><i class="fa fa-linkedin"></i>
                             </a>
-                        </div>
+                        </div> --}}
                     </div>
                 </div>
                 <div class="clearfix"></div>
