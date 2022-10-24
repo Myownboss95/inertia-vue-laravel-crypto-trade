@@ -6,7 +6,7 @@
         request()->routeIs('front.index') == false,
 ])>
     {{-- header header-1 header-transparent header-bordered header-fixed --}}
-    @if (request()->routeIs('front.index'))
+    @if (request()->routeIs('front.index') && false)
         <div id="top-bar" class="top-bar bitcoin-tracker-dark">
             <div class="container-fluid pr-0 pl-0">
                 <div class="row clearfix">
