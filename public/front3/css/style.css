@@ -2748,8 +2748,8 @@ table tbody tr td {
 }
 
 .header .navbar .logo img {
-    height: auto;
-    width: 80px;
+    height: 50px;
+    width: auto;
 }
 
 .navbar-nav:not(.nav-pos-right) {
