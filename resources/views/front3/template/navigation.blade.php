@@ -1,5 +1,5 @@
 <header id="navbar-spy" @class([
-    'header header-2 header-topbar header-light header-fixed' => request()->routeIs(
+    'header header-2 header-light header-fixed' => request()->routeIs(
         'front.index'
     ),
     'header header-1 header-transparent header-bordered header-fixed' =>
