@@ -35,14 +35,14 @@ class OnboardController extends Controller
         }
 
         $data = $request->validate([
-            'first_name' => ['required', 'string', 'max:191'],
-            'last_name' => ['required', 'string', 'max:191'],
-            'phone' => ['required', 'string', 'max:191', 'unique:users'],
-            'country' => ['required', 'string', 'max:191'],
-            'state' => ['required', 'string', 'max:191'],
-            'city' => ['required', 'string', 'max:191'],
-            'address' => ['required', 'string', 'max:191'],
-            'zip_code' => ['required', 'string', 'max:191'],
+            'first_name' => ['required', 'string'],
+            'last_name' => ['required', 'string'],
+            'phone' => ['required', 'string', 'unique:users'],
+            'country' => ['required', 'string'],
+            'state' => ['required', 'string'],
+            'city' => ['nullable', 'string'],
+            'address' => ['required', 'string'],
+            'zip_code' => ['required', 'string'],
         ]);
 
         // dd($user);
