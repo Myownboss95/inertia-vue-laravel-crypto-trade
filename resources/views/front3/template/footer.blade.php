@@ -98,6 +98,7 @@
 
 <script src="{{ asset('front3/js/rsconfig.js') }}"></script>
 @stack('js')
+<x-live-chat />
 </body>
 
 </html>
