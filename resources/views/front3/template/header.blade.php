@@ -34,6 +34,50 @@
     @client()
 
     <title>{{ config('app.name') }} | @yield('title')</title>
+
+    <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit">
+    </script>
+
+    <script type="text/javascript">
+        window.googleTranslateElementInit = () => {
+            new google.translate.TranslateElement({
+                pageLanguage: 'en',
+                // layout: google.translate.TranslateElement.InlineLayout.SIMPLE
+            }, 'google_translate_element');
+            var element = document.querySelector(' #google_translate_element .skiptranslate');
+            console.log(element);
+        }
+    </script>
+
+    <style>
+        .skiptranslate {
+            visibility: collapse;
+        }
+
+        .skiptranslate div {
+            visibility: visible;
+        }
+
+        body>div.skiptranslate {
+            display: none;
+            visibility: hidden;
+            height: 0;
+            width: 0;
+        }
+
+        body {
+            top: 0 !important;
+        }
+
+        ['id'=':0.targetLanguage'] span {
+            display: none;
+        }
+
+        #google_translate_element .skiptranslate {
+            margin-top: 35px;
+            margin-left: 15px;
+        }
+    </style>
 </head>
 
 <body>

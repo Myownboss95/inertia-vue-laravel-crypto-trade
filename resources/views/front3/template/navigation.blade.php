@@ -58,6 +58,9 @@
                     <div class="module module-signup pull-left">
                         <a class="btn-popup" href="{{ route('register') }}">Sign Up</a>
                     </div>
+                    <div class="module module-signup pull-left">
+                        <div id="google_translate_element"></div>
+                    </div>
                 </div>
 
             </div>
