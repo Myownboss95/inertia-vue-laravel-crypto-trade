@@ -40,7 +40,8 @@ class TradeController extends Controller
     public function store(Request $request)
     {
         $this->middleware('active');
-        $data = $request->validate(['amount' => ['required', 'numeric'],
+        $data = $request->validate([
+            'amount' => ['required', 'numeric'],
             'type' => ['required', 'in:buy,sell'],
             'stop_loss' => ['nullable'],
             'tradeable_id' => ['required', 'numeric'],
@@ -50,17 +51,17 @@ class TradeController extends Controller
 
         $subscription = $user->subscriptions()->where('status', 'active')->first();
 
-        if (!$subscription) {
-            // session()->flash('error', 'You do not have an active subscription plan');
-            return redirect()->route('user.subscriptions.plans')
-                ->withError('You do not have an active subscription plan');
-        }
+        // if (!$subscription) {
+        //     // session()->flash('error', 'You do not have an active subscription plan');
+        //     return redirect()->route('user.subscriptions.plans')
+        //         ->withError('You do not have an active subscription plan');
+        // }
 
         if ($request->input('amount') > $account->account) {
             session()->flash('error', 'You have insufficient funds to continue this trade');
             return redirect()->route('user.subscriptions.plans');
         }
-        $user->trades()->create(array_merge($data,['status' => 'active', ]));
+        $user->trades()->create(array_merge($data, ['status' => 'active',]));
 
         session()->flash('success', 'Trade placed successfully');
         return redirect()->route('user.trades.index');
