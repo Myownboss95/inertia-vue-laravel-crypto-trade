@@ -47,7 +47,7 @@ class TradeController extends Controller
             'tradeable_id' => ['required', 'numeric'],
         ]);
         $user = User::findOrFail(auth()->user()->id);
-        $account = $user->accounts()->where('type', 'invested')->first();
+        $account = $user->accounts()->where('type', 'main')->first();
 
         $subscription = $user->subscriptions()->where('status', 'active')->first();
 
