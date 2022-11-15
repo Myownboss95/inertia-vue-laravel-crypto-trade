@@ -42,11 +42,9 @@ class SubscriptionController extends Controller
             'expires_at' => Carbon::now()->addDays("$plan->tenure")->toDateTimeString(),
         ]);
 
-        $account->save();
-        $investedAccount->save();
+        // $account->save();
+        // $investedAccount->save();
         session()->flash('success', 'Subscribed successfully');
         return redirect()->route('user.index');
-
-
     }
 }
