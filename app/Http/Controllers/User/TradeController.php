@@ -63,6 +63,9 @@ class TradeController extends Controller
         }
         $user->trades()->create(array_merge($data, ['status' => 'active',]));
 
+        $account->account -= $request->input('amount');
+        $account->save();
+
         session()->flash('success', 'Trade placed successfully');
         return redirect()->route('user.trades.index');
     }
