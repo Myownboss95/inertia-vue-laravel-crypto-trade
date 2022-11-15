@@ -23,15 +23,15 @@ class DashboardController extends Controller
         //return withdrawals
         $withdrawals = $user->transactions()->where('type', 'withdrawal')->limit(6)->get();
         $num_withdrawals = $user->transactions()->where('type', 'withdrawal')->count();
-       //return deposits
+        //return deposits
         $deposits = $user->transactions()->where('type', 'deposit')->limit(6)->get();
         $num_deposits = $user->transactions()->where('type', 'deposit')->count();
         //return buy trades
-        $buyTrades = $user->transactions()->where('type', 'buy')->limit(6)->get();
-        $num_buyTrades = $user->transactions()->where('type', 'buy')->count();
+        $buyTrades = $user->trades()->where('type', 'buy')->limit(6)->get();
+        $num_buyTrades = $user->trades()->where('type', 'buy')->count();
         //return sell trades
-        $sellTrades = $user->transactions()->where('type', 'sell')->limit(6)->get();
-        $num_sellTrades = $user->transactions()->where('type', 'buy')->count();
+        $sellTrades = $user->trades()->where('type', 'sell')->limit(6)->get();
+        $num_sellTrades = $user->trades()->where('type', 'buy')->count();
 
         $trade_profits = $user->trades()->where('status', 'active')->sum('returns');
 
