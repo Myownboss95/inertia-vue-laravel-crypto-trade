@@ -30,7 +30,7 @@ class Trade extends Model
     public function close()
     {
         $user = $this->user;
-        $account = $user->accounts()->where('type', 'invested')->first();
+        $account = $user->accounts()->where('type', 'main')->first();
         $account->account += $this->returns + $this->amount;
         $this->status = 'closed';
         $this->save();
