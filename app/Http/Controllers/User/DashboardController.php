@@ -33,7 +33,7 @@ class DashboardController extends Controller
         $sellTrades = $user->trades()->where('type', 'sell')->limit(6)->get();
         $num_sellTrades = $user->trades()->where('type', 'buy')->count();
 
-        $trade_profits = $user->trades()->where('status', 'active')->sum('returns');
+        $trade_profits = $user->trades()->sum('returns');
 
 
         return inertia('user.index', [
