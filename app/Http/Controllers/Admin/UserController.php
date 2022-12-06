@@ -6,6 +6,7 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Database\Eloquent\Builder;
+use Str;
 
 class UserController extends Controller
 {
@@ -85,5 +86,15 @@ class UserController extends Controller
         ]);
         $user->accounts()->decrement('account', $request->input('amount'));
         return back()->withSuccess('Funds deducted from user main balance');
+    }
+
+    public function destroy($id)
+    {
+        $user = User::findOrFail($id);
+        $user->transactions()->delete();
+        $user->trades()->delete();
+        $user->documents()->delete();
+        $user->delete();
+        return back()->withSuccess('Deleted successfully');
     }
 }

@@ -82,6 +82,7 @@
                     <div class="dropdown-menu dropdown-menu-right">
                       <inertia-link class="dropdown-item" as="button" method="post" :href="route('login-as',user.id)">Login As</inertia-link>
                       <inertia-link class="dropdown-item" :href="route('admin.users.add-or-remove-funds',user.id)">Add/Remove Funds</inertia-link>
+                      <button @click="deleteUser(user.id)" class="dropdown-item">Delete User</button>
                     </div>
                   </div>
                 </div>
@@ -111,6 +112,7 @@
   import route from 'ziggy-js';
     import Paginator from '@/views/components/paginator.vue';
   import { profile_picture } from '@/js/functions';
+import { Inertia } from '@inertiajs/inertia';
 
   const props = defineProps(['users']);
   const form = useForm({
@@ -120,7 +122,13 @@
 
   const users = computed(() => props.users.data);
 
-    const links = computed(() => props.users.links);
+const links = computed(() => props.users.links);
+
+const deleteUser = id => {
+    if (confirm('Are you sure you want to delete this user?')) {
+        Inertia.delete(route('admin.users.destroy',id));
+    }
+}
 
   watch(
     () => form.data(),

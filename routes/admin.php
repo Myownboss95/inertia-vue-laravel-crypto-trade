@@ -33,6 +33,7 @@ Route::as('users.')->prefix('users')->controller(UserController::class)->group(f
     Route::get('add-remove-funds/{user}', 'addOrRemoveFunds')->name('add-or-remove-funds');
     Route::post('add-funds/{user}', 'addFunds')->name('add-funds');
     Route::post('deduct-funds/{user}', 'deductFunds')->name('deduct-funds');
+    Route::delete('delete/{user}', 'destroy')->name('destroy');
 });
 
 Route::prefix('mail')->as('mail.')->controller(MailController::class)->group(function () {
