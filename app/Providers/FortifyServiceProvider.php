@@ -64,7 +64,7 @@ class FortifyServiceProvider extends ServiceProvider
     private function mapViews()
     {
         Fortify::loginView(function () {
-            echo "login";
+            dd("login");
             return inertia('auth.login');
         });
         Fortify::registerView(function () {
