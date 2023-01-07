@@ -60,7 +60,6 @@
 import { error } from '@/js/toast';
 
 const props = defineProps(['payment']);
-// console.log(props.payment.status)
   const form = useForm({
     name: props.payment?.name,
     status: props.payment?.status ,
@@ -78,7 +77,6 @@ const props = defineProps(['payment']);
 
 
     const updatePayment = () => {
-      console.log(form.data());
         form.put(route('admin.payment-method.update', props.payment.id));
   };
 </script>

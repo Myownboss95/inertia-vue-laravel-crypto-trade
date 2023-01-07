@@ -53,7 +53,6 @@ const type = ref('password');
 const icon = ref('mdi mdi-eye-outline');
 
 const handleButtonClicked = () => {
-    console.log('here')
     type.value = type.value == 'password' ? 'text' : 'password';
     icon.value = icon.value == 'mdi mdi-eye-outline'? 'mdi mdi-mdi-eye-off-outline':'mdi mdi-mdi-eye-outline';
 }

@@ -35,7 +35,7 @@
 
     <title>{{ config('app.name') }} | @yield('title')</title>
 
-    <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit">
+    <script defer type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit">
     </script>
 
     <script type="text/javascript">
@@ -45,7 +45,6 @@
                 // layout: google.translate.TranslateElement.InlineLayout.SIMPLE
             }, 'google_translate_element');
             var element = document.querySelector(' #google_translate_element .skiptranslate');
-            console.log(element);
         }
     </script>
 

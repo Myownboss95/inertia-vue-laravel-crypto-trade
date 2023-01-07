@@ -64,8 +64,6 @@ const props = defineProps({
     requests: Object,
 });
 
-console.log(props);
-
 const links = computed(() => props.requests.links);
 const requests = computed(() => props.requests.data);
 

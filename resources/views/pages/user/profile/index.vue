@@ -267,7 +267,6 @@ const props = defineProps({
   countries: Object,
   transactions: Object
 });
-console.log(props.user);
 const user = computed(() => props.user);
 const countries = computed(() => props.countries);
 const transactions = computed(()=>props.transactions)

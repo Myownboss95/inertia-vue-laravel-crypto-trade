@@ -81,7 +81,6 @@ const action = ref(0);
 
 const submitForm = () => {
     let r = `admin.users.${ action.value == 1 ? 'add-funds' : 'deduct-funds' }`;
-    console.log(r);
     form.post(route(r, route().params.user), {
         onBefore: () => confirm(`Are you sure you want to ${ action.value == 1 ? 'add funds to' : 'deduct funds from' } user?`),
         onSuccess: () => form.reset()

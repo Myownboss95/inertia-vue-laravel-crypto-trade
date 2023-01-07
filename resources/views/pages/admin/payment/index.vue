@@ -59,7 +59,6 @@ import Paginator from '@/views/components/paginator.vue';
 const props = defineProps({
     payment: Object,
 })
-// console.log(payment)
 const payment = computed(() => props.payment.data);
 const links = computed(() => props.payment.links);
 

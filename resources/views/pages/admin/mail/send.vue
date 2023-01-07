@@ -51,8 +51,6 @@ const props = defineProps({
 
 const users = computed(() => props.users);
 
-console.log(users.value)
-
 const user = ref(null);
 
 const form = useForm({

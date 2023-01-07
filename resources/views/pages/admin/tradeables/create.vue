@@ -53,7 +53,6 @@ import { error } from '@/js/toast';
 
 
     const createAsset = () => {
-      console.log(form.data())
         form.post(route('admin.tradeables.store'));
   };
 </script>

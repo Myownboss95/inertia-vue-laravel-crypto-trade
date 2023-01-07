@@ -59,7 +59,6 @@ const props = defineProps([ 'errors' ])
 watch(
     () => props.errors,
     (errors) => {
-        console.log(errors);
         if ('email' in errors) {
             error(errors.email);
         }

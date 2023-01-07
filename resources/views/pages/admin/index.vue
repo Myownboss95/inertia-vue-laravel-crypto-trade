@@ -90,9 +90,9 @@
 
   <!-- Bottom Section -->
   <div class="row m-1">
-    
 
-    
+
+
     <div class="p-2 col-md-6 col-sm-12">
       <div class="card shadow ">
         <div class="card-body m-3">
@@ -126,7 +126,7 @@
         </div>
         <div class="text-nowrap mb-2">
           <span class="badge bg-soft-success text-success">
-            {{ 
+            {{
             !isNaN(withdrawals_count) && withdrawals_count != 0 ?
              withdrawals_count - 6 : "0" }}
             more</span>
@@ -136,7 +136,7 @@
         ></inertia-link>
       </div>
       </div>
-      
+
     </div>
 
     <div class="p-2 col-md-6 col-sm-12">
@@ -186,7 +186,7 @@
         ></inertia-link>
       </div>
       </div>
-      
+
     </div>
     <div class="p-2 col-md-6 col-sm-12">
       <div class="card shadow">
@@ -236,8 +236,8 @@
           >View Trades<i class="mdi mdi-arrow-right ms-1"></i
         ></inertia-link>
       </div>
-      </div> 
-      
+      </div>
+
     </div>
     <div class="p-2 col-md-6 col-sm-12">
       <div class="card shadow">
@@ -287,7 +287,7 @@
         ></inertia-link>
       </div>
       </div>
-      
+
     </div>
     <div class="p-2 col-md-12 col-sm-12">
       <div class="card shadow">
@@ -307,7 +307,7 @@
                 <tbody>
                   <tr v-for="(user, key) in users" :key="key">
                     <td>{{ `${user.first_name}` }}</td>
-                    <td>{{user.last_name}}</td> 
+                    <td>{{user.last_name}}</td>
                     <td>{{ user.email }}</td>
                   </tr>
                 </tbody>
@@ -331,7 +331,7 @@
         ></inertia-link>
       </div>
       </div>
-      
+
     </div>
   </div>
 </template>
@@ -355,7 +355,6 @@ const props = defineProps({
   sellTrades: Object,
 });
 onMounted(() => {
-  // console.log(props.num_users);
   feather.replace();
 });
 
