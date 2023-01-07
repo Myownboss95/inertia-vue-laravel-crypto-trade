@@ -13,7 +13,7 @@ import "@/assets/css/bootstrap.css"
 import "@/assets/css/icons.css"
 import "@/assets/css/app.css"
 
-import "bootstrap"
+// import "bootstrap"
 import 'simplebar';
 import 'simplebar/dist/simplebar.css'
 
