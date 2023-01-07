@@ -63,18 +63,32 @@ class FortifyServiceProvider extends ServiceProvider
 
     private function mapViews()
     {
-        Fortify::loginView(fn () => inertia('auth.login'));
-        Fortify::registerView(fn () => inertia('auth.register'));
+        Fortify::loginView(function () {
+            return inertia('auth.login');
+        });
+        Fortify::registerView(function () {
+            return inertia('auth.register');
+        });
 
-        Fortify::resetPasswordView(fn () => inertia('auth.password.reset'));
+        Fortify::resetPasswordView(function () {
+            return inertia('auth.password.reset');
+        });
 
-        Fortify::requestPasswordResetLinkView(fn () => inertia('auth.password.forgot'));
+        Fortify::requestPasswordResetLinkView(function () {
+            return inertia('auth.password.forgot');
+        });
 
-        Fortify::verifyEmailView(fn () => inertia('auth.email.verify'));
+        Fortify::verifyEmailView(function () {
+            return inertia('auth.email.verify');
+        });
 
-        Fortify::confirmPasswordView(fn () => inertia('auth.confirm-password'));
+        Fortify::confirmPasswordView(function () {
+            return inertia('auth.confirm-password');
+        });
 
-        Fortify::twoFactorChallengeView(fn () => inertia('auth.two-factor-challenge'));
+        Fortify::twoFactorChallengeView(function () {
+            return inertia('auth.two-factor-challenge');
+        });
 
     }
 
