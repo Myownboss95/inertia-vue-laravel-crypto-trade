@@ -59,12 +59,13 @@
 </template>
 
 <script setup>
-import {ref } from 'vue';
+import {onMounted, ref } from 'vue';
 import ButtonVue from '@/views/components/form/FormButton.vue'
 import FormGroup from '@/views/components/form/FormGroup.vue'
 import FormLabel from '@/views/components/form/FormLabel.vue';
 import {useForm} from '@inertiajs/inertia-vue3'
 import InputGroup from '@/views/components/form/InputGroup.vue';
+
 
 
 let type = ref('password');

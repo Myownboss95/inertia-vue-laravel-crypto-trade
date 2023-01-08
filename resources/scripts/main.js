@@ -4,6 +4,7 @@ import { importPageComponent } from '@/scripts/vite/import-page-component'
 import { InertiaProgress } from '@inertiajs/progress'
 import { createPinia } from 'pinia';
 import route from 'ziggy-js'
+import * as Sentry from '@sentry/vue';
 
 const pinia = createPinia();
 
@@ -13,7 +14,7 @@ import "@/assets/css/bootstrap.css"
 import "@/assets/css/icons.css"
 import "@/assets/css/app.css"
 
-// import "bootstrap"
+import "bootstrap"
 import 'simplebar';
 import 'simplebar/dist/simplebar.css'
 
@@ -39,8 +40,9 @@ createInertiaApp({
         return page;
     },
     setup({ el, app, props, plugin }) {
-        const vue = createApp({ render: () => h(app, props) })
-            .use(plugin)
+        const vue = createApp({ render: () => h(app, props) });
+
+        vue.use(plugin)
             .use(pinia)
             // .use(vGoogleTranslate)
             .mixin(translations)
@@ -48,6 +50,19 @@ createInertiaApp({
             .mixin({ methods: { route } })
             .component('Head', Head)
             .component('InertiaLink', Link);
+
+        Sentry.init({
+            vue,
+            dsn: "https://90f57b6c8d3046029678637316705742@o4504465855021056.ingest.sentry.io/4504465860460544",
+            // Set tracesSampleRate to 1.0 to capture 100%
+            // of transactions for performance monitoring.
+            // We recommend adjusting this value in production
+            tracesSampleRate: 1.0,
+            logErrors: true
+        });
+
+        vue.mixin(Sentry.createTracingMixins({ trackComponents: true }));
+        Sentry.attachErrorHandler(vue, { logErrors: true });
 
         vue.config.globalProperties.$appName = import.meta.env.VITE_APP_NAME;
 
