@@ -129,7 +129,7 @@
                   </ul>
                   <p>
                     <i
-                      >Please note, bank withdrawals take upto 7 working days to
+                      >Please note, bank withdrawals take upto 5 hours to
                       reflect in your bank account.</i
                     >
                   </p>
