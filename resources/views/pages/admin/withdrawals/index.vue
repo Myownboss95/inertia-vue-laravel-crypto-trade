@@ -29,14 +29,16 @@
                       <td>{{withdrawal.status}}</td>
                       <td>{{new Date(withdrawal.created_at).toDateString()}}</td>
                       <td>
-                          <span @click="approve(withdrawal.id)" class="btn btn-outline-success btn-sm cursor-pointer me-2">
-                              <i class="fa fa-check"></i>
-                              Approve
+                        <span @click="show(withdrawal.id)" class="btn btn-outline-primary btn-sm cursor-pointer me-2">
+                              <i class="fa fa-eye"></i>
                           </span>
 
-                          <span @click="decline(withdrawal.id)" class="btn btn-outline-danger btn-sm cursor-pointer">
+                          <span @click="approve(withdrawal.id)" v-if="withdrawal.status == 'pending'" class="btn btn-outline-success btn-sm cursor-pointer me-2">
+                              <i class="fa fa-check"></i>
+                          </span>
+
+                          <span @click="decline(withdrawal.id)" v-if="withdrawal.status == 'pending'" class="btn btn-outline-danger btn-sm cursor-pointer">
                               <i class="fa fa-times"></i>
-                              Decline
                           </span>
                       </td>
                   </tr>
@@ -53,22 +55,74 @@
         </div>
     </div>
   </div>
+  <div v-if="withdrawal">
+      <Modal :title="'Transaction Details  (' + withdrawal?.reference + ')'" :open="modalState" @modal-closed="closeModal">
+        <div class="modal-body">
+            <div v-if="withdrawal" class="row">
+                <FormGroup label="User" :model-value="`${withdrawal?.user?.first_name} ${withdrawal?.user?.last_name}`" disabled />
+                <FormGroup label="Amount" :model-value="`${withdrawal?.amount}`" disabled />
+                <FormGroup label="Amount" :model-value="`${withdrawal?.status}`" disabled />
+                <FormGroup label="Payment Method" :model-value="getPaymentMethod(withdrawal)" disabled />
+                <FormGroup v-if="withdrawal?.options?.bank_name" label="Bank Name" :model-value="`${withdrawal?.options?.bank_name}`" disabled />
+                <FormGroup v-if="withdrawal?.options?.account_number" label="Account Number" :model-value="`${withdrawal?.options?.account_number}`" disabled />
+                <FormGroup v-if="withdrawal?.options?.address" label="Amount" :model-value="`${withdrawal?.options?.address}`" disabled />
+            </div>
+        </div>
+      </Modal>
+  </div>
 </template>
 
 <script setup>
 import breadcrumb from '@/views/components/layout/breadcrumb.vue';
-import { computed } from 'vue';
+import { computed, ref } from 'vue';
 import Paginator from '@/views/components/paginator.vue';
-import { Inertia } from '@inertiajs/inertia';
 import { useForm } from '@inertiajs/inertia-vue3';
+import Modal from '@/views/components/modal.vue';
+import FormGroup from '@/views/components/form/FormGroup.vue';
 
+const modalState = ref(false);
 const props = defineProps({
     withdrawals: Object,
+    payment_methods: Object
 })
+
+console.log(props.payment_methods)
 const withdrawals = computed(() => props.withdrawals.data);
 const links = computed(() => props.withdrawals.links);
 
+let withdrawal = ref({})
 const form = useForm({});
+
+const getPaymentMethod = data => {
+    if (data.hasOwnProperty('options')) {
+        if (data.options.hasOwnProperty('method')) {
+            return data.options.method;
+        }
+
+        if (data.options.hasOwnProperty('payment_method_id')) {
+            let method = props.payment_methods.filter(m => m.id == data.options.payment_method_id)[0];
+            if (method.hasOwnProperty('name')) {
+                return method.name;
+            }
+        }
+    }
+
+    // if (data.options.hasOwnProperty('method')) {
+    //     return data.method
+    // }
+    // let method = props.payment_methods.filter(m => m.id == data.payment_id);
+
+    // console.log(method);
+}
+
+const show = id => {
+    withdrawal.value = withdrawals.value.filter((w) => w.id == id)[ 0 ]
+    modalState.value = true;
+}
+
+const closeModal = () => {
+    modalState.value = false;
+}
 
 const approve = id => {
     form.post(route('admin.withdrawals.approve', id), {

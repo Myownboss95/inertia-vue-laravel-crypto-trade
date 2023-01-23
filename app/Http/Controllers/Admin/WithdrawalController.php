@@ -8,6 +8,7 @@ use App\Http\Controllers\Controller;
 use App\Mail\Withdrawal\Approved;
 use App\Mail\Withdrawal\Declined;
 use App\Mail\Withdrawal\SendToken;
+use App\Models\PaymentMethod;
 use App\Models\WithdrawalToken;
 use Mail;
 use Str;
@@ -17,9 +18,9 @@ class WithdrawalController extends Controller
     public function index()
     {
         $query = Transaction::latest()->where('type', 'withdrawal')->with('user');
-
         return inertia('admin.withdrawals.index', [
             'withdrawals' => $query->paginate(),
+            'payment_methods' => PaymentMethod::all()
         ]);
     }
 
