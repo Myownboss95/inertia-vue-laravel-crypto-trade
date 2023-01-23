@@ -61,11 +61,11 @@
             <div v-if="withdrawal" class="row">
                 <FormGroup label="User" :model-value="`${withdrawal?.user?.first_name} ${withdrawal?.user?.last_name}`" disabled />
                 <FormGroup label="Amount" :model-value="`${withdrawal?.amount}`" disabled />
-                <FormGroup label="Amount" :model-value="`${withdrawal?.status}`" disabled />
+                <FormGroup label="Status" :model-value="`${withdrawal?.status}`" disabled />
                 <FormGroup label="Payment Method" :model-value="getPaymentMethod(withdrawal)" disabled />
                 <FormGroup v-if="withdrawal?.options?.bank_name" label="Bank Name" :model-value="`${withdrawal?.options?.bank_name}`" disabled />
                 <FormGroup v-if="withdrawal?.options?.account_number" label="Account Number" :model-value="`${withdrawal?.options?.account_number}`" disabled />
-                <FormGroup v-if="withdrawal?.options?.address" label="Amount" :model-value="`${withdrawal?.options?.address}`" disabled />
+                <FormGroup v-if="withdrawal?.options?.address" label="Wallet Address" :model-value="`${withdrawal?.options?.address}`" disabled />
             </div>
         </div>
       </Modal>
