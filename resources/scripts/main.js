@@ -8,7 +8,6 @@ import * as Sentry from '@sentry/vue';
 
 const pinia = createPinia();
 
-
 import "@/assets/css/preloader.css"
 import "@/assets/css/bootstrap.css"
 import "@/assets/css/icons.css"
@@ -63,10 +62,7 @@ createInertiaApp({
 
         vue.mixin(Sentry.createTracingMixins({ trackComponents: true }));
         Sentry.attachErrorHandler(vue, { logErrors: true });
-
         vue.config.globalProperties.$appName = import.meta.env.VITE_APP_NAME;
-
-
         vue.mount(el)
     },
 });
