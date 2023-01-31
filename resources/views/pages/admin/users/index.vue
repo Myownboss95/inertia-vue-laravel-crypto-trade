@@ -82,6 +82,9 @@
                     <div class="dropdown-menu dropdown-menu-right">
                       <inertia-link class="dropdown-item" as="button" method="post" :href="route('login-as',user.id)">Login As</inertia-link>
                       <inertia-link class="dropdown-item" :href="route('admin.users.add-or-remove-funds',user.id)">Add/Remove Funds</inertia-link>
+
+                      <a v-for="(document, key) in user.documents" :key="key" class="dropdown-item" :href="'/storage/documents/' + document.document" v-text="document.type != 'passport' ? document.is_front ?  'Download Front' : 'Download Front' : 'Download Data Page'" target="blank" download></a>
+
                       <button @click="deleteUser(user.id)" class="dropdown-item">Delete User</button>
                     </div>
                   </div>

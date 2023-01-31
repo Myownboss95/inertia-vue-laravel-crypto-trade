@@ -37,6 +37,7 @@ class UserController extends Controller
             }
         }
         $query->where('is_admin', '=', 0);
+        $query->with('documents');
 
         return inertia('admin.users.index', [
             'users' => $query->paginate()->through(function ($user, $key) {
