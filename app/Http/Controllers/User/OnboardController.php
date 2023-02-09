@@ -22,7 +22,7 @@ class OnboardController extends Controller
             return $this->toUploadPage();
         }
         $service = new LocationService();
-        return inertia('user.onboarding.address', [
+        return inertia('auth.onboarding.address', [
             'countries' => $service->countries(),
         ]);
     }
@@ -74,7 +74,7 @@ class OnboardController extends Controller
         }
 
         if (config('app.id_verification')) {
-            return inertia('user.onboarding.upload');
+            return inertia('auth.onboarding.upload');
         }
         return redirect()->route('user.index');
     }
@@ -133,8 +133,16 @@ class OnboardController extends Controller
 
     private function uploadFile(UploadedFile $file, string $dir)
     {
-        $filename = time() . "{$file->getClientOriginalName()}";
+        $filename = time() . rand() . "{$file->getClientOriginalName()}";
         Storage::disk('public')->putFileAs($dir, $file, $filename);
         return $filename;
+    }
+
+    public function submitted()
+    {
+        if (auth()->user()->status != 'pending') {
+            return redirect()->route('user.index');
+        }
+        return inertia('auth.onboarding.submitted');
     }
 }

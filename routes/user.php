@@ -54,4 +54,6 @@ Route::prefix('onboard')->name('onboard.')->group(function () {
 
     Route::get('upload', [OnboardController::class, 'uploadPage']);
     Route::post('upload', [OnboardController::class, 'upload'])->name('upload');
+
+    Route::get('submitted', [OnboardController::class, 'submitted'])->name('submitted');
 });

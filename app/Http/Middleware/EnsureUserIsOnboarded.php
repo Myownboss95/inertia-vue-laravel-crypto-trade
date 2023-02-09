@@ -25,6 +25,10 @@ class EnsureUserIsOnboarded
             if (!$user->documents()->count() && config('app.id_verification')) {
                 return redirect()->route('user.onboard.upload');
             }
+
+            if ($user->status == 'pending') {
+                return redirect()->route('user.onboard.submitted');
+            }
         }
 
         return $next($request);
