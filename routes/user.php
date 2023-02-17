@@ -30,7 +30,8 @@ Route::middleware('onboarded')->group(function () {
     Route::resource('profile', ProfileController::class);
     Route::resource('withdrawals', WithdrawalController::class)->middleware('active');
     Route::post('withdrawals/bank/validate', [WithdrawalController::class, 'validateBankWithdrawal'])->name('withdrawals.bank.validate')->middleware('active');
-    Route::post('withdrawals/bank/request-token', [WithdrawalController::class, 'requestToken'])->name('withdrawals.bank.request-token')->middleware('active');
+    Route::post('withdrawals/request-token', [WithdrawalController::class, 'requestToken'])->name('withdrawals.request-token')->middleware('active');
+    Route::post('withdrawals/validate-token', [WithdrawalController::class, 'validateToken'])->name('withdrawals.validate-token')->middleware('active');
     Route::post('withdrawals/bank', [WithdrawalController::class, 'bankWithdrawal'])->name('withdrawals.bank')->middleware('active');
 
     Route::get('/trades/assets/{type}',[TradeController::class, 'getTradeables'])->name('trades.getTradeables');

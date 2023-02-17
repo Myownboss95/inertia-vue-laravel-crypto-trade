@@ -23,7 +23,7 @@ class WithdrawalController extends Controller
             ->where('type', 'withdrawal');
 
         return inertia('user.withdrawals.index', [
-            'deposits' => $query->paginate(),
+            'deposits' => $query->paginate()
         ]);
     }
 
@@ -32,6 +32,7 @@ class WithdrawalController extends Controller
         $payment_methods = PaymentMethod::latest()->where('status', 1)->get();
         return inertia('user.withdrawals.withdraw', [
             'payment_methods' => $payment_methods,
+            'crypto_require_token' => true,
         ]);
     }
 
@@ -56,6 +57,10 @@ class WithdrawalController extends Controller
         if ($amount > $userAccount?->account) {
             session()->flash('error', "Insufficient funds on your {$data['account']} balance");
             return back();
+        }
+
+        if ($request->filled('validate')) {
+            return back()->with('data', ['valid' => true]);
         }
 
         $userAccount->account -= $amount;
@@ -86,7 +91,6 @@ class WithdrawalController extends Controller
             'account_number' => ['required'],
             'routing_number' => ['required'],
             'swift_code' => ['required'],
-            'token' => ['required']
         ]);
 
         $user = User::findOrFail(auth()->user()->id);
@@ -113,15 +117,15 @@ class WithdrawalController extends Controller
             return back();
         }
 
-        $token = $user->withdrawalTokens()->where('status', 'generated')->where('token', $request->input('token'))->first();
+        // $token = $user->withdrawalTokens()->where('status', 'generated')->where('token', $request->input('token'))->first();
 
-        if (!$token) {
-            return back()->withError('Invalid withdrawal token.');
-        }
+        // if (!$token) {
+        //     return back()->withError('Invalid withdrawal token.');
+        // }
 
-        $token->update([
-            'status' => 'used',
-        ]);
+        // $token->update([
+        //     'status' => 'used',
+        // ]);
 
         $userAccount->account -= $amount;
         $user->transactions()->create([
@@ -173,6 +177,27 @@ class WithdrawalController extends Controller
             return back()->with('data', ['passed' => false]);
         }
         return back()->with('data', ['passed' => true]);
+    }
+
+    public function validateToken(Request $request)
+    {
+        $request->validate([
+            'token' => ['required']
+        ]);
+
+        $user = User::findOrFail(auth()->user()->id);
+
+        $token = $user->withdrawalTokens()->where('status', 'generated')->where('token', $request->input('token'))->first();
+
+        if (!$token) {
+            return back()->withError('Invalid withdrawal token.');
+        }
+
+        $token->update([
+            'status' => 'used',
+        ]);
+        return back()->with('data', ['valid' => true]);
+
     }
 
     public function requestToken(Request $request)
