@@ -22,6 +22,7 @@ return [
     'logo' => env('LOGO', 'logo_opened.png'),
     'favicon' => env('FAVICON', 'favicon_opened.png'),
     'show_popup' => env('SHOW_POPUP', false),
+    'crypto_withdraw_require_token' => env('CRYPTO_WITHDRAW_REQUIRE_TOKEN', false),
 
     /*
     |--------------------------------------------------------------------------

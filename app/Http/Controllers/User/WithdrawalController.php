@@ -32,7 +32,7 @@ class WithdrawalController extends Controller
         $payment_methods = PaymentMethod::latest()->where('status', 1)->get();
         return inertia('user.withdrawals.withdraw', [
             'payment_methods' => $payment_methods,
-            'crypto_require_token' => true,
+            'crypto_require_token' => config('app.crypto_withdraw_require_token', false),
         ]);
     }
 
