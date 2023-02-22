@@ -28,7 +28,7 @@
 
                     <div class="mt-4 pt-2">
                         <FormButton class="btn btn-outline-primary w-100" @button-clicked="subscribe(plan.id)">
-                            <ButtonLoader text="Choose Plan" />
+                            <ButtonLoader :text="planText(plan)" />
                         </FormButton>
                             <!-- Choose Plan -->
                     </div>
@@ -48,8 +48,21 @@ import FormButton from '@/views/components/form/FormButton.vue';
 import ButtonLoader from '@/views/components/form/ButtonLoader.vue';
 import { Inertia } from '@inertiajs/inertia';
 
-const props = defineProps([ 'plans' ]);
+const props = defineProps([ 'plans', 'current_plan' ]);
 
+const planText = (plan) => {
+    let current_plan = props.current_plan;
+    if (current_plan.id == '') {
+        return 'Choose plan';
+    } else if (current_plan.id == plan.id) {
+        return 'Current plan';
+    } else {
+        if (current_plan.min_investment > plan.min_investment) {
+            return 'Downgrade';
+        }
+        return 'Upgrade';
+    }
+}
 const subscribe = id => {
     Inertia.post(route('user.subscriptions.subscribe', id));
 }

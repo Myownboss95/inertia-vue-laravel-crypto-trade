@@ -4,6 +4,7 @@ namespace App\Http\Controllers\User;
 
 use App\Http\Controllers\Controller;
 use App\Models\Plan;
+use App\Models\Subscription;
 use App\Models\User;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
@@ -13,8 +14,10 @@ class SubscriptionController extends Controller
     public function plans()
     {
         $plans = Plan::latest()->with('features')->get();
+        $subscription = Subscription::where('user_id', auth()->user()->id)->where('status', 'active')->first();
         return inertia('user.subscriptions', [
-            'plans' => $plans
+            'plans'        => $plans,
+            'current_plan' => $subscription->plan
         ]);
     }
 

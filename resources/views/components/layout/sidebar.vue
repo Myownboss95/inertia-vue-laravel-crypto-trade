@@ -61,6 +61,14 @@
             icon="mail"
             v-if="is_admin"
           />
+          <li class="menu-title">Plans</li>
+          <SidebarItem
+            name="Subscriptions"
+            :url="route('user.subscriptions.plans')"
+            icon="gift"
+            v-if="!is_admin"
+          />
+
           <li class="menu-title">Settings</li>
 
           <SidebarItem

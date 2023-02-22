@@ -42,7 +42,7 @@ class HandleInertiaRequests extends Middleware
             'app.locale' => app()->getLocale(),
             'auth.user' => function () use ($request, $user) {
                 if (!$user) return null;
-                return $user->only('id', 'is_admin', 'email', 'first_name', 'last_name', 'phone', 'image');
+                return $user->only('id', 'is_admin', 'email', 'first_name', 'last_name', 'phone', 'image', 'plan_id');
             },
             'admin_id' => fn () => $request->session()->get('admin_id'),
             'flash.status' => fn () => $request->session()->get('status'),
