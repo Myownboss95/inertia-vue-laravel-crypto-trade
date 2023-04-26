@@ -38,8 +38,7 @@
                     </div>
                     <div class="widget-content">
                         <form class="form-newsletter mailchimp">
-                            <input type="email" name="email" class="form-control"
-                                placeholder="Subscribe Our Newsletter">
+                            <input type="email" name="email" class="form-control" placeholder="Subscribe Our Newsletter">
                             <button type="submit"><i class="fa fa-long-arrow-right"></i></button>
                         </form>
                         <div class="subscribe-alert"></div>
