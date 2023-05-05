@@ -75,7 +75,7 @@ class UserController extends Controller
         $request->validate([
             'amount' => ['required', 'numeric']
         ]);
-        $user->accounts()->increment('account', $request->input('amount'));
+        $user->accounts()->where('type', 'main')->increment('account', $request->input('amount'));
         return back()->withSuccess('Funds added to user main balance');
     }
 
@@ -85,7 +85,7 @@ class UserController extends Controller
         $request->validate([
             'amount' => ['required', 'numeric']
         ]);
-        $user->accounts()->decrement('account', $request->input('amount'));
+        $user->accounts()->where('type', 'main')->decrement('account', $request->input('amount'));
         return back()->withSuccess('Funds deducted from user main balance');
     }
 
