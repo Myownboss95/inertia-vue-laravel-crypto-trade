@@ -17,7 +17,7 @@ class SubscriptionController extends Controller
         $subscription = Subscription::where('user_id', auth()->user()->id)->where('status', 'active')->first();
         return inertia('user.subscriptions', [
             'plans'        => $plans,
-            'current_plan' => $subscription->plan
+            'current_plan' => $subscription?->plan ?? null
         ]);
     }
 
