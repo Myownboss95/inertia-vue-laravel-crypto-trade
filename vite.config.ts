@@ -6,8 +6,8 @@ import * as fs from 'fs'
 import os from 'node:os'
 import process from 'node:process'
 
-const domain = 'binotomo.test';
-let certPath = `${os.homedir()}/.config/valet/Certificates/${domain}`;
+const domain = 'cryptowalletnew.test';
+let certPath = `${os.homedir()}/Library/Application Support/Herd/config/valet/Certificates/${domain}`;
 
 export default defineConfig(({ mode }) => {
     let env = loadEnv(mode, process.cwd());
