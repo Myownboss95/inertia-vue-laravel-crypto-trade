@@ -24,8 +24,8 @@ class UserFactory extends Factory
             'phone' => fake()->unique()->phoneNumber(),
             'status' => fake()->randomElement(['active', 'pending', 'suspended']),
             'country' => 'Nigeria',
-            'state' => fake()->randomElement(['Delta', 'Lagos', 'Abuja', 'Bayelsa', 'Rivers']),
-            'city' => fake()->randomElement(['Asaba', 'Ikeja', 'Yenegoa', 'Warri', 'Abraka', 'Bomadi']),
+            'state' => fake()->randomElement(['California', 'Illinois', 'New York']),
+            'city' => fake()->randomElement(['Las Vegas', 'Los Angeles', 'San Fransisco', 'New York']),
             'address' => fake()->address(),
             'zip_code' => fake()->postcode(),
             'email_verified_at' => now(),
@@ -52,7 +52,7 @@ class UserFactory extends Factory
     {
         return $this->state(
             fn () => [
-                'email' => 'user@binotomo.test',
+                'email' => 'user@' . parse_url(env('APP_URL'), PHP_URL_HOST),
                 'status' => 'active'
             ]
         );
@@ -63,7 +63,7 @@ class UserFactory extends Factory
         return $this->state(
             fn () => [
                 'is_admin' => 1,
-                'email' => 'admin@binotomo.test',
+                'email' => 'admin@' . parse_url(env('APP_URL'), PHP_URL_HOST),
                 'status' => 'active'
             ]
         );

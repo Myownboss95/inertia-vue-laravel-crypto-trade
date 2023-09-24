@@ -15,8 +15,13 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        \App\Models\User::factory(30)->create();
-        \App\Models\User::factory(1)->admin()->create();
+        \App\Models\User::factory(1)->admin()->create(
+            [
+                'first_name' => 'Admin',
+                'last_name' => 'One',
+                'password' => '$2y$10$I5dKQqGtXozJMhxzGxRw9OytGTddCore5VTkGTJ/EaGmIvWlPu2JG' // password
+            ]
+        );
         \App\Models\User::factory(1)->user()->create();
         Plan::factory(3)->hasFeatures(3)->create();
         Plan::factory(3)->demo()->hasFeatures(3)->create();
